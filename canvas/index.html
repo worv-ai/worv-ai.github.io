@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="We propose a framework for context-aware robot navigation that excels in both simulated and real-world environments.">
+    <meta name="keywords" content="Vision-Language-Action (VLA) Models, Imitation Learning, Multimodal Instruction Following">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CANVAS: Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9LZW868J"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5J9LZW868J');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/css/slick.css">
+    <link rel="stylesheet" href="../static/css/slick-theme.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.ico">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../static/js/fontawesome.all.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/index.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="https://worv-ai.github.io/">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://worv-ai.github.io/">
+                            Not released yet
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">CANVAS: Commonsense-Aware Navigation System
+                            for Intuitive Human-Robot Interaction</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                Suhwan Choi<sup>†1</sup>,</span>
+                            <span class="author-block">
+                                Yongjun Cho<sup>†1</sup>,</span>
+                            <span class="author-block">
+                                Minchan Kim<sup>†1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Jaeyoon Jung<sup>†1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Myunchul Joe<sup>1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Yubeen Park<sup>1</sup>,</span>
+                            </span>
+                            <br>
+                            <span class="author-block">
+                                Minseo Kim<sup>2</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Sungwoong Kim<sup>2</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Sungjae Lee<sup>2</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Hwiseong Park<sup>2</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Jiwan Chung<sup>2</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Youngjae Yu<sup>2</sup>,</span>
+                            </span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block">
+                                <sup>†</sup> Equal contribution, <sup>1</sup> MAUM.AI, <sup>2</sup> Yonsei University
+                        </div>
+                        <br>
+                        <div class="is-size-6 publication-venue">
+                          <span class="venue-block">Under Review</span> <br>
+                          <!-- <span class="venue-block">NeurIPS 2024 Workshop on Open-World Agents</span> -->
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <span class="link-block">
+                                    <a href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <!-- <span class="link-block">
+                                    <a href="https://github.com/worv-ai/canvas"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github-alt"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span> -->
+                                <!-- Dataset Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/worv-ai/canvas"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i> </span>
+                                        <span>Data</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop is-centered has-text-justified is-size-5">
+            <div class="hero-body">
+                <figure id="teaser">
+                    <img src="./static/1_teaser.png" alt="canvas teaser" />
+                </figure>
+                <p>
+                    CANVAS
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Real-life robot navigation involves more than simply reaching a destination; 
+                            it requires optimizing movements while considering scenario-specific goals. 
+                            Humans often express these goals through abstract cues, such as verbal commands 
+                            or rough sketches. While this guidance may be vague or noisy, we still expect 
+                            robots to navigate as intended. For robots to interpret and execute these abstract 
+                            instructions in line with human expectations, they need to share a basic understanding 
+                            of navigation concepts with humans.
+                        </p>
+                        <p>    
+                            To address this challenge, we introduce CANVAS, 
+                            a novel framework that integrates both visual and linguistic instructions for 
+                            commonsense-aware navigation. CANVAS leverages imitation learning, enabling robots 
+                            to learn from human navigation behavior. We also present COMMAND, a comprehensive dataset 
+                            that includes human-annotated navigation results spanning over 48 hours and 219 kilometers, 
+                            specifically designed to train commonsense-aware navigation systems in simulated environments. 
+                            Our experiments demonstrate that CANVAS outperforms the strong rule-based ROS NavStack system 
+                            across all environments, excelling even with noisy instructions. In particular, in the orchard 
+                            environment where ROS NavStack achieved a 0% success rate, CANVAS reached a 67% success rate. 
+                            CANVAS also closely aligns with human demonstrations and commonsense constraints, even in 
+                            unseen environments. Moreover, real-world deployment of CANVAS shows impressive 
+                            Sim2Real transfer, with a total success rate of 69%, highlighting the potential of 
+                            learning from human demonstrations in simulated environments for real-world applications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--/ Abstract. -->
+
+            <!-- Paper video. -->
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Summary Video</h2>
+                    <div class="publication-video">
+                        <iframe src="" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@article{}</code></pre>
+        </div>
+    </section>
+    <br>
+    <center class="is-size-10">
+        The website design was based on <a href="https://github.com/general-navigation-models/general-navigation-models.github.io"><span 
+        class="dnerf">general-navigation-models</span></a> adapted from <a href="https://nerfies.github.io" class="external-link"><span
+        class="dnerf">Nerfies</span></a>.
+    </center>
+    <br>
+</body>
+
+</html>
