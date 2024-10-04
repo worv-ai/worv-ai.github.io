@@ -188,11 +188,36 @@
         <div class="container is-max-desktop is-centered has-text-justified is-size-5">
             <div class="hero-body">
                 <figure id="teaser">
-                    <img src="./static/1_teaser.png" alt="canvas teaser" />
+                    <img src="./static/images/1_teaser.png" alt="canvas teaser" />
                 </figure>
                 <p>
-                    CANVAS project page will be updated today. Stay tuned for more information.
+                    CANVAS is a novel framework for commonsense-aware robot navigation that excels in both simulated and real-world environments. 
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Carousel -->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-orchard">
+                        <video poster="" id="orchard" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/orchard_canvas.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-street">
+                        <video poster="" id="street" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/sidewalk_canvas.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-real-office">
+                        <video poster="" id="real-office" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/real_office_canvas.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -249,13 +274,12 @@
 
     <section class="section">
         <div class="container is-max-desktop">
-            <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full-width">
-                    <h2 class="title is-3">The COMMAND dataset</h2>
+                    <h2 class="title is-3">COMMAND dataset</h2>
                     <div class="content has-text-justified">
                         <figure id="data_pipeline">
-                            <img src="./static/2_data_pipeline.png" alt="data_pipeline" />
+                            <img src="./static/images/2_data_pipeline.png" alt="data_pipeline" />
                         </figure>
                         <p>
                             The COMMAND dataset is a comprehensive dataset that includes human-annotated navigation results spanning over 48 hours and 219 kilometers, 
@@ -271,22 +295,47 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full-width">
-                    <h2 class="title is-3">CANVAS model</h2>
+                    <h2 class="title is-3">CANVAS Architecture</h2>
                     <div class="content has-text-justified">
                         <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td width="50%">
                                     <figure id="model">
-                                        <img src="./static/3_framework.png" alt="model" />
+                                        <img src="./static/images/3_framework.png" alt="model" />
                                     </figure>
                                 </td>
                                 <td width="50%">
                                     <p>
-                                        The CANVAS model is a novel framework that integrates both visual and linguistic instructions for commonsense-aware navigation.
+                                        CANVAS is a vision language action(VLA) model that utilizes a vision language model with a waypoint tokenizer to generate navigation waypoints 
+                                    </p>
+                                    <p>
+                                        The front view image Xf (t) and canvas map image Xc(t) are processed through a vision encoder gϕ(·). Both the visual tokens τv and language tokens τl are then fed into the large language model denoted as fϕ(·), which outputs the waypoint tokens [w0, w1, w2, w3] = fϕ(τv, τl)
+                                    </p>
+                                    <p>
+                                        By treating navigation as a classification task, CANVAS can manage multimodal distributions, enhancing both stability and accuracy in complex environments.
                                     </p>
                                 </td>
                             </tr>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Experiments</h2>
+                    <div class="content has-text-justified">
+                        <figure id="main_exp">
+                            <img src="./static/images/4_success_case_study.png" alt="main_exp" />
+                        </figure>
+                        <p>
+                            The left side of the figure compares CANVAS-L and CANVAS-S, showing CANVAS-L using the crosswalk despite a misleading
+                            sketch instruction. The right side compares CANVAS-L and NavStack, illustrating CANVAS-L avoiding small obstacles, such as rocks.
+                        </p>
                     </div>
                 </div>
             </div>
