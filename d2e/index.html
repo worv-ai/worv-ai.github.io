@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Desktop gaming data effectively pretrains embodied AI: 152× compression via OWA Toolkit, YouTube pseudo-labeling with Generalist-IDM, achieving 96.6% on LIBERO manipulation and 83.3% on CANVAS navigation with 1.3K hours of data.">
+    <meta name="keywords" content="Embodied Ai, Vision-Language-Action Models, Inverse Dynamics Models">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9LZW868J"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5J9LZW868J');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/css/slick.css">
+    <link rel="stylesheet" href="../static/css/slick-theme.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.ico">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../static/js/fontawesome.all.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/index.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="https://worv-ai.github.io/">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://worv-ai.github.io/canvas">
+                            CANVAS: Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction
+                        </a>
+                        <a class="navbar-item" href="https://worv-ai.github.io/d2e">
+                            D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI
+                        </a>"
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                Suhwan Choi<sup>†1</sup>,</span>
+                            <span class="author-block">
+                                Jaeyoon Jung<sup>†1</sup>,</span>
+                            <span class="author-block">
+                                Haebin Seong<sup>†1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Minchan Kim<sup>1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Minyeong Kim<sup>2</sup>,</span>
+                            </span>
+                            <br>
+                            <span class="author-block">
+                                Yongjun Cho<sup>1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Yoonshik Kim<sup>1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Park Yu Been<sup>1</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Youngjae Yu<sup>3</sup>,</span>
+                            </span>
+                            <span class="author-block">
+                                Yunsung Lee<sup>1</sup>,</span>
+                            </span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block">
+                                <sup>†</sup> Equal contribution, <sup>1</sup> MAUM.AI, <sup>2</sup> Stanford University, <sup>3</sup> Seoul National University
+                        </div>
+                        <br>
+
+                        <div class="is-size-5 publication-venue">
+                          <span class="venue-block">Under Review</span> <br>
+                        </div>
+                        <br>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2410.01273"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <!-- <span class="link-block">
+                                    <a href="https://youtu.be/oJuU4x02azI"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span> -->
+                                <!-- Code Link. -->
+                                <!-- <span class="link-block">
+                                    <a href="https://github.com/worv-ai/canvas"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github-alt"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span> -->
+                                <!-- Model Link. -->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/maum-ai/CANVAS-S"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-robot"></i>
+                                        </span>
+                                        <span>Model</span>
+                                    </a>
+                                </span>
+                                <!-- Dataset Link. -->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/datasets/maum-ai/COMMAND"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i> </span>
+                                        <span>Data</span>
+                                    </a>
+                                </span>
+                                <!-- Demo Link. -->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/spaces/maum-ai/CANVAS-DEMO"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-images"></i> </span>
+                                        <span>Demo</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop is-centered has-text-justified is-size-5">
+            <div class="hero-body">
+                <figure id="teaser">
+                    <img src="./static/images/1_teaser.png" alt="canvas teaser" />
+                </figure>
+                <p>
+                    Overview of D2E (Desktop to Embodied AI) framework.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>    
+                            Large language models leverage internet-scale text data, yet embodied AI remains constrained by the prohibitive costs of physical trajectory collection. Desktop environments---particularly gaming---offer a compelling alternative: they provide rich sensorimotor interactions at scale while maintaining the structured observation-action coupling essential for embodied learning. We present D2E (Desktop to Embodied AI), a framework that demonstrates desktop interactions can serve as an effective pretraining substrate for robotics embodied AI tasks. Unlike prior work that remained domain-specific (e.g., VPT for Minecraft) or kept data proprietary (e.g., SIMA), D2E establishes a complete pipeline from scalable desktop data collection to verified transfer in embodied domains. Our framework comprises three components: (1) the OWA Toolkit that unifies diverse desktop interactions into a standardized format with 152× compression, (2) the Generalist-IDM that achieves strong zero-shot generalization across unseen games through timestamp-based event prediction, enabling internet-scale pseudo-labeling, and (3) VAPT that transfers desktop-pretrained representations to physical manipulation and navigation. Using 1.3K+ hours of data (259 hours of human demonstrations, and 1K+ hours of pseudo-labeled gameplay), we achieve a total of 96.6% success rate on LIBERO manipulation and 83.3% on CANVAS navigation benchmarks. This validates that sensorimotor primitives in digital interactions exhibit sufficient invariance to transfer meaningfully to physical embodied tasks, establishing desktop pretraining as a practical paradigm for robotics. We will make all our work public, including the OWA toolkit, datasets of human-collected and pseudo-labeled, and VAPT-trained models.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <!-- <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@article{choi2024canvas,
+    title={CANVAS: Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction},
+    author={Choi, Suhwan and Cho, Yongjun and Kim, Minchan and Jung, Jaeyoon and Joe, Myunchul and Park, Yubeen and Kim, Minseo and Kim, Sungwoong and Lee, Sungjae and Park, Hwiseong and others},
+    journal={arXiv preprint arXiv:2410.01273},
+    year={2024}
+}</code></pre>
+        </div>
+    </section> -->
+    <br>
+    <center class="is-size-10">
+        The website design was based on <a href="https://github.com/general-navigation-models/general-navigation-models.github.io"><span 
+        class="dnerf">general-navigation-models</span></a> adapted from <a href="https://nerfies.github.io" class="external-link"><span
+        class="dnerf">Nerfies</span></a>.
+    </center>
+    <br>
+</body>
+
+</html>
