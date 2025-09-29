@@ -196,7 +196,7 @@
         <div class="container is-max-desktop is-centered has-text-justified is-size-5">
             <div class="hero-body">
                 <figure id="teaser">
-                    <img src="./static/images/1_teaser.png" alt="canvas teaser" />
+                    <img src="./static/images/1_teaser.png" alt="d2e teaser" />
                 </figure>
                 <p>
                     Overview of D2E (Desktop to Embodied AI) framework.
@@ -205,17 +205,36 @@
         </div>
     </section>
 
-    <!-- Paper video. -->
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Summary Video of pseudo label generation by Generalist-IDM in youtube video</h2>
-                    <div class="publication-video">
-                        <video poster="" id="gidm-video" autoplay controls muted loop playsinline height="100%">
-                            <source src="./static/videos/youtube-gidm.mp4" type="video/mp4">
+    <!-- Results Carousel -->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered">Pseudo-Label result on YouTube dataset</h1>
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-brotato" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <video poster="" id="brotato" autoplay controls muted loop playsinline width="87%">
+                            <source src="./static/videos/youtube_brotato.mp4" type="video/mp4">
                         </video>
+                        <p class="is-size-6 mt-2 has-text-centered">Brotato</p>
                     </div>
+                    <div class="item item-csgo2">
+                        <video poster="" id="csgo2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/youtube_csgo2.mp4" type="video/mp4">
+                        </video>
+                        <p class="is-size-6 mt-2 has-text-centered">CSGO2</p>
+                    </div>
+                    <div class="item item-eurotruck2">
+                        <video poster="" id="eurotruck2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/youtube_eurotruck2.mp4" type="video/mp4">
+                        </video>
+                        <p class="is-size-6 mt-2 has-text-centered">Eurotruck Simulator</p>
+                    </div>
+                    <!-- <div class="item item-corekeeper">
+                        <video poster="" id="corekeeper" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/youtube_corekeeper.mp4" type="video/mp4">
+                        </video>
+                        <p class="is-size-6 mt-2 has-text-centered">Core Keeper</p>
+                    </div> -->
                 </div>
             </div>
         </div>
