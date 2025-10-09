@@ -37,4 +37,25 @@ $(document).ready(function () {
   }
 
   $('.carousel').slick(options);
+
+  // LIBERO task selector
+  $('#libero-task-selector').change(function() {
+    const selectedTask = $(this).val();
+    $('.task-videos').hide();
+    $('#' + selectedTask).show();
+  });
+
+  // CANVAS environment selector
+  $('#canvas-env-selector').change(function() {
+    const selectedEnv = $(this).val();
+    $('.env-videos').hide();
+    $('#' + selectedEnv).show();
+  });
+
+  // G-IDM game selector
+  $('#gidm-game-selector').change(function() {
+    const selectedGame = $(this).val();
+    $('.game-videos').hide();
+    $('#' + selectedGame).show();
+  });
 })
