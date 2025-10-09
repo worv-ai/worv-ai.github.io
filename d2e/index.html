@@ -201,7 +201,8 @@
                     <img src="./static/images/1_teaser.png" alt="d2e teaser" />
                 </figure>
                 <p>
-                    Overview of D2E (Desktop to Embodied AI) framework.
+                    Overview of D2E (Desktop to Embodied AI) framework. (1) The OWA Toolkit captures 335.6 hours of rich desktop demonstrations across 31 games with 152× compression. (2) The Generalist-IDM uses nextevent prediction with temporal offset (NEP-τ) to achieve OOD generalization, enabling pseudolabeling of 1K+ hours of YouTube gameplay. (3) Vision-Action Pretraining transfers desktoppretrained representations to embodied AI, achieving 96.6% success on LIBERO manipulation and
+83.3% on CANVAS navigation benchmarks which demonstrates desktop-to-robotics transfer.
                 </p>
             </div>
         </div>
@@ -297,62 +298,69 @@
                             The Generalist Inverse Dynamics Model (G-IDM) learns to predict actions from observation transitions across diverse desktop environments.
                             This enables zero-shot generalization to unseen games and provides a foundation for pseudo-labeling large-scale gameplay data.
                         </p>
-                        
-                        <div class="field">
-                            <div class="control">
-                                <div class="select is-fullwidth">
-                                    <select id="gidm-game-selector">
-                                        <option value="game2">Brotato (2D)</option>
-                                        <option value="game1">Minecraft (3D)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div id="game1" class="game-videos" style="display: none;">
-                            <div class="columns is-multiline">
-                                <div class="column is-4">
-                                    <video poster="" id="minecraft-gt" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/minecraft-gt.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">Ground Truth</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="minecraft-idm" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/minecraft-idm.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">IDM</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="minecraft-gidm" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/minecraft-gidm.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">G-IDM</p>
-                                </div>
-                            </div>
+    <!-- G-IDM Video Examples -->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div class="field">
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id="gidm-game-selector">
+                                <option value="game2">Brotato (2D)</option>
+                                <option value="game1">Minecraft (3D)</option>
+                            </select>
                         </div>
+                    </div>
+                </div>
 
-                        <div id="game2" class="game-videos">
-                            <div class="columns is-multiline">
-                                <div class="column is-4">
-                                    <video poster="" id="brotato-gt" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/brotato-gt.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">Ground Truth</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="brotato-idm" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/brotato-idm.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">IDM</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="brotato-gidm" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/brotato-gidm.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">G-IDM</p>
-                                </div>
-                            </div>
+                <div id="game1" class="game-videos" style="display: none;">
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <video poster="" id="minecraft-gt" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/minecraft-gt.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Ground Truth</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="minecraft-idm" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/minecraft-idm.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">IDM</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="minecraft-gidm" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/minecraft-gidm.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="game2" class="game-videos">
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <video poster="" id="brotato-gt" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/brotato-gt.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Ground Truth</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="brotato-idm" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/brotato-idm.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">IDM</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="brotato-gidm" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/brotato-gidm.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM</p>
                         </div>
                     </div>
                 </div>
@@ -379,6 +387,94 @@
         </div>
     </section>
 
+    <!-- OOD Results -->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div class="field">
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id="ood-game-selector">
+                                <option value="ood1">Battlefield 6 (3D)</option>
+                                <option value="ood2">Ogu and the Secret Forest (2D)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ood1" class="ood-videos">
+                    <div class="columns is-multiline">
+                        <div class="column is-one-fifth">
+                            <video poster="" id="battlefield-gt" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/battlefield-gt.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Ground Truth</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="battlefield-idm-ft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/battlefield-idm-ft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">IDM (Fine Tune)</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="battlefield-gidm-zero" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/battlefield-gidm-zero.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM (Zero Shot)</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="battlefield-gidm-few" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/battlefield-gidm-few.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM (Few Shot)</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="battlefield-gidm-ft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/battlefield-gidm-ft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM (Fine Tune)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ood2" class="ood-videos" style="display: none;">
+                    <div class="columns is-multiline">
+                        <div class="column is-one-fifth">
+                            <video poster="" id="oguforest-gt" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/oguforest-gt.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Ground Truth</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="oguforest-idm-ft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/oguforest-idm-ft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">IDM (Fine Tune)</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="oguforest-gidm-zero" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/oguforest-gidm-zero.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM (Zero Shot)</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="oguforest-gidm-few" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/oguforest-gidm-few.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM (Few Shot)</p>
+                        </div>
+                        <div class="column is-one-fifth">
+                            <video poster="" id="oguforest-gidm-ft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/oguforest-gidm-ft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">G-IDM (Fine Tune)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
@@ -392,87 +488,93 @@
                             D2E achieves impressive results on LIBERO manipulation benchmarks, demonstrating that desktop-pretrained models
                             can effectively transfer to physical robotic manipulation tasks with a <strong>96.6%</strong> success rate.
                         </p>
-                        
-                        
-                        <div class="field">
-                            <div class="control">
-                                <div class="select is-fullwidth">
-                                    <select id="libero-task-selector">
-                                        <option value="task1">TASK: Put both the alphabet soup and the cream cheese box in the basket</option>
-                                        <option value="task2">TASK: Put both the alphabet soup and the tomato sauce in the basket</option>
-                                        <option value="task3">TASK: Put both moka pots on the stove</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div id="task1" class="task-videos">
-                            <div class="columns is-multiline">
-                                <div class="column is-4">
-                                    <video poster="" id="libero-1-base" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-1-base.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">Baseline (42%)</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="libero-1-ft" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-1-ft.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/o pseudo (98%)</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="libero-1-ptft" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-1-ptft.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (100%)</p>
-                                </div>
-                            </div>
+    <!-- LIBERO Video Examples -->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div class="field">
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id="libero-task-selector">
+                                <option value="task1">TASK: Put both the alphabet soup and the cream cheese box in the basket</option>
+                                <option value="task2">TASK: Put both the alphabet soup and the tomato sauce in the basket</option>
+                                <option value="task3">TASK: Put both moka pots on the stove</option>
+                            </select>
                         </div>
+                    </div>
+                </div>
 
-                        <div id="task2" class="task-videos" style="display: none;">
-                            <div class="columns is-multiline">
-                                <div class="column is-4">
-                                    <video poster="" id="libero-2-base" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-2-base.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">Baseline (36%)</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="libero-2-ft" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-2-ft.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/o pseudo (88%)</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="libero-2-ptft" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-2-ptft.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (90%)</p>
-                                </div>
-                            </div>
+                <div id="task1" class="task-videos">
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <video poster="" id="libero-1-base" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-1-base.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Baseline (42%)</p>
                         </div>
+                        <div class="column is-4">
+                            <video poster="" id="libero-1-ft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-1-ft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/o pseudo (98%)</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="libero-1-ptft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-1-ptft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (100%)</p>
+                        </div>
+                    </div>
+                </div>
 
-                        <div id="task3" class="task-videos" style="display: none;">
-                            <div class="columns is-multiline">
-                                <div class="column is-4">
-                                    <video poster="" id="libero-3-base" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-3-base.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">Baseline (10%)</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="libero-3-ft" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-3-ft.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/o pseudo (88%)</p>
-                                </div>
-                                <div class="column is-4">
-                                    <video poster="" id="libero-3-ptft" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/libero-3-ptft.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (46%)</p>
-                                </div>
-                            </div>
+                <div id="task2" class="task-videos" style="display: none;">
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <video poster="" id="libero-2-base" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-2-base.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Baseline (36%)</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="libero-2-ft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-2-ft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/o pseudo (88%)</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="libero-2-ptft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-2-ptft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (90%)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="task3" class="task-videos" style="display: none;">
+                    <div class="columns is-multiline">
+                        <div class="column is-4">
+                            <video poster="" id="libero-3-base" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-3-base.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Baseline (10%)</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="libero-3-ft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-3-ft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/o pseudo (88%)</p>
+                        </div>
+                        <div class="column is-4">
+                            <video poster="" id="libero-3-ptft" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/libero-3-ptft.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (46%)</p>
                         </div>
                     </div>
                 </div>
@@ -493,50 +595,57 @@
                             The framework also excels in navigation tasks, achieving <strong>83.3%</strong> success rate on CANVAS navigation benchmarks,
                             validating the transferability of desktop sensorimotor patterns to embodied navigation scenarios.
                         </p>
-                        
-                        <div class="field">
-                            <div class="control">
-                                <div class="select is-fullwidth">
-                                    <select id="canvas-env-selector">
-                                        <option value="env1">Environment: sim_gallery</option>
-                                        <option value="env2">Environment: sim_street_sidewalk</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div id="env1" class="env-videos">
-                            <div class="columns is-multiline">
-                                <div class="column is-6">
-                                    <video poster="" id="canvas-1-base" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/3_baseline_fail.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">Baseline (fail)</p>
-                                </div>
-                                <div class="column is-6">
-                                    <video poster="" id="canvas-1-vapt" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/3_vapt_success.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (success)</p>
-                                </div>
-                            </div>
+    <!-- CANVAS Video Examples -->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div class="field">
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select id="canvas-env-selector">
+                                <option value="env1">Environment: sim_gallery</option>
+                                <option value="env2">Environment: sim_street_sidewalk</option>
+                            </select>
                         </div>
+                    </div>
+                </div>
 
-                        <div id="env2" class="env-videos" style="display: none;">
-                            <div class="columns is-multiline">
-                                <div class="column is-6">
-                                    <video poster="" id="canvas-2-base" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/1_baseline_fail.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">Baseline (fail)</p>
-                                </div>
-                                <div class="column is-6">
-                                    <video poster="" id="canvas-2-vapt" controls muted loop playsinline width="100%">
-                                        <source src="./static/videos/1_vapt_success.mp4" type="video/mp4">
-                                    </video>
-                                    <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (success)</p>
-                                </div>
-                            </div>
+                <div id="env1" class="env-videos">
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <video poster="" id="canvas-1-base" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/3_baseline_fail.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Baseline (fail)</p>
+                        </div>
+                        <div class="column is-6">
+                            <video poster="" id="canvas-1-vapt" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/3_vapt_success.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (success)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="env2" class="env-videos" style="display: none;">
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <video poster="" id="canvas-2-base" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/1_baseline_fail.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">Baseline (fail)</p>
+                        </div>
+                        <div class="column is-6">
+                            <video poster="" id="canvas-2-vapt" controls muted loop playsinline width="100%">
+                                <source src="./static/videos/1_vapt_success.mp4" type="video/mp4">
+                            </video>
+                            <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (success)</p>
                         </div>
                     </div>
                 </div>

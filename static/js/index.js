@@ -58,4 +58,11 @@ $(document).ready(function () {
     $('.game-videos').hide();
     $('#' + selectedGame).show();
   });
+
+  // OOD game selector
+  $('#ood-game-selector').change(function() {
+    const selectedOod = $(this).val();
+    $('.ood-videos').hide();
+    $('#' + selectedOod).show();
+  });
 })
