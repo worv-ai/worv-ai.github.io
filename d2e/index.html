@@ -12,11 +12,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9LZW868J"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-5J9LZW868J');
+        gtag('config', 'G-5J9LZW868J');
     </script>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -65,9 +65,9 @@
                             D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI
                         </a>"
                     </div>
-                    </div>
                 </div>
             </div>
+        </div>
 
         </div>
     </nav>
@@ -77,7 +77,8 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-2 publication-title">D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI</h1>
+                        <h1 class="title is-2 publication-title">D2E: Scaling Vision-Action Pretraining on Desktop Data
+                            for Transfer to Embodied AI</h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
                                 Suhwan Choi<sup>†1</sup>,</span>
@@ -114,12 +115,13 @@
 
                         <div class="is-size-6 publication-authors">
                             <span class="author-block">
-                                <sup>†</sup> Equal contribution, <sup>‡</sup> Co-corresponding author, <sup>1</sup> MAUM.AI, <sup>2</sup> Stanford University, <sup>3</sup> Seoul National University
+                                <sup>†</sup> Equal contribution, <sup>‡</sup> Co-corresponding author, <sup>1</sup>
+                                MAUM.AI, <sup>2</sup> Stanford University, <sup>3</sup> Seoul National University
                         </div>
                         <br>
 
                         <div class="is-size-5 publication-venue">
-                          <span class="venue-block">Under Review</span> <br>
+                            <span class="venue-block">Under Review</span> <br>
                         </div>
                         <br>
 
@@ -158,8 +160,7 @@
                                 </span>
                                 <!-- Model Link. -->
                                 <span class="link-block">
-                                    <a href="#"
-                                        class="external-link button is-normal is-rounded is-dark is-disabled">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled">
                                         <span class="icon">
                                             <i class="fas fa-robot"></i>
                                         </span>
@@ -168,8 +169,7 @@
                                 </span>
                                 <!-- Dataset Link. -->
                                 <span class="link-block">
-                                    <a href="#"
-                                        class="external-link button is-normal is-rounded is-dark is-disabled">
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled">
                                         <span class="icon">
                                             <i class="fas fa-database"></i>
                                         </span>
@@ -201,8 +201,12 @@
                     <img src="./static/images/1_teaser.png" alt="d2e teaser" />
                 </figure>
                 <p>
-                    Overview of D2E (Desktop to Embodied AI) framework. (1) The OWA Toolkit captures 335.6 hours of rich desktop demonstrations across 31 games with 152× compression. (2) The Generalist-IDM uses nextevent prediction with temporal offset (NEP-τ) to achieve OOD generalization, enabling pseudolabeling of 1K+ hours of YouTube gameplay. (3) Vision-Action Pretraining transfers desktoppretrained representations to embodied AI, achieving 96.6% success on LIBERO manipulation and
-83.3% on CANVAS navigation benchmarks which demonstrates desktop-to-robotics transfer.
+                    Overview of D2E (Desktop to Embodied AI) framework. (1) The OWA Toolkit captures 335.6 hours of rich
+                    desktop demonstrations across 31 games with 152× compression. (2) The Generalist-IDM uses nextevent
+                    prediction with temporal offset (NEP-τ) to achieve OOD generalization, enabling pseudolabeling of
+                    1K+ hours of YouTube gameplay. (3) Vision-Action Pretraining transfers desktoppretrained
+                    representations to embodied AI, achieving 96.6% success on LIBERO manipulation and
+                    83.3% on CANVAS navigation benchmarks which demonstrates desktop-to-robotics transfer.
                 </p>
             </div>
         </div>
@@ -274,8 +278,28 @@
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
-                        <p>    
-                            Large language models leverage internet-scale text data, yet embodied AI remains constrained by the prohibitive costs of physical trajectory collection. Desktop environments---particularly gaming---offer a compelling alternative: they provide rich sensorimotor interactions at scale while maintaining the structured observation-action coupling essential for embodied learning. We present D2E (Desktop to Embodied AI), a framework that demonstrates desktop interactions can serve as an effective pretraining substrate for robotics embodied AI tasks. Unlike prior work that remained domain-specific (e.g., VPT for Minecraft) or kept data proprietary (e.g., SIMA), D2E establishes a complete pipeline from scalable desktop data collection to verified transfer in embodied domains. Our framework comprises three components: (1) the OWA Toolkit that unifies diverse desktop interactions into a standardized format with 152× compression, (2) the Generalist-IDM that achieves strong zero-shot generalization across unseen games through timestamp-based event prediction, enabling internet-scale pseudo-labeling, and (3) VAPT that transfers desktop-pretrained representations to physical manipulation and navigation. Using 1.3K+ hours of data (259 hours of human demonstrations, and 1K+ hours of pseudo-labeled gameplay), we achieve a total of 96.6% success rate on LIBERO manipulation and 83.3% on CANVAS navigation benchmarks. This validates that sensorimotor primitives in digital interactions exhibit sufficient invariance to transfer meaningfully to physical embodied tasks, establishing desktop pretraining as a practical paradigm for robotics. We will make all our work public, including the OWA toolkit, datasets of human-collected and pseudo-labeled, and VAPT-trained models.
+                        <p>
+                            Large language models leverage internet-scale text data, yet embodied AI remains constrained
+                            by the prohibitive costs of physical trajectory collection. Desktop
+                            environments---particularly gaming---offer a compelling alternative: they provide rich
+                            sensorimotor interactions at scale while maintaining the structured observation-action
+                            coupling essential for embodied learning. We present D2E (Desktop to Embodied AI), a
+                            framework that demonstrates desktop interactions can serve as an effective pretraining
+                            substrate for robotics embodied AI tasks. Unlike prior work that remained domain-specific
+                            (e.g., VPT for Minecraft) or kept data proprietary (e.g., SIMA), D2E establishes a complete
+                            pipeline from scalable desktop data collection to verified transfer in embodied domains. Our
+                            framework comprises three components: (1) the OWA Toolkit that unifies diverse desktop
+                            interactions into a standardized format with 152× compression, (2) the Generalist-IDM that
+                            achieves strong zero-shot generalization across unseen games through timestamp-based event
+                            prediction, enabling internet-scale pseudo-labeling, and (3) VAPT that transfers
+                            desktop-pretrained representations to physical manipulation and navigation. Using 1.3K+
+                            hours of data (259 hours of human demonstrations, and 1K+ hours of pseudo-labeled gameplay),
+                            we achieve a total of 96.6% success rate on LIBERO manipulation and 83.3% on CANVAS
+                            navigation benchmarks. This validates that sensorimotor primitives in digital interactions
+                            exhibit sufficient invariance to transfer meaningfully to physical embodied tasks,
+                            establishing desktop pretraining as a practical paradigm for robotics. We will make all our
+                            work public, including the OWA toolkit, datasets of human-collected and pseudo-labeled, and
+                            VAPT-trained models.
                         </p>
                     </div>
                 </div>
@@ -295,8 +319,10 @@
                             <img src="./static/images/3-gidm-id.png" alt="gidm_id" />
                         </figure>
                         <p>
-                            The Generalist Inverse Dynamics Model (G-IDM) learns to predict actions from observation transitions across diverse desktop environments.
-                            This enables zero-shot generalization to unseen games and provides a foundation for pseudo-labeling large-scale gameplay data.
+                            The Generalist Inverse Dynamics Model (G-IDM) learns to predict actions from observation
+                            transitions across diverse desktop environments.
+                            This enables zero-shot generalization to unseen games and provides a foundation for
+                            pseudo-labeling large-scale gameplay data.
                         </p>
                     </div>
                 </div>
@@ -378,8 +404,10 @@
                             <img src="./static/images/4-gidm-ood.png" alt="gidm_ood" />
                         </figure>
                         <p>
-                            G-IDM demonstrates strong out-of-distribution generalization capabilities, successfully transferring learned sensorimotor patterns
-                            from desktop gaming environments to completely unseen game domains and interaction modalities.
+                            G-IDM demonstrates strong out-of-distribution generalization capabilities, successfully
+                            transferring learned sensorimotor patterns
+                            from desktop gaming environments to completely unseen game domains and interaction
+                            modalities.
                         </p>
                     </div>
                 </div>
@@ -485,8 +513,10 @@
                             <img src="./static/images/5-libero.png" alt="libero_results" />
                         </figure>
                         <p>
-                            D2E achieves impressive results on LIBERO manipulation benchmarks, demonstrating that desktop-pretrained models
-                            can effectively transfer to physical robotic manipulation tasks with a <strong>96.6%</strong> success rate.
+                            D2E achieves impressive results on LIBERO manipulation benchmarks, demonstrating that
+                            desktop-pretrained models
+                            can effectively transfer to physical robotic manipulation tasks with a
+                            <strong>96.6%</strong> success rate.
                         </p>
                     </div>
                 </div>
@@ -502,8 +532,10 @@
                     <div class="control">
                         <div class="select is-fullwidth">
                             <select id="libero-task-selector">
-                                <option value="task1">TASK: Put both the alphabet soup and the cream cheese box in the basket</option>
-                                <option value="task2">TASK: Put both the alphabet soup and the tomato sauce in the basket</option>
+                                <option value="task1">TASK: Put both the alphabet soup and the cream cheese box in the
+                                    basket</option>
+                                <option value="task2">TASK: Put both the alphabet soup and the tomato sauce in the
+                                    basket</option>
                                 <option value="task3">TASK: Put both moka pots on the stove</option>
                             </select>
                         </div>
@@ -592,8 +624,10 @@
                             <img src="./static/images/6-canvas.png" alt="canvas_results" />
                         </figure>
                         <p>
-                            The framework also excels in navigation tasks, achieving <strong>83.3%</strong> success rate on CANVAS navigation benchmarks,
-                            validating the transferability of desktop sensorimotor patterns to embodied navigation scenarios.
+                            The framework also excels in navigation tasks, achieving <strong>83.3%</strong> success rate
+                            on CANVAS navigation benchmarks,
+                            validating the transferability of desktop sensorimotor patterns to embodied navigation
+                            scenarios.
                         </p>
                     </div>
                 </div>
@@ -666,9 +700,10 @@
     </section> -->
     <br>
     <center class="is-size-10">
-        The website design was based on <a href="https://github.com/general-navigation-models/general-navigation-models.github.io"><span 
-        class="dnerf">general-navigation-models</span></a> adapted from <a href="https://nerfies.github.io" class="external-link"><span
-        class="dnerf">Nerfies</span></a>.
+        The website design was based on <a
+            href="https://github.com/general-navigation-models/general-navigation-models.github.io"><span
+                class="dnerf">general-navigation-models</span></a> adapted from <a href="https://nerfies.github.io"
+            class="external-link"><span class="dnerf">Nerfies</span></a>.
     </center>
     <br>
 </body>
