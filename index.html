@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="A family of sketch driving navigation models">
-    <meta name="keywords" content="CANVAS, robotics, foundation model">
+    <meta name="description" content="WoRV: World Models for Robotics and Vehicle Control Team">
+    <meta name="keywords" content="WoRV, Physical AI, VLA, Robot Vision, Foundation Model">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SketchDrive</title>
+    <title>WoRV: World Models for Robotics and Vehicle Control</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9LZW868J"></script>
@@ -32,6 +32,27 @@
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/slick.min.js"></script>
     <script src="./static/js/index.js"></script>
+
+    <style>
+        .worv-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: -webkit-linear-gradient(45deg, #3273dc, #ff3860);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .project-card {
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 
 <body>
@@ -54,19 +75,25 @@
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        More Research
+                        Research & Projects
                     </a>
                     <div class="navbar-dropdown">
                         <a class="navbar-item" href="./canvas/">
-                            CANVAS: Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction
+                            SketchDrive (CANVAS)
                         </a>
                         <a class="navbar-item" href="./d2e/">
-                            D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI
+                            D2E
                         </a>
                     </div>
                 </div>
+                
+                <a class="navbar-item" href="https://worv.ghost.io/">
+                    Tech Blog
+                </a>
+                <a class="navbar-item" href="https://recruitment.worv.maum.ai/">
+                    Recruitment
+                </a>
             </div>
-
         </div>
     </nav>
 
@@ -76,19 +103,25 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-2 publication-title">SketchDrive</h1>
+                        <h1 class="title is-1 publication-title">WoRV Research</h1>
+                        <h2 class="title is-3" style="color: #666;">Research papers and projects from the WoRV team.</h2>
+                        
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a href="https://suhwanchoi.me/">Suhwan Choi</a>,
+                                <a href="https://worv.ghost.io/" class="button is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-rss"></i>
+                                    </span>
+                                    <span>Tech Blog</span>
+                                </a>
                             </span>
                             <span class="author-block">
-                                <a href="https://scholar.google.com/citations?user=VxekekYAAAAJ">Yongjun Cho</a>,
-                            </span>
-                            <span class="author-block">
-                                <a href="https://minchankim.me/">Minchan Kim</a>,
-                            </span>
-                            <span class="author-block">
-                                <a href="https://lastdefiance20.github.io/">Jaeyoon Jung</a>,
+                                <a href="https://recruitment.worv.maum.ai/" class="button is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </span>
+                                    <span>Join Us</span>
+                                </a>
                             </span>
                         </div>
                     </div>
@@ -97,14 +130,134 @@
         </div>
     </section>
 
-    <br>
-    <center class="is-size-10">
-        The website design was based on <a
-            href="https://github.com/general-navigation-models/general-navigation-models.github.io"><span
-                class="dnerf">general-navigation-models</span></a> adapted from <a href="https://nerfies.github.io"
-            class="external-link"><span class="dnerf">Nerfies</span></a>.
-    </center>
-    <br>
-</body>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- About Us -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">About Us</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <strong>WoRV</strong> (World Models for Robotics and Vehicle Control) Team has been pioneering <strong>VLA-based RFM (Robotic Foundation Models)</strong> for agricultural, logistics, defense, construction, and manufacturing domains since 2021.
+                        </p>
+                        <p>
+                            We go beyond "fancy lab research." We operate in the real world with a fleet of hundreds of robots replacing human labor in industrial sites. This allows us to collect robust training data, establish new research hypotheses daily, and immediately evaluate and realign our models through field deployment and business feedback. 
+                        </p>
+                        <p>
+                            We offer the optimal environment to "pre-train" for the upcoming era of <strong>Physical AI</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Research Highlights</h2>
+            
+            <!-- SketchDrive -->
+            <div class="project-card">
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <h3 class="title is-4">
+                            <a href="./canvas/">SketchDrive (CANVAS)</a>
+                        </h3>
+                        <p class="subtitle is-6">Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction</p>
+                        <div class="content">
+                            <p>
+                                A novel navigation system that interprets user sketches to guide robots, bridging the gap between human intuition and robot control.
+                            </p>
+                        </div>
+                        <a href="./canvas/" class="button is-small is-link is-outlined">View Project Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- D2E -->
+            <div class="project-card">
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <h3 class="title is-4">
+                            <a href="./d2e/">D2E</a>
+                        </h3>
+                        <p class="subtitle is-6">Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI</p>
+                        <div class="content">
+                            <p>
+                                Leveraging large-scale desktop data to pre-train vision-action models, demonstrating effective transfer to embodied robotic tasks.
+                            </p>
+                        </div>
+                        <a href="./d2e/" class="button is-small is-link is-outlined">View Project Page</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #f5f5f5;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3 has-text-centered">We are Hiring!</h2>
+                    <div class="content has-text-centered">
+                        <p class="is-size-5">
+                            We are actively recruiting for the 2025-2026 Winter Season (December 2025 - February 2026)!
+                        </p>
+                        <p>
+                            Join a team of top-tier talents tackling the hardest problems in Physical AI.
+                            We promise industry-leading compensation, alternative military service options, and the most reliable colleagues.
+                        </p>
+                    </div>
+
+                    <div class="columns is-centered">
+                        <div class="column is-half">
+                            <div class="box">
+                                <h4 class="title is-5">Engineering</h4>
+                                <ul>
+                                    <li>Senior Software Engineer (Tech Lead)</li>
+                                    <li>Software Engineer (Backend, Simulator)</li>
+                                    <li>Machine Learning Platform Engineer</li>
+                                </ul>
+
+                                <h4 class="title is-5 mt-4">Research</h4>
+                                <ul>
+                                    <li>Research Residency</li>
+                                    <li>Senior Research Engineer (Physical AI)</li>
+                                    <li>Research Engineer (Spatial AI, Physical AI)</li>
+                                </ul>
+
+                                <h4 class="title is-5 mt-4">Business & Design</h4>
+                                <ul>
+                                    <li>AI Entrepreneur PM</li>
+                                    <li>Simulation Map Designer (3D)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="has-text-centered mt-5">
+                        <a href="https://recruitment.worv.maum.ai/" class="button is-primary is-large is-rounded">
+                            Apply Now
+                        </a>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>WoRV Research</strong>. This page showcases the research papers and projects from the WoRV team.
+                    <br>
+                    Based on <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> website template.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
