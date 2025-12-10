@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="CostNav: The first navigation benchmark that evaluates robots by profit per run, bridging the gap between impressive demos and sustainable businesses.">
+    <meta name="keywords"
+        content="Autonomous Navigation, Embodied AI, Cost-Aware Navigation, Delivery Robots, Economic Viability">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CostNav: Economic-Aware Navigation Benchmark for Autonomous Delivery Robots</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9LZW868J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5J9LZW868J');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/css/slick.css">
+    <link rel="stylesheet" href="../static/css/slick-theme.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.ico">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../static/js/fontawesome.all.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/index.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="../">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="../canvas/">
+                            SketchDrive (CANVAS)
+                        </a>
+                        <a class="navbar-item" href="../d2e/">
+                            D2E
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">CostNav: Economic-Aware Navigation Benchmark for
+                            Autonomous Delivery Robots</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Haebin Seong,</span>
+                            <span class="author-block">Sungmin Kim,</span>
+                            <span class="author-block">Minchan Kim,</span>
+                            <span class="author-block">Yongjun Cho,</span>
+                            <span class="author-block">Myunchul Joe,</span>
+                            <span class="author-block">Suhwan Choi,</span>
+                            <span class="author-block">Jaeyoon Jung,</span>
+                            <span class="author-block">Jiyong Youn,</span>
+                            <span class="author-block">Yoonshik Kim,</span>
+                            <span class="author-block">Samwoo Seong,</span>
+                            <span class="author-block">Yubeen Park,</span>
+                            <span class="author-block">Youngjae Yu,</span>
+                            <span class="author-block">Yunsung Lee</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://worv-ai.github.io/">WoRV Team</a>,
+                            </span>
+                            <span class="author-block">
+                                Maum.AI
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">To be presented at <span
+                                    style="color: #f85a25; font-weight: bold;">CES 2026</span></span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2511.20216"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/worv-ai/CostNav"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop is-centered has-text-justified is-size-5">
+            <div class="hero-body">
+                <figure id="teaser">
+                    <img src="./images/logo.png" alt="costnav logo" />
+                </figure>
+                <p>
+                    CostNav is the first navigation benchmark that evaluates robots the way businesses actually evaluate
+                    them: by profit per run.
+                    Instead of just measuring success rates, CostNav asks: How much did that navigation cost? How much
+                    revenue did it generate? When will this system become profitable?
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Autonomous navigation research has made remarkable technical progress, yet a critical gap
+                            remains:
+                            we optimize for success rates and path efficiency, but not for economic viability.
+                            CostNav addresses this by introducing the first navigation benchmark that evaluates robots
+                            through
+                            the lens of profitability—the metric that actually matters for commercial deployment.
+                        </p>
+                        <p>
+                            CostNav models the complete economic lifecycle of delivery robots: upfront hardware and
+                            training costs,
+                            per-delivery expenses (energy, maintenance, crashes), and revenue generation constrained by
+                            real-world
+                            service-level agreements. By grounding evaluation in actual industry data—delivery pricing,
+                            energy rates,
+                            hardware costs—CostNav reveals that a robot with 80% success using cheap sensors might be
+                            more profitable
+                            than one with 95% success using expensive LiDAR.
+                        </p>
+                        <p>
+                            Our framework enables systematic comparison of fundamentally different approaches: classical
+                            planning
+                            with expensive sensors vs. learning-based methods with cameras, on-device vs. cloud
+                            inference, and
+                            traditional training vs. cost-aware reinforcement learning. CostNav bridges the gap between
+                            impressive
+                            research demos and sustainable businesses, providing researchers and engineers with
+                            data-driven answers
+                            to deployment decisions that directly impact commercial viability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">The Problem: Optimizing for the Wrong Things</h2>
+                    <div class="content has-text-justified">
+                        <figure id="problem">
+                            <img src="./images/fig1.png" alt="problem illustration" />
+                        </figure>
+                        <p>
+                            Traditional navigation benchmarks celebrate 95% task completion rates and optimized path
+                            efficiency.
+                            But these metrics don't answer the questions that keep startup founders awake at night:
+                        </p>
+                        <ul>
+                            <li>Should I spend $8,000 on LiDAR sensors with classical planning, or $400 on RGB-D cameras
+                                with a learning-based approach?</li>
+                            <li>How many deliveries until I break even?</li>
+                            <li>What's my actual cost per delivery when I factor in energy, crashes, and sensor
+                                degradation?</li>
+                        </ul>
+                        <p>
+                            <strong>Academic benchmarks don't answer these questions. CostNav does.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">The Complete Economic Picture</h2>
+                    <div class="content has-text-justified">
+                        <figure id="economic">
+                            <img src="./images/fig2.png" alt="economic model" />
+                        </figure>
+                        <p>
+                            CostNav models the entire economic lifecycle of a delivery robot:
+                        </p>
+                        <h4 class="title is-5">Before the robot even starts</h4>
+                        <p>
+                            Hardware costs, sensor investments, training expenses, data collection—all the upfront
+                            investments
+                            that need to be recovered.
+                        </p>
+                        <h4 class="title is-5">During every delivery</h4>
+                        <p>
+                            Energy consumption from motors and sensors, battery degradation from charge cycles,
+                            maintenance costs
+                            from wear and tear, crash damage from collisions.
+                        </p>
+                        <h4 class="title is-5">Revenue that actually matters</h4>
+                        <p>
+                            Not just "did it deliver?" but "did it deliver within the service-level agreement (SLA)?"
+                            In the real world, a delivery that takes 35 minutes when you promised 30 gets refunded.
+                            A delivery that arrives on time but spoils the food because of aggressive driving is
+                            refunded.
+                            Both timing and quality constraints define whether a delivery has truly created economic
+                            value.
+                        </p>
+                        <p>
+                            All of this is grounded in real-world data: actual delivery service pricing, industry energy
+                            rates,
+                            hardware costs from commercial robots. This isn't theoretical—it's what real companies face
+                            every day.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">What We're Building</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Our initial release establishes a learning-based navigation baseline in realistic urban
+                            environments.
+                            But this is just the beginning.
+                        </p>
+
+                        <h4 class="title is-5">Comparing Fundamentally Different Approaches</h4>
+                        <ul>
+                            <li>Classical rule-based planning with expensive sensors vs. learning-based methods with
+                                cheap cameras</li>
+                            <li>On-device inference vs. cloud-based computation</li>
+                            <li>Traditional training vs. cost-aware reinforcement learning that directly optimizes for
+                                profit</li>
+                        </ul>
+
+                        <h4 class="title is-5">Testing in Challenging Scenarios</h4>
+                        <ul>
+                            <li>Dense crowds where collision avoidance becomes critical</li>
+                            <li>Nighttime conditions where sensor choices matter</li>
+                            <li>Adverse weather that tests robustness</li>
+                            <li>Outdated maps that reflect real-world deployment</li>
+                        </ul>
+
+                        <h4 class="title is-5">Answering Questions That Matter</h4>
+                        <ul>
+                            <li>Which navigation approach maximizes profit, not just performance?</li>
+                            <li>How do hardware choices affect break-even time?</li>
+                            <li>What's the true cost of collisions beyond just counting them?</li>
+                            <li>When does investing in better sensors pay for itself?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Why This Matters</h2>
+                    <div class="content has-text-justified">
+                        <div class="box">
+                            <h4 class="title is-5">For Researchers</h4>
+                            <p>
+                                CostNav lets you optimize for what actually matters in deployment. Explore cost-aware
+                                reward functions,
+                                evaluate trade-offs between sensor cost and performance, and publish work that directly
+                                translates to commercial value.
+                            </p>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">For Startup Founders & Engineers</h4>
+                            <p>
+                                CostNav gives you data-driven answers to deployment decisions. No more guessing whether
+                                expensive sensors
+                                are worth it—you'll see the break-even analysis. No more wondering if cloud inference
+                                pays for itself—you'll
+                                see the profit margins.
+                            </p>
+                        </div>
+
+                        <div class="box">
+                            <h4 class="title is-5">For the Future of Autonomous Systems</h4>
+                            <p>
+                                CostNav bridges the gap between impressive demos and sustainable businesses. A robot
+                                that's technically
+                                impressive but economically unviable won't change the world. A robot that's profitable
+                                at scale will.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">The Vision</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Imagine a world where navigation research papers include a "profitability" section alongside
+                            accuracy metrics.
+                            Where we optimize for dollars per delivery, not just success rates. Where choosing between
+                            navigation approaches
+                            is guided by break-even analysis, not just technical performance.
+                        </p>
+                        <p>
+                            <strong>That's the world CostNav is building.</strong>
+                        </p>
+                        <p>
+                            We're not saying traditional metrics don't matter—they absolutely do. But they're
+                            incomplete.
+                            A robot that's technically impressive but economically unviable won't change the world.
+                            A robot that's profitable at scale will.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">What's Next</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            We're releasing everything: the benchmark framework, cost models validated against industry
+                            data,
+                            simulation environment, evaluation code, and our baseline results. We want the community to
+                            build on this.
+                        </p>
+
+                        <h4 class="title is-5">Coming Soon</h4>
+                        <ul>
+                            <li>Comprehensive comparison of rule-based vs. learning-based navigation economics</li>
+                            <li>Cloud vs. edge inference trade-off analysis</li>
+                            <li>Imitation learning that requires human annotation wage cost</li>
+                            <li>Cost-aware RL training that directly optimizes profit</li>
+                            <li>Diverse maps, robots reflecting infinite choices in the real world</li>
+                            <li>Expanded scenarios testing robustness under challenging conditions</li>
+                            <li>Open challenges for the community to beat our baselines</li>
+                        </ul>
+
+                        <p class="has-text-centered" style="margin-top: 2rem;">
+                            <strong style="font-size: 1.2rem;">
+                                The autonomous navigation field has made incredible technical progress.<br>
+                                Now it's time to make it economically viable.
+                            </strong>
+                        </p>
+                        <p class="has-text-centered" style="margin-top: 1rem;">
+                            <strong style="font-size: 1.3rem; color: #3273dc;">
+                                It's time to talk about money. It's time for CostNav.
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Get Involved</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            CostNav will be presented at <strong>CES 2026</strong>. Technical report, benchmark, code,
+                            and models
+                            are available now with continual updates planned.
+                        </p>
+                        <p>
+                            The current pre-release version includes our initial implementations for simulation, task
+                            design,
+                            training, evaluation, and—most importantly—metrics. We'll be rolling out continual
+                            improvements,
+                            so keep an eye on upcoming updates!
+                        </p>
+                        <div class="has-text-centered" style="margin-top: 2rem;">
+                            <a href="https://github.com/worv-ai/CostNav" class="button is-primary is-large is-rounded">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Explore CostNav on GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@misc{seong2025costnavnavigationbenchmarkcostaware,
+      title={CostNav: A Navigation Benchmark for Cost-Aware Evaluation of Embodied Agents}, 
+      author={Haebin Seong and Sungmin Kim and Minchan Kim and Yongjun Cho and Myunchul Joe and Suhwan Choi and Jaeyoon Jung and Jiyong Youn and Yoonshik Kim and Samwoo Seong and Yubeen Park and Youngjae Yu and Yunsung Lee},
+      year={2025},
+      eprint={2511.20216},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2511.20216}, 
+}</code></pre>
+        </div>
+    </section>
+    <br>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>CostNav</strong> by the <a href="https://worv-ai.github.io/">WoRV Team</a> at Maum.AI.
+                    <br>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
