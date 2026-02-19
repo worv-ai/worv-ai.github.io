@@ -545,11 +545,12 @@
                     <div class="content has-text-justified">
                         <p>
                             To validate the effectiveness of desktop pretraining for embodied AI, we evaluate our
-                            approach on two challenging downstream tasks:
-                            <strong>LIBERO manipulation</strong> and <strong>CANVAS navigation</strong>. These
+                            approach on three challenging downstream tasks:
+                            <strong>LIBERO manipulation</strong>, <strong>CANVAS navigation</strong>, and
+                            <strong>SO101 real-world pick-and-place</strong>. These
                             benchmarks represent diverse embodied scenarios
-                            requiring different sensorimotor skills - precise object manipulation and spatial navigation
-                            respectively.
+                            requiring different sensorimotor skills - precise object manipulation, spatial navigation,
+                            and real-world pick-and-place.
                             Our Vision-Action Pretraining (VAPT) framework transfers desktop-pretrained representations
                             to these physical domains,
                             demonstrating that sensorimotor patterns learned from gaming environments can generalize to
@@ -739,6 +740,111 @@
                             </video>
                             <p class="is-size-6 mt-2 has-text-centered">+ VAPT w/ pseudo (success)</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">SO101 Real-World Pick-and-Place</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            We further validate our approach with a real-world pick-and-place experiment using an
+                            SO101 robot arm, following the evaluation protocol of SmolVLA (Shukor et al., 2025). The
+                            task requires grasping a blue cube and placing it in a white box, with the cube placed at
+                            five distinct initial positions. We collect 208 demonstration episodes and evaluate each
+                            trained policy over 30 rollouts. The baseline InternVL3-1B achieves a 70% success rate,
+                            while both VAPT variants reach 80%, confirming that VAPT transfers effectively to
+                            real-world hardware.
+                        </p>
+                        <div class="table-container">
+                            <table class="table is-bordered is-striped is-fullwidth is-size-6">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">Method</th>
+                                        <th colspan="5">Meta-World Success Rate (%)</th>
+                                        <th rowspan="2">SO101 Pick&amp;Place (%)</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Easy</th>
+                                        <th>Medium</th>
+                                        <th>Hard</th>
+                                        <th>Very Hard</th>
+                                        <th>Avg</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Baseline (InternVL3-1B)</td>
+                                        <td>55.4</td>
+                                        <td>14.5</td>
+                                        <td>1.7</td>
+                                        <td>8.0</td>
+                                        <td>19.9</td>
+                                        <td>70.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>+ VAPT (w/o pseudo)</td>
+                                        <td>53.6</td>
+                                        <td>18.2</td>
+                                        <td>8.3</td>
+                                        <td>20.0</td>
+                                        <td>25.0</td>
+                                        <td>80.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>+ VAPT (w/ pseudo)</td>
+                                        <td>52.1</td>
+                                        <td>16.4</td>
+                                        <td>6.7</td>
+                                        <td>24.0</td>
+                                        <td>24.8</td>
+                                        <td>80.0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="is-size-6 has-text-centered">
+                            Table 8: Success rates on the Meta-World benchmark (by difficulty) and real-world
+                            SO101 pick-and-place success rates (%).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-6">
+                        <video poster="" id="so101-baseline-right" controls muted loop playsinline width="100%">
+                            <source src="./static/videos/so101_baseline_fail_right.mp4" type="video/mp4">
+                        </video>
+                        <p class="is-size-6 mt-2 has-text-centered">Baseline (fail) - right view</p>
+                    </div>
+                    <div class="column is-6">
+                        <video poster="" id="so101-vapt-right" controls muted loop playsinline width="100%">
+                            <source src="./static/videos/so101_ours_success_right.mp4" type="video/mp4">
+                        </video>
+                        <p class="is-size-6 mt-2 has-text-centered">+ VAPT (success) - right view</p>
+                    </div>
+                    <div class="column is-6">
+                        <video poster="" id="so101-baseline-top" controls muted loop playsinline width="100%">
+                            <source src="./static/videos/so101_baseline_fail_top.mp4" type="video/mp4">
+                        </video>
+                        <p class="is-size-6 mt-2 has-text-centered">Baseline (fail) - top view</p>
+                    </div>
+                    <div class="column is-6">
+                        <video poster="" id="so101-vapt-top" controls muted loop playsinline width="100%">
+                            <source src="./static/videos/so101_ours_success_top.mp4" type="video/mp4">
+                        </video>
+                        <p class="is-size-6 mt-2 has-text-centered">+ VAPT (success) - top view</p>
                     </div>
                 </div>
             </div>
