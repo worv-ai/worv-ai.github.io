@@ -341,13 +341,42 @@
                     <h2 class="title is-3">Generalist Inverse Dynamics Model (G-IDM)</h2>
                     <div class="content has-text-justified">
                         <figure id="gidm_id">
-                            <img src="./static/images/3-gidm-id.png" alt="gidm_id" />
+                            <img src="./static/images/3_gidm_id.png" alt="gidm_id" />
                         </figure>
                         <p>
                             The Generalist Inverse Dynamics Model (G-IDM) learns to predict actions from observation
                             transitions across diverse desktop environments.
-                            This enables zero-shot generalization to unseen games and provides a foundation for
-                            pseudo-labeling large-scale gameplay data.
+                            Trained on our multi-domain corpus collected via the OWA Toolkit, G-IDM achieves strong
+                            performance across all in-distribution environments, yielding large gains in Pearson
+                            correlation (e.g., +39.5 points on Stardew Valley X) and keyboard accuracy
+                            (e.g., +57.6 points on Brotato), demonstrating robust generalization over diverse control
+                            dynamics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">NEP-&tau;: Temporal Offset Ablation</h2>
+                    <div class="content has-text-justified">
+                        <figure id="offset_ablation">
+                            <img src="./static/images/2_offset.png" alt="temporal_offset_ablation" />
+                        </figure>
+                        <p>
+                            A key design choice of the Generalist-IDM is <strong>NEP-&tau;</strong> (Next-Event
+                            Prediction with Temporal Offset), which shifts the observation window forward by &tau;
+                            milliseconds to incorporate future visual context when predicting the current action.
+                            Without any offset (&tau; = 0), Pearson correlations collapse near zero and keyboard accuracy
+                            drops sharply, confirming that future context is essential for resolving the current action.
+                            A small offset (&tau; = 50 ms) recovers mouse prediction but remains suboptimal for keyboard
+                            accuracy. Performance stabilizes at <strong>&tau; &ge; 100 ms</strong> with only minor variation
+                            up to 200 ms, showing that NEP-&tau; is robust to the exact offset once sufficient future
+                            context is provided. We adopt &tau; = 100 ms as the default in all experiments.
                         </p>
                     </div>
                 </div>
@@ -426,13 +455,16 @@
                     <h2 class="title is-3">Out-of-Distribution Generalization</h2>
                     <div class="content has-text-justified">
                         <figure id="gidm_ood">
-                            <img src="./static/images/4-gidm-ood.png" alt="gidm_ood" />
+                            <img src="./static/images/4_gidm_ood.png" alt="gidm_ood" />
                         </figure>
                         <p>
-                            G-IDM demonstrates strong out-of-distribution generalization capabilities, successfully
-                            transferring learned sensorimotor patterns
-                            from desktop gaming environments to completely unseen game domains and interaction
-                            modalities.
+                            We evaluate G-IDM on two unseen games: Battlefield 6 (3D) and Ogu and the Secret Forest
+                            (2D). In Battlefield 6, G-IDM achieves <strong>63%</strong> keyboard accuracy, matching
+                            or slightly outperforming the Specialist-IDM. When provided with a few-shot prefix, the
+                            predicted mouse scale improves significantly, demonstrating in-context adaptation to mouse
+                            sensitivity. In Ogu and the Secret Forest, G-IDM more than doubles the Specialist-IDM's
+                            performance (from ~12% to nearly 28%), showing substantial gains even under a large domain
+                            gap.
                         </p>
                     </div>
                 </div>
@@ -569,13 +601,14 @@
                     <h2 class="title is-3">LIBERO Manipulation Results</h2>
                     <div class="content has-text-justified">
                         <figure id="libero_results">
-                            <img src="./static/images/5-libero.png" alt="libero_results" />
+                            <img src="./static/images/5_libero.png" alt="libero_results" />
                         </figure>
                         <p>
-                            D2E achieves impressive results on LIBERO manipulation benchmarks, demonstrating that
-                            desktop-pretrained models
-                            can effectively transfer to physical robotic manipulation tasks with a
-                            <strong>96.6%</strong> success rate.
+                            VAPT without pseudo-labels achieves <strong>96.6%</strong> total success and
+                            <strong>93.6%</strong> on long-horizon tasks, comparable to or surpassing much larger
+                            models such as &pi;<sub>0</sub> (3.3B) and OpenVLA (7B).
+                            Our 1B-parameter model shows particularly strong advantages on long-horizon tasks that
+                            require careful action sequencing.
                         </p>
                     </div>
                 </div>
@@ -680,13 +713,15 @@
                     <h2 class="title is-3">CANVAS Navigation Results</h2>
                     <div class="content has-text-justified">
                         <figure id="canvas_results">
-                            <img src="./static/images/6-canvas.png" alt="canvas_results" />
+                            <img src="./static/images/7_canvas.png" alt="canvas_results" />
                         </figure>
                         <p>
-                            The framework also excels in navigation tasks, achieving <strong>83.3%</strong> success rate
-                            on CANVAS navigation benchmarks,
-                            validating the transferability of desktop sensorimotor patterns to embodied navigation
-                            scenarios.
+                            Adding pseudo-labeled demonstrations increases navigation performance to
+                            <strong>83.3%</strong>, an 8-point improvement over the baseline.
+                            The benefit is especially large under misleading instructions, as in
+                            <em>sim_orchard</em> (86.7% vs. 53.3%) and <em>sim_street_sidewalk</em>
+                            (73.3% vs. 40.0%), indicating that pseudo-labeling is particularly useful for navigation
+                            tasks where success depends on high-level planning rather than precise low-level control.
                         </p>
                     </div>
                 </div>
@@ -750,67 +785,23 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full-width">
-                    <h2 class="title is-3">SO101 Real-World Pick-and-Place</h2>
+                    <h2 class="title is-3">Meta-World &amp; SO101 Real-World Results</h2>
                     <div class="content has-text-justified">
+                        <figure id="meta_real_results">
+                            <img src="./static/images/6_meta_real.png" alt="meta_world_so101_results" />
+                        </figure>
+                        <p>
+                            VAPT consistently outperforms the baseline on Meta-World across all difficulty levels,
+                            with gains most pronounced on Hard and Very Hard tasks.
+                        </p>
                         <p>
                             We further validate our approach with a real-world pick-and-place experiment using an
                             SO101 robot arm, following the evaluation protocol of SmolVLA (Shukor et al., 2025). The
                             task requires grasping a blue cube and placing it in a white box, with the cube placed at
                             five distinct initial positions. We collect 208 demonstration episodes and evaluate each
                             trained policy over 30 rollouts. The baseline InternVL3-1B achieves a 70% success rate,
-                            while both VAPT variants reach 80%, confirming that VAPT transfers effectively to
-                            real-world hardware.
-                        </p>
-                        <div class="table-container">
-                            <table class="table is-bordered is-striped is-fullwidth is-size-6">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2">Method</th>
-                                        <th colspan="5">Meta-World Success Rate (%)</th>
-                                        <th rowspan="2">SO101 Pick&amp;Place (%)</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Easy</th>
-                                        <th>Medium</th>
-                                        <th>Hard</th>
-                                        <th>Very Hard</th>
-                                        <th>Avg</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Baseline (InternVL3-1B)</td>
-                                        <td>55.4</td>
-                                        <td>14.5</td>
-                                        <td>1.7</td>
-                                        <td>8.0</td>
-                                        <td>19.9</td>
-                                        <td>70.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>+ VAPT (w/o pseudo)</td>
-                                        <td>53.6</td>
-                                        <td>18.2</td>
-                                        <td>8.3</td>
-                                        <td>20.0</td>
-                                        <td>25.0</td>
-                                        <td>80.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>+ VAPT (w/ pseudo)</td>
-                                        <td>52.1</td>
-                                        <td>16.4</td>
-                                        <td>6.7</td>
-                                        <td>24.0</td>
-                                        <td>24.8</td>
-                                        <td>80.0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p class="is-size-6 has-text-centered">
-                            Table 8: Success rates on the Meta-World benchmark (by difficulty) and real-world
-                            SO101 pick-and-place success rates (%).
+                            while both VAPT variants reach <strong>80%</strong>, confirming that VAPT transfers
+                            effectively to real-world hardware.
                         </p>
                     </div>
                 </div>
