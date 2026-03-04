@@ -217,12 +217,14 @@
                     <img src="./static/images/1_teaser.png" alt="d2e teaser" />
                 </figure>
                 <p>
-                    Overview of D2E (Desktop to Embodied AI) framework. (1) The OWA Toolkit captures 335.6 hours of rich
-                    desktop demonstrations across 31 games with 152× compression. (2) The Generalist-IDM uses nextevent
-                    prediction with temporal offset (NEP-τ) to achieve OOD generalization, enabling pseudolabeling of
-                    1K+ hours of YouTube gameplay. (3) Vision-Action Pretraining transfers desktoppretrained
-                    representations to embodied AI, achieving 96.6% success on LIBERO manipulation and
-                    83.3% on CANVAS navigation benchmarks which demonstrates desktop-to-robotics transfer.
+                    Existing approaches (e.g., DROID) for collecting embodied AI data are expensive, low diversity,
+                    and hard to scale. D2E leverages desktop data which is cheap, high diversity, and easy to scale.
+                    The OWA Toolkit captures 335 hours of rich desktop demonstrations across 31 games with
+                    152× compression. The Generalist-IDM uses next-event prediction with temporal offset (NEP-τ)
+                    to achieve OOD generalization, enabling pseudo-labeling of 1K+ hours of YouTube gameplay.
+                    Vision-Action Pretraining transfers desktop-pretrained representations to embodied AI, achieving
+                    96.6% success on LIBERO manipulation and 83.3% on CANVAS navigation benchmarks which demonstrates
+                    desktop-to-robotics transfer.
                 </p>
             </div>
         </div>
@@ -793,8 +795,6 @@
                         <p>
                             VAPT consistently outperforms the baseline on Meta-World across all difficulty levels,
                             with gains most pronounced on Hard and Very Hard tasks.
-                        </p>
-                        <p>
                             We further validate our approach with a real-world pick-and-place experiment using an
                             SO101 robot arm, following the evaluation protocol of SmolVLA (Shukor et al., 2025). The
                             task requires grasping a blue cube and placing it in a white box, with the cube placed at
