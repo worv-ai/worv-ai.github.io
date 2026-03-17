@@ -132,7 +132,7 @@
                             <div class="publication-links">
                                 <!-- PDF Link. -->
                                 <span class="link-block">
-                                    <a href="https://arxiv.org/pdf/2511.20216"
+                                    <a href="https://arxiv.org/abs/2511.20216"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="ai ai-arxiv"></i>
@@ -148,6 +148,36 @@
                                             <i class="fab fa-github"></i>
                                         </span>
                                         <span>Code</span>
+                                    </a>
+                                </span>
+                                <!-- HF Sim Assets -->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/datasets/maum-ai/CostNav"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-cube"></i>
+                                        </span>
+                                        <span>Sim Assets</span>
+                                    </a>
+                                </span>
+                                <!-- HF Teleop Dataset -->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/datasets/maum-ai/CostNav-Teleop-Dataset"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i>
+                                        </span>
+                                        <span>Dataset</span>
+                                    </a>
+                                </span>
+                                <!-- HF Baseline -->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/maum-ai/CostNav_baseline"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-robot"></i>
+                                        </span>
+                                        <span>Baseline</span>
                                     </a>
                                 </span>
                             </div>
@@ -189,18 +219,22 @@
                             commercialization of autonomous delivery systems. We introduce <em>CostNav</em>, an
                             <strong>Economic Navigation Benchmark</strong> that evaluates physical AI agents through
                             comprehensive economic cost-revenue analysis aligned with real-world business operations.
-                            By integrating industry-standard data - such as SEC filings and AIS injury reports - with
-                            Isaac Sim's detailed collision and cargo dynamics, CostNav transcends simple task
-                            completion to accurately evaluate business value in complex, real-world scenarios.
-                            <strong>To our knowledge, CostNav is the first work to quantitatively expose the gap
+                            By integrating industry-standard data&mdash;such as Securities and Exchange Commission (SEC)
+                            filings and Abbreviated Injury Scale (AIS) injury reports&mdash;with Isaac Sim's detailed
+                            collision and cargo dynamics, CostNav transcends simple task completion to accurately
+                            evaluate business value in complex, real-world scenarios.
+                            <strong>To our knowledge, CostNav is the first physics-grounded economic benchmark that
+                                uses industry-standard regulatory and financial data to quantitatively expose the gap
                                 between navigation research metrics and commercial viability</strong>, revealing that
                             optimizing for task success on a simplified task fundamentally differs from optimizing for
                             real-world economic deployment.
-                            Our evaluation of rule-based Nav2 navigation shows that current approaches are not
-                            economically viable: the contribution margin is -22.81/run (AMCL) and -12.87/run (GPS),
-                            resulting in no break-even point. We challenge the community to develop navigation policies
-                            that achieve economic viability on CostNav. <strong>We remain method-agnostic, evaluating
-                                success solely on the metric of cost</strong> rather than the underlying architecture.
+                            Evaluating seven baselines&mdash;two rule-based and five imitation learning&mdash;we find
+                            that no current method is economically viable, all yielding negative contribution margins.
+                            The best-performing method, CANVAS (&minus;27.36$/run), equipped with only an RGB camera
+                            and GPS, outperforms LiDAR-equipped Nav2 w/ GPS (&minus;35.46$/run).
+                            We challenge the community to develop navigation policies that achieve economic viability
+                            on CostNav. <strong>We remain method-agnostic, evaluating success solely on cost</strong>
+                            rather than the underlying architecture.
                             All resources are available at
                             <a target="_blank" href="https://github.com/worv-ai/CostNav">https://github.com/worv-ai/CostNav</a>.
                         </p>
@@ -236,6 +270,31 @@
                         </ul>
                         <p>
                             <strong>Prior benchmarks don't answer these questions. CostNav does.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">How CostNav Differs from Existing Benchmarks</h2>
+                    <div class="content has-text-justified">
+                        <figure>
+                            <img src="./images/bench_comparison.png" alt="Comparison of navigation benchmarks" />
+                        </figure>
+                        <p>
+                            Existing navigation benchmarks (UnrealZoo, OpenBench, Arena-RosNav, Urban-Sim, DeliveryBench)
+                            evaluate agents primarily on task-oriented metrics such as success rate and path efficiency,
+                            without modeling cost-revenue dynamics essential for commercial deployment.
+                            CostNav is the first benchmark to combine high-fidelity physics simulation (Isaac Sim with
+                            full collision dynamics, delivery package dynamics, and cargo intactness modeling) with a
+                            comprehensive economic cost model grounded in real-world data sources&mdash;including
+                            energy costs, pedestrian safety costs, property damage, service compensation, repair costs,
+                            and break-even point analysis.
                         </p>
                     </div>
                 </div>
@@ -305,105 +364,62 @@
         </div>
     </section>
 
-    <!-- <section class="section">
+    <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full-width">
-                    <h2 class="title is-3">Economic Benchmark Results</h2>
+                    <h2 class="title is-3">Results</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Overall Economic Performance on urban sidewalk scenarios for the rule-based navigation
-                            baseline. Full details in the cost formula table in the paper.
+                            We evaluate seven baselines&mdash;two rule-based (Nav2 w/ AMCL, Nav2 w/ GPS) and five
+                            learning-based (GNM, ViNT, NoMaD, NavDP, CANVAS)&mdash;over 100 delivery episodes on
+                            urban sidewalk scenarios. Learning-based methods rely solely on RGB cameras
+                            (CANVAS additionally uses GPS), while rule-based methods are equipped with
+                            a 360&deg; 3D LiDAR.
                         </p>
-                        <div class="table-container">
-                            <table class="table is-bordered is-striped is-fullwidth is-size-6 has-text-left">
-                                <thead>
-                                    <tr>
-                                        <th>Metric</th>
-                                        <th>Nav2 with AMCL</th>
-                                        <th>Nav2 with GPS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="3"><em>CAPEX ($)</em></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hardware</td>
-                                        <td>11000</td>
-                                        <td>13000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Data Collection</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Total CAPEX Cost</strong></td>
-                                        <td><strong>11000</strong></td>
-                                        <td><strong>13000</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3"><em>OPEX ($/run)</em></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Electricity</td>
-                                        <td>0.0019</td>
-                                        <td>0.0023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Service Compensation</td>
-                                        <td>3.9400</td>
-                                        <td>3.1128</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Pedestrian Safety</td>
-                                        <td>9.4500</td>
-                                        <td>9.4600</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Property Damage</td>
-                                        <td>6.0000</td>
-                                        <td>0.5000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Repair</td>
-                                        <td>6.9041</td>
-                                        <td>3.2877</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Total OPEX Cost</strong></td>
-                                        <td><strong>26.2960</strong></td>
-                                        <td><strong>16.3628</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3"><em>Profitability</em></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Revenue ($/run)</strong></td>
-                                        <td><strong>3.4900</strong></td>
-                                        <td><strong>3.4900</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Contribution Margin ($/run)</strong></td>
-                                        <td><strong>-22.81</strong></td>
-                                        <td><strong>-12.87</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>BEP (runs)</strong></td>
-                                        <td><strong>--</strong></td>
-                                        <td><strong>--</strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                        <h4 class="title is-5">Overall Economic Performance</h4>
+                        <p>
+                            <strong>No evaluated method is economically viable.</strong> All seven methods yield
+                            negative contribution margins, resulting in no finite break-even point (BEP).
+                            The best-performing method is CANVAS at &minus;27.36$/run, equipped with only an RGB camera
+                            and GPS, outperforming LiDAR-equipped Nav2 w/ GPS (&minus;35.46$/run).
+                            Pedestrian safety costs are the dominant operational cost across all methods, ranging from
+                            9.30$/run (NavDP) to 29.89$/run (ViNT).
+                        </p>
+                        <figure>
+                            <img src="./images/results.png" alt="Overall economic performance results" />
+                        </figure>
+
+                        <h4 class="title is-5">Cost Breakdown Analysis</h4>
+                        <p>
+                            The cost breakdown reveals that pedestrian injury costs and service compensation dominate
+                            OPEX across all methods. Even CANVAS, the best learning-based method, incurs 14.38$/run
+                            in pedestrian costs. This underscores the critical importance of robust pedestrian
+                            avoidance for commercial viability.
+                        </p>
+                        <figure>
+                            <img src="./images/results_cost.png" alt="Cost breakdown analysis" />
+                        </figure>
+
+                        <h4 class="title is-5">Comparison Video</h4>
+                        <div class="publication-video">
+                            <video controls muted loop playsinline style="width: 100%; max-width: 100%;">
+                                <source src="./videos/comparison.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
+                        <p class="has-text-centered is-size-6" style="margin-top: 0.75rem;">
+                            Side-by-side comparison of rule-based and learning-based navigation methods in CostNav's
+                            urban sidewalk environment.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
-    
+
 
     <section class="section">
         <div class="container is-max-desktop">
@@ -504,7 +520,6 @@
                         <br>
                         <h4 class="title is-5">Coming Soon</h4>
                         <ul>
-                            <li>Comprehensive economic comparison of rule-based vs. learning-based navigation</li>
                             <li>Diverse maps, robots reflecting infinite choices in the real world</li>
                             <li>Expanded scenarios testing robustness under challenging conditions</li>
                             <li>Open challenges for the community to beat our baselines</li>
