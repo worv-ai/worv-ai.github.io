@@ -196,10 +196,10 @@
                     <img src="./images/logo.png" alt="costnav logo" />
                 </figure>
                 <p>
-                    CostNav is the first navigation benchmark that evaluates robots the way businesses actually evaluate
-                    them: by profit per run.
-                    Instead of just measuring success rates, CostNav asks: How much did that navigation cost? How much
-                    revenue did it generate? When will this system become profitable?
+                    CostNav is the <strong>first navigation benchmark</strong> that evaluates robots the way businesses actually evaluate
+                    them: <strong>by profit per run</strong>.
+                    Instead of just measuring success rates, CostNav asks: <strong>How much did that navigation cost? How much
+                    revenue did it generate? When will this system become profitable?</strong>
                 </p>
             </div>
         </div>
@@ -250,23 +250,30 @@
                 <div class="column is-full-width">
                     <h2 class="title is-3">The Problem: Optimizing for the Wrong Things</h2>
                     <div class="content has-text-justified">
-                        <figure id="problem">
-                            <img src="./images/motivation2.png" alt="problem illustration" />
+                        <figure id="problem" style="margin-left: 0; margin-right: 0;">
+                            <img src="./images/motivation2.png" alt="problem illustration" style="width: 100%; max-width: 100%; border-radius: 10px;" />
+                            <figcaption><em><strong style="font-weight: 900; -webkit-text-stroke: 0.3px currentColor;">This scene is captured directly from CostNav's simulation environment, with lighting enhancements.</strong></em></figcaption>
                         </figure>
-                        <p>
-                            Traditional navigation benchmarks celebrate high navigation success rates and path efficiency, and people try to improve these metrics.
+                        <div class="publication-video" style="margin-top: 2rem;">
+                            <video controls autoplay muted loop playsinline style="width: 100%; max-width: 100%;">
+                                <source src="./videos/comparison_part1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <p style="margin-top: 2rem;">
+                            Traditional navigation benchmarks celebrate <strong>high navigation success rates and path efficiency</strong>, and people try to improve these metrics.
                         </p>
                         <p>
-                            But these metrics don't answer the questions that keep entepreneurs awake at night:
+                            But these metrics <strong>don't answer the questions that keep entrepreneurs awake at night</strong>:
                         </p>
                         <ul>
-                            <li>Do I invest $3,000 in LiDAR for a classical Nav2 pipeline, or $400 in RGB-D for a
+                            <li>Do I invest <strong>$3,000 in LiDAR</strong> for a classical Nav2 pipeline, or <strong>$400 in RGB-D</strong> for a
                                 learning-based approach?</li>
-                            <li>What compensation cost should I budget when the robot spills food even if it reaches the
+                            <li>What <strong>compensation cost</strong> should I budget when the robot spills food even if it reaches the
                                 destination?</li>
-                            <li>What is the true cost per delivery after energy, maintenance, crashes, and customer
+                            <li>What is the <strong>true cost per delivery</strong> after energy, maintenance, crashes, and customer
                                 service compensation?</li>
-                            <li>How many deliveries are required to break even on the upfront investment?</li>
+                            <li>How many deliveries are required to <strong>break even</strong> on the upfront investment?</li>
                         </ul>
                         <p>
                             <strong>Prior benchmarks don't answer these questions. CostNav does.</strong>
@@ -289,12 +296,12 @@
                         <p>
                             Existing navigation benchmarks (UnrealZoo, OpenBench, Arena-RosNav, Urban-Sim, DeliveryBench)
                             evaluate agents primarily on task-oriented metrics such as success rate and path efficiency,
-                            without modeling cost-revenue dynamics essential for commercial deployment.
-                            CostNav is the first benchmark to combine high-fidelity physics simulation (Isaac Sim with
+                            <strong>without modeling cost-revenue dynamics essential for commercial deployment.</strong>
+                            CostNav is the <strong>first benchmark</strong> to combine <strong>high-fidelity physics simulation</strong> (Isaac Sim with
                             full collision dynamics, delivery package dynamics, and cargo intactness modeling) with a
-                            comprehensive economic cost model grounded in real-world data sources&mdash;including
+                            <strong>comprehensive economic cost model</strong> grounded in real-world data sources&mdash;including
                             energy costs, pedestrian safety costs, property damage, service compensation, repair costs,
-                            and break-even point analysis.
+                            and <strong>break-even point analysis</strong>.
                         </p>
                     </div>
                 </div>
@@ -348,7 +355,7 @@
         <div class="container is-max-desktop">
             <!-- Teaser Video. -->
             <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
+                <div class="column is-full-width">
                     <div class="publication-video">
                         <video controls autoplay muted loop playsinline style="width: 100%; max-width: 100%;">
                             <source src="./videos/costnav_popcorn.mp4" type="video/mp4">
@@ -404,8 +411,8 @@
 
                         <h4 class="title is-5">Comparison Video</h4>
                         <div class="publication-video">
-                            <video controls muted loop playsinline style="width: 100%; max-width: 100%;">
-                                <source src="./videos/comparison.mp4" type="video/mp4">
+                            <video controls autoplay muted loop playsinline style="width: 100%; max-width: 100%;">
+                                <source src="./videos/comparison_part2.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -470,11 +477,11 @@
                     <h2 class="title is-3">The Vision</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Imagine a world where navigation research papers include a "profitability" section alongside
+                            Imagine a world where navigation research papers include a <strong>"profitability" section</strong> alongside
                             accuracy metrics.
-                            Where we optimize for dollars per delivery, not just success rates. Where choosing between
+                            Where we optimize for <strong>dollars per delivery</strong>, not just success rates. Where choosing between
                             navigation approaches
-                            is guided by break-even analysis, not just technical performance.
+                            is guided by <strong>break-even analysis</strong>, not just technical performance.
                         </p>
                         <p>
                             <strong>That's the world CostNav is building.</strong>
