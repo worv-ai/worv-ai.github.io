@@ -32,6 +32,12 @@
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/slick.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <script src="./static/js/research-projects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            renderResearchDropdown('main-research-dropdown', { prefix: './', mode: 'short' });
+        });
+    </script>
 
     <style>
         .worv-logo {
@@ -79,19 +85,8 @@
                     <a class="navbar-link">
                         Research & Projects
                     </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="https://github.com/allenai/vla-evaluation-harness">
-                            VLA Evaluation Harness
-                        </a>
-                        <a class="navbar-item" href="./costnav/">
-                            CostNav
-                        </a>
-                        <a class="navbar-item" href="./d2e/">
-                            D2E
-                        </a>
-                        <a class="navbar-item" href="./canvas/">
-                            SketchDrive (CANVAS)
-                        </a>
+                    <div class="navbar-dropdown" id="main-research-dropdown">
+                        <!-- Auto-populated by static/js/research-projects.js (single source of truth) -->
                     </div>
                 </div>
 
@@ -177,15 +172,23 @@
                     <div class="column">
                         <h3 class="title is-4">
                             <a href="https://github.com/allenai/vla-evaluation-harness">VLA Evaluation Harness</a>
+                            <span class="tag is-link is-light"
+                                style="margin-left: 10px; vertical-align: middle;">From Data to Decisions Workshop @ ICRA 2026
+                            </span>
                         </h3>
-                        <p class="subtitle is-6">One framework to evaluate any VLA model on any robot simulation
-                            benchmark.</p>
+                        <p class="subtitle is-6">A unified evaluation harness for Vision-Language-Action models — accepted at the ICRA 2026 Workshop on From Data to Decisions.</p>
                         <a href="https://github.com/allenai/vla-evaluation-harness"
                             class="button is-small is-link is-outlined">
                             <span class="icon">
                                 <i class="fab fa-github"></i>
                             </span>
                             <span>View on GitHub</span>
+                        </a>
+                        <a href="https://arxiv.org/abs/2603.13966" class="button is-small is-link is-outlined">
+                            <span class="icon">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arXiv</span>
                         </a>
                     </div>
                 </div>
@@ -197,8 +200,8 @@
                     <div class="column">
                         <h3 class="title is-4">
                             <a href="./costnav/">CostNav</a>
-                            <span class="tag is-warning is-light"
-                                style="margin-left: 10px; vertical-align: middle;">Ongoing Research
+                            <span class="tag is-link is-light"
+                                style="margin-left: 10px; vertical-align: middle;">ScaleBot Workshop @ CVPR 2026
                             </span>
                         </h3>
                         <p class="subtitle is-6">Economic-Aware Navigation Benchmark for Autonomous Delivery Robots</p>
@@ -212,6 +215,12 @@
                             </p>
                         </div>
                         <a href="./costnav/" class="button is-small is-link is-outlined">View Project Page</a>
+                        <a href="https://arxiv.org/abs/2511.20216" class="button is-small is-link is-outlined">
+                            <span class="icon">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arXiv</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -222,6 +231,9 @@
                     <div class="column">
                         <h3 class="title is-4">
                             <a href="./d2e/">D2E</a>
+                            <span class="tag is-success is-light"
+                                style="margin-left: 10px; vertical-align: middle;">ICLR 2026
+                            </span>
                         </h3>
                         <p class="subtitle is-6">Scaling Vision-Action Pretraining on Desktop Data for Transfer to
                             Embodied AI</p>
@@ -232,6 +244,43 @@
                             </p>
                         </div>
                         <a href="./d2e/" class="button is-small is-link is-outlined">View Project Page</a>
+                        <a href="https://arxiv.org/abs/2510.05684" class="button is-small is-link is-outlined">
+                            <span class="icon">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arXiv</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WorldCam -->
+            <div class="project-card">
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <h3 class="title is-4">
+                            <a href="https://cvlab-kaist.github.io/WorldCam/" target="_blank" rel="noopener">WorldCam</a>
+                            <span class="tag is-link is-light"
+                                style="margin-left: 10px; vertical-align: middle;">VideoWorldModel Workshop @ CVPR 2026
+                            </span>
+                        </h3>
+                        <p class="subtitle is-6">Interactive Autoregressive 3D Gaming Worlds with Camera Pose as a
+                            Unifying Geometric Representation</p>
+                        <div class="content">
+                            <p>
+                                A generative world model that builds interactive 3D worlds from gameplay data,
+                                using camera pose as a unifying geometric representation. A collaboration between
+                                KAIST CVLab, Adobe Research, and WoRV @ Maum.ai.
+                            </p>
+                        </div>
+                        <a href="https://cvlab-kaist.github.io/WorldCam/" target="_blank" rel="noopener"
+                            class="button is-small is-link is-outlined">View Project Page</a>
+                        <a href="https://arxiv.org/abs/2603.16871" class="button is-small is-link is-outlined">
+                            <span class="icon">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arXiv</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -242,6 +291,9 @@
                     <div class="column">
                         <h3 class="title is-4">
                             <a href="./canvas/">SketchDrive (CANVAS)</a>
+                            <span class="tag is-success is-light"
+                                style="margin-left: 10px; vertical-align: middle;">ICRA 2025
+                            </span>
                         </h3>
                         <p class="subtitle is-6">Commonsense-Aware Navigation System for Intuitive Human-Robot
                             Interaction</p>
@@ -252,6 +304,12 @@
                             </p>
                         </div>
                         <a href="./canvas/" class="button is-small is-link is-outlined">View Project Page</a>
+                        <a href="https://arxiv.org/abs/2410.01273" class="button is-small is-link is-outlined">
+                            <span class="icon">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arXiv</span>
+                        </a>
                     </div>
                 </div>
             </div>
