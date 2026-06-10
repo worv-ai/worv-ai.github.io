@@ -30,6 +30,19 @@
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="icon" href="./static/images/favicon.ico">
 
+    <style>
+      /* Sim-to-Real per-scenario video carousel: hard size caps so the slick
+         track can never blow up (videos load async and otherwise stretch). */
+      #realeval-carousel { max-width: 900px; margin: 1rem auto 0; }
+      #realeval-carousel .slick-slide { padding: 0 10px; }
+      #realeval-carousel video {
+        display: block; width: 100%; max-height: 70vh;
+        object-fit: contain; background: #000; border-radius: 8px;
+      }
+      /* index.css sets .results-carousel .item { font-size: 0 }; restore captions */
+      #realeval-carousel .item p { font-size: 0.95rem; margin: 0.5rem 0 0; }
+    </style>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="../static/js/fontawesome.all.min.js"></script>
     <script src="../static/js/slick.min.js"></script>
@@ -81,15 +94,16 @@
                             <span class="author-block">Sungmin Kim<sup>*1</sup>,</span>
                             <span class="author-block">Yongjun Cho<sup>*1</sup>,</span>
                             <span class="author-block">Myunchul Joe<sup>1</sup>,</span>
-                            <span class="author-block">Geunwoo Kim<sup>2</sup>,</span>
+                            <span class="author-block">Geunwoo Kim<sup>3</sup>,</span>
                             <span class="author-block">Yubeen Park<sup>1</sup>,</span>
                             <span class="author-block">Sunhoo Kim<sup>1</sup>,</span>
+                            <span class="author-block">Samwoo Seong<sup>1</sup>,</span>
                             <span class="author-block">Yoonshik Kim<sup>1</sup>,</span>
                             <span class="author-block">Suhwan Choi<sup>1</sup>,</span>
                             <span class="author-block">Jaeyoon Jung<sup>1</sup>,</span>
-                            <span class="author-block">Jiyong Youn<sup>3</sup>,</span>
                             <br>
-                            <span class="author-block">Jinmyung Kwak<sup>3</sup>,</span>
+                            <span class="author-block">Jiyong Youn<sup>1</sup>,</span>
+                            <span class="author-block">Jinmyung Kwak<sup>2</sup>,</span>
                             <span class="author-block">Sunghee Ahn<sup>4</sup>,</span>
                             <span class="author-block">Jaemin Lee<sup>4</sup>,</span>
                             <span class="author-block">Younggil Do<sup>4</sup>,</span>
@@ -97,18 +111,18 @@
                             <span class="author-block">Woojin Cheong<sup>4</sup>,</span>
                             <span class="author-block">Minhyeok Oh<sup>4</sup>,</span>
                             <span class="author-block">Minchan Kim<sup>1</sup>,</span>
-                            <span class="author-block">Seongjae Kang<sup>3</sup>,</span>
-                            <span class="author-block">Samwoo Seong<sup>1</sup>,</span>
-                            <span class="author-block">Youngjae Yu<sup>4</sup>,</span>
-                            <span class="author-block">Yunsung Lee<sup>1</sup></span>
+                            <span class="author-block">Seongjae Kang<sup>2</sup>,</span>
+                            <span class="author-block">Youngjae Yu<sup>&dagger;4</sup>,</span>
+                            <span class="author-block">Yunsung Lee<sup>&dagger;1</sup></span>
                         </div>
 
                         <div class="is-size-6 publication-authors">
                             <span class="author-block">
                                 <sup>*</sup> Equal contribution,
+                                <sup>&dagger;</sup> Corresponding authors,
                                 <sup>1</sup> MAUM.AI,
-                                <sup>2</sup> University of California, Irvine,
-                                <sup>3</sup> KAIST,
+                                <sup>2</sup> KAIST,
+                                <sup>3</sup> University of California, Irvine,
                                 <sup>4</sup> Seoul National University
                             </span>
                         </div>
@@ -208,27 +222,26 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            While current navigation benchmarks prioritize task success in simplified settings, they
-                            neglect the multidimensional economic constraints essential for the real-world
-                            commercialization of autonomous delivery systems. We introduce <em>CostNav</em>, an
-                            <strong>Economic Navigation Benchmark</strong> that evaluates physical AI agents through
-                            comprehensive economic cost-revenue analysis aligned with real-world business operations.
-                            By integrating industry-standard data&mdash;such as Securities and Exchange Commission (SEC)
-                            filings and Abbreviated Injury Scale (AIS) injury reports&mdash;with Isaac Sim's detailed
-                            collision and cargo dynamics, CostNav transcends simple task completion to accurately
-                            evaluate business value in complex, real-world scenarios.
-                            <strong>To our knowledge, CostNav is the first physics-grounded economic benchmark that
-                                uses industry-standard regulatory and financial data to quantitatively expose the gap
-                                between navigation research metrics and commercial viability</strong>, revealing that
-                            optimizing for task success on a simplified task fundamentally differs from optimizing for
-                            real-world economic deployment.
-                            Evaluating seven baselines&mdash;two rule-based and five imitation learning&mdash;we find
-                            that no current method is economically viable, all yielding negative contribution margins.
-                            The best-performing method, CANVAS (&minus;27.36$/run), equipped with only an RGB camera
-                            and GPS, outperforms LiDAR-equipped Nav2 w/ GPS (&minus;35.46$/run).
-                            We challenge the community to develop navigation policies that achieve economic viability
-                            on CostNav. <strong>We remain method-agnostic, evaluating success solely on cost</strong>
-                            rather than the underlying architecture.
+                            Current navigation benchmarks focus on task success but do not capture the economic
+                            constraints essential for commercializing autonomous delivery systems. We introduce
+                            <em>CostNav</em>, an <strong>Economic Navigation Benchmark</strong> that evaluates physical AI
+                            agents on a cost-revenue and break-even analysis, pairing Isaac Sim's collision and cargo
+                            dynamics with industry-standard data such as Securities and Exchange Commission (SEC) filings
+                            and Abbreviated Injury Scale (AIS) injury reports.
+                            <strong>To our knowledge, CostNav is the first physics-grounded economic benchmark to use
+                                regulatory and financial data to quantify the gap between navigation metrics and
+                                commercial deployment</strong>, revealing that high task-success rates alone do not ensure
+                            economic viability.
+                            Evaluating seven baselines (two rule-based and five imitation-learning methods), we find no
+                            method economically viable: all yield negative contribution margins. CANVAS, using only an RGB
+                            camera and GPS, attains the highest task success and the least-negative margin among methods
+                            with non-zero Service-Level Agreement (SLA) compliance (&minus;$28.40/run), outperforming
+                            LiDAR-equipped Nav2 w/ GPS (&minus;$37.34/run).
+                            A sim-trained policy evaluated on a real delivery robot yields SLA compliance close to its
+                            simulation result, indicating that policy performance in CostNav's simulation transfers to
+                            real-world deployment.
+                            We challenge the community to achieve economic viability on CostNav, which scores methods by
+                            cost-revenue outcomes.
                             All resources are available at
                             <a target="_blank" href="https://github.com/worv-ai/CostNav">https://github.com/worv-ai/CostNav</a>.
                         </p>
@@ -383,8 +396,8 @@
                         <p>
                             <strong>No evaluated method is economically viable.</strong> All seven methods yield
                             negative contribution margins, resulting in no finite break-even point (BEP).
-                            The best-performing method is CANVAS at &minus;27.36$/run, equipped with only an RGB camera
-                            and GPS, outperforming LiDAR-equipped Nav2 w/ GPS (&minus;35.46$/run).
+                            The best-performing method is CANVAS at &minus;28.40$/run, equipped with only an RGB camera
+                            and GPS, outperforming LiDAR-equipped Nav2 w/ GPS (&minus;37.34$/run).
                             Pedestrian safety costs are the dominant operational cost across all methods, ranging from
                             9.30$/run (NavDP) to 29.89$/run (ViNT).
                         </p>
@@ -414,6 +427,89 @@
                             Side-by-side comparison of rule-based and learning-based navigation methods in CostNav's
                             urban sidewalk environment.
                         </p>
+                        <h4 class="title is-5" style="margin-top: 2.5rem;">Sim-to-Real Performance</h4>
+                        <p>
+                            Across 8 real-world delivery scenarios on a physical Segway E1 along an outdoor urban
+                            sidewalk route, the sim-trained CANVAS policy achieved <strong>63% SLA compliance</strong>,
+                            close to the <strong>70%</strong> observed in simulation. Failures involved contact with
+                            vegetation or a fence, and one vegetation contact also spoiled the cargo. This close match
+                            between simulated and real-world SLA compliance shows that CostNav's physics is adequate to
+                            reproduce benchmark performance on physical hardware,
+                            <strong>supporting the simulation benchmark as a proxy for real-world deployment</strong>:
+                            economic metrics computed in simulation reflect behavior observable on physical hardware.
+                        </p>
+                        <figure>
+                            <img src="./images/robot_annotated.png" alt="Real-world experimental platform: Segway E1 with Livox MID-360 LiDAR" style="width: 100%; max-width: 100%; border-radius: 10px;" />
+                            <figcaption><em><strong>Real-world experimental platform.</strong> A Segway E1 sidewalk delivery robot with a Livox MID-360 LiDAR, running the sim-trained CANVAS policy. Right inset: cargo bay with a popcorn-cup payload.</em></figcaption>
+                        </figure>
+                        <figure style="margin-top: 2rem;">
+                            <img src="./images/sim_to_real_scenarios.webp" alt="All 8 sim-to-real scenarios on the outdoor sidewalk route" style="width: 100%; max-width: 100%; border-radius: 10px;" />
+                            <figcaption><em><strong>All 8 scenarios on the outdoor sidewalk route.</strong> Solid lines: planned waypoint paths. Dashed lines: actual robot path (LiDAR-localized pose). Markers: &#9632; start, &#9711; successful arrival, &times; crash (S3 plant, S5 plant with spoiled cargo, S7 fence).</em></figcaption>
+                        </figure>
+
+                        <h4 class="title is-5" style="margin-top: 2rem;">Per-Scenario Videos</h4>
+                        <p class="has-text-centered is-size-6">
+                            The sim-trained CANVAS policy running on the real Segway E1, shown one scenario at a time.
+                            Use the arrows to slide through all eight scenarios (S1&ndash;S8).
+                        </p>
+                        <div id="realeval-carousel" class="results-carousel" style="margin-top: 1rem;">
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_1_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S1</strong> &mdash; <span style="color: #23d160; font-weight: bold;">Success</span> &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_2_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S2</strong> &mdash; <span style="color: #23d160; font-weight: bold;">Success</span> &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_3_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S3</strong> &mdash; <span style="color: #ff3860; font-weight: bold;">Crash</span> (plant) &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_4_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S4</strong> &mdash; <span style="color: #23d160; font-weight: bold;">Success</span> &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_5_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S5</strong> &mdash; <span style="color: #f85a25; font-weight: bold;">Spoiled</span> (plant + spilled food) &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_6_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S6</strong> &mdash; <span style="color: #23d160; font-weight: bold;">Success</span> &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_7_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S7</strong> &mdash; <span style="color: #ff3860; font-weight: bold;">Crash</span> (fence) &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                            <div class="item" style="padding: 0 12px;">
+                                <video controls muted loop playsinline preload="metadata" style="width: 100%; max-width: 100%; border-radius: 8px;">
+                                    <source src="./videos/real_eval/scenario_8_3x.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="is-size-6 has-text-centered" style="margin-top: 0.5rem;"><strong>S8</strong> &mdash; <span style="color: #23d160; font-weight: bold;">Success</span> &middot; <span style="color: #ff3860; font-weight: bold;">Playback is sped up 3&times;</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -557,7 +653,7 @@
             <h2 class="title">BibTeX</h2>
             <pre><code>@misc{seong2026costnavnavigationbenchmarkrealworld,
       title={CostNav: A Navigation Benchmark for Real-World Economic-Cost Evaluation of Physical AI Agents}, 
-      author={Haebin Seong and Sungmin Kim and Yongjun Cho and Myunchul Joe and Geunwoo Kim and Yubeen Park and Sunhoo Kim and Yoonshik Kim and Suhwan Choi and Jaeyoon Jung and Jiyong Youn and Jinmyung Kwak and Sunghee Ahn and Jaemin Lee and Younggil Do and Seungyeop Yi and Woojin Cheong and Minhyeok Oh and Minchan Kim and Seongjae Kang and Samwoo Seong and Youngjae Yu and Yunsung Lee},
+      author={Haebin Seong and Sungmin Kim and Yongjun Cho and Myunchul Joe and Geunwoo Kim and Yubeen Park and Sunhoo Kim and Samwoo Seong and Yoonshik Kim and Suhwan Choi and Jaeyoon Jung and Jiyong Youn and Jinmyung Kwak and Sunghee Ahn and Jaemin Lee and Younggil Do and Seungyeop Yi and Woojin Cheong and Minhyeok Oh and Minchan Kim and Seongjae Kang and Youngjae Yu and Yunsung Lee},
       year={2026},
       eprint={2511.20216},
       archivePrefix={arXiv},
@@ -578,6 +674,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+      $(document).ready(function () {
+        var $rc = $('#realeval-carousel');
+        if ($rc.length) {
+          $rc.on('init afterChange', function () {
+            $rc.find('video').each(function () { this.pause(); });
+            var cur = $rc.find('.slick-current video').get(0);
+            if (cur) { try { cur.currentTime = 0; cur.play().catch(function () {}); } catch (e) {} }
+          });
+          $rc.slick({
+            slidesToShow: 1, slidesToScroll: 1, infinite: true,
+            arrows: true, dots: true, autoplay: false,
+            draggable: true
+          });
+        }
+      });
+    </script>
 
 </body>
 
