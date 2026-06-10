@@ -271,11 +271,11 @@
                             Traditional navigation benchmarks celebrate <strong>high navigation success rates and path efficiency</strong>, and people try to improve these metrics.
                         </p>
                         <p>
-                            But these metrics <strong>don't answer the questions that keep entrepreneurs awake at night</strong>:
+                            But these metrics <strong>do not answer the questions that determine commercial viability</strong>:
                         </p>
                         <ul>
-                            <li>Do I invest <strong>$3,000 in LiDAR</strong> for a classical Nav2 pipeline, or <strong>$400 in RGB-D</strong> for a
-                                learning-based approach?</li>
+                            <li>Do I invest <strong>$3,000 in LiDAR</strong> for a classical Nav2 pipeline, or rely on the robot's
+                                <strong>built-in RGB camera</strong> for a learning-based approach?</li>
                             <li>What <strong>compensation cost</strong> should I budget when the <strong>robot spills food</strong> even if it reaches the
                                 destination?</li>
                             <li>What is the <strong>true cost per delivery</strong> after energy, maintenance, crashes, and customer
@@ -387,9 +387,9 @@
                         <p>
                             We evaluate seven baselines&mdash;two rule-based (Nav2 w/ AMCL, Nav2 w/ GPS) and five
                             learning-based (GNM, ViNT, NoMaD, NavDP, CANVAS)&mdash;over 100 delivery episodes on
-                            urban sidewalk scenarios. Learning-based methods rely solely on RGB cameras
-                            (CANVAS additionally uses GPS), while rule-based methods are equipped with
-                            a 360&deg; 3D LiDAR.
+                            urban sidewalk scenarios. Learning-based methods rely primarily on RGB cameras
+                            (NavDP additionally uses depth, CANVAS additionally uses GPS), while the rule-based
+                            Nav2 baselines use a 360&deg; 3D LiDAR with GPS.
                         </p>
 
                         <h4 class="title is-5">Overall Economic Performance</h4>
@@ -431,8 +431,9 @@
                         <p>
                             Across 8 real-world delivery scenarios on a physical Segway E1 along an outdoor urban
                             sidewalk route, the sim-trained CANVAS policy achieved <strong>63% SLA compliance</strong>,
-                            close to the <strong>70%</strong> observed in simulation. Failures involved contact with
-                            vegetation or a fence, and one vegetation contact also spoiled the cargo. This close match
+                            close to the <strong>70%</strong> observed in simulation. On the real platform, localization
+                            used <strong>LiDAR-Inertial Odometry (LIO)</strong> rather than GPS. Failures involved contact
+                            with vegetation or a fence, and one vegetation contact also spoiled the cargo. This close match
                             between simulated and real-world SLA compliance shows that CostNav's physics is adequate to
                             reproduce benchmark performance on physical hardware,
                             <strong>supporting the simulation benchmark as a proxy for real-world deployment</strong>:
@@ -450,7 +451,6 @@
                         <h4 class="title is-5" style="margin-top: 2rem;">Per-Scenario Videos</h4>
                         <p class="has-text-centered is-size-6">
                             The sim-trained CANVAS policy running on the real Segway E1, shown one scenario at a time.
-                            Use the arrows to slide through all eight scenarios (S1&ndash;S8).
                         </p>
                         <div id="realeval-carousel" class="results-carousel" style="margin-top: 1rem;">
                             <div class="item" style="padding: 0 12px;">
@@ -529,29 +529,27 @@
                         <div class="box">
                             <h4 class="title is-5">For Entrepreneurs</h4>
                             <p>
-                                CostNav gives you data-driven answers to deployment decisions. No more guessing whether
-                                expensive sensors
-                                are worth it—you'll see the break-even analysis.
+                                CostNav reports break-even and cost-revenue analysis for each method, making deployment
+                                trade-offs&mdash;such as whether a more expensive sensor is justified&mdash;explicit
+                                rather than assumed.
                             </p>
                         </div>
 
                         <div class="box">
                             <h4 class="title is-5">For Engineers & Researchers</h4>
                             <p>
-                                CostNav lets you optimize for what actually matters in deployment. Explore cost-aware
-                                reward functions,
-                                evaluate trade-offs between sensor cost and performance, and publish work that directly
-                                translates to commercial value.
+                                CostNav lets methods be optimized for deployment cost, not only task success. It supports
+                                studying cost-aware objectives and sensor cost&ndash;performance trade-offs alongside
+                                conventional navigation metrics.
                             </p>
                         </div>
 
                         <div class="box">
                             <h4 class="title is-5">For the Future of Autonomous Systems</h4>
                             <p>
-                                CostNav bridges the gap between impressive demos and sustainable businesses. A robot
-                                that's technically
-                                impressive but economically unviable won't change the world. A robot that's profitable
-                                at scale will.
+                                CostNav links navigation performance to economic viability. As our results show, a method
+                                with high task success can still be economically unviable, so viability is a distinct
+                                axis worth measuring.
                             </p>
                         </div>
                     </div>
@@ -567,20 +565,15 @@
                     <h2 class="title is-3">The Vision</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Imagine a world where navigation research papers include a <strong>"profitability" section</strong> alongside
-                            accuracy metrics.
-                            Where we optimize for <strong>dollars per delivery</strong>, not just success rates. Where choosing between
-                            navigation approaches
-                            is guided by <strong>break-even analysis</strong>, not just technical performance.
+                            CostNav treats <strong>economic viability</strong> as a first-class evaluation axis for
+                            navigation: optimizing for <strong>cost per delivery</strong> and using
+                            <strong>break-even analysis</strong> to compare approaches, alongside accuracy and
+                            success-rate metrics.
                         </p>
                         <p>
-                            <strong>That's the world CostNav is building.</strong>
-                        </p>
-                        <p>
-                            We're not saying traditional metrics don't matter—they absolutely do. But they're
-                            incomplete.
-                            A robot that's technically impressive but economically unviable won't change the world.
-                            A robot that's profitable at scale will.
+                            Traditional metrics remain important but are incomplete. In our evaluation, methods that
+                            reach the destination in many episodes still operate at a negative contribution margin, so
+                            task success alone does not indicate an economically deployable system.
                         </p>
                     </div>
                 </div>
@@ -595,10 +588,7 @@
                     <h2 class="title is-3">Get Involved</h2>
                     <div class="content has-text-justified">
                         <p>
-                            <strong>CostNav is not just a benchmark—it is a community-driven platform.</strong>
-                        </p>
-                        <p>
-                            We are releasing everything:
+                            We release the full benchmark for the community to build on:
                         </p>
                         <ul>
                             <li>The technical report and benchmark framework</li>
@@ -611,27 +601,20 @@
                             <li>Evaluation code and our baselines</li>
                         </ul>
                         <p>
-                            <strong>We invite the community to build on this foundation.</strong>
+                            We welcome contributions and extensions from the community.
                         </p>
 
                         <br>
                         <h4 class="title is-5">Coming Soon</h4>
                         <ul>
-                            <li>Diverse maps, robots reflecting infinite choices in the real world</li>
+                            <li>Additional maps and robot platforms</li>
                             <li>Expanded scenarios testing robustness under challenging conditions</li>
                             <li>Open challenges for the community to beat our baselines</li>
                         </ul>
 
                         <p class="has-text-centered" style="margin-top: 2rem;">
-                            <strong style="font-size: 1.2rem;">
-                                The Physical AI field has made incredible technical progress.<br>
-                                Now it's time to make it economically viable.
-                            </strong>
-                        </p>
-                        <p class="has-text-centered" style="margin-top: 1rem;">
-                            <strong style="font-size: 1.3rem; color: #3273dc;">
-                                It's time to talk about money. It's time for CostNav.
-                            </strong>
+                            CostNav adds an economic dimension to navigation evaluation, with the aim of connecting
+                            navigation research to the requirements of real-world deployment.
                         </p>
 
                         <div class="has-text-centered" style="margin-top: 2rem;">
