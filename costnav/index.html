@@ -39,8 +39,9 @@
         display: block; width: 100%; max-height: 70vh;
         object-fit: contain; background: #000; border-radius: 8px;
       }
-      /* index.css sets .results-carousel .item { font-size: 0 }; restore captions */
-      #realeval-carousel .item p { font-size: 0.95rem; margin: 0.5rem 0 0; }
+      /* index.css sets .results-carousel .item { font-size: 0 } and Bulma's
+         .is-size-6 is !important, so override with !important to restore captions */
+      #realeval-carousel .item p { font-size: 0.95rem !important; margin: 0.5rem 0 0; }
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -396,10 +397,10 @@
                         <p>
                             <strong>No evaluated method is economically viable.</strong> All seven methods yield
                             negative contribution margins, resulting in no finite break-even point (BEP).
-                            The best-performing method is CANVAS at &minus;28.40$/run, equipped with only an RGB camera
-                            and GPS, outperforming LiDAR-equipped Nav2 w/ GPS (&minus;37.34$/run).
+                            The best-performing method is CANVAS at &minus;$28.40/run, equipped with only an RGB camera
+                            and GPS, outperforming LiDAR-equipped Nav2 w/ GPS (&minus;$37.34/run).
                             Pedestrian safety costs are the dominant operational cost across all methods, ranging from
-                            9.30$/run (NavDP) to 29.89$/run (ViNT).
+                            $9.30/run (NavDP) to $29.89/run (ViNT).
                         </p>
                         <figure>
                             <img src="./images/results.png" alt="Overall economic performance results" />
@@ -408,7 +409,7 @@
                         <h4 class="title is-5">Cost Breakdown Analysis</h4>
                         <p>
                             The cost breakdown reveals that pedestrian injury costs and service compensation dominate
-                            OPEX across all methods. Even CANVAS, the best learning-based method, incurs 14.38$/run
+                            OPEX across all methods. Even CANVAS, the best learning-based method, incurs $14.38/run
                             in pedestrian costs. This underscores the critical importance of robust pedestrian
                             avoidance for commercial viability.
                         </p>
@@ -668,7 +669,7 @@
             if (cur) { try { cur.currentTime = 0; cur.play().catch(function () {}); } catch (e) {} }
           });
           $rc.slick({
-            slidesToShow: 1, slidesToScroll: 1, infinite: true,
+            slidesToShow: 1, slidesToScroll: 1, infinite: false,
             arrows: true, dots: true, autoplay: false,
             draggable: true
           });
