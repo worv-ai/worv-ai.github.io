@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="PonderPounce reuses a pretrained multimodal language model's native context as episode memory for robot control.">
+    <meta name="keywords"
+        content="PonderPounce, robot learning, vision-language-action models, multimodal language models, episode memory, robot manipulation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="PonderPounce: A Pretrained MLLM as an Episode Context Engine for Robot Control">
+    <meta property="og:description"
+        content="A pretrained MLLM context engine that asynchronously routes continuous cognition to a fast robot controller.">
+    <meta property="og:image" content="https://worv-ai.github.io/ponderpounce/static/images/PP-Title.png">
+    <meta property="og:type" content="website">
+    <title>PonderPounce: A Pretrained MLLM as an Episode Context Engine for Robot Control</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9LZW868J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-5J9LZW868J');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/css/slick.css">
+    <link rel="stylesheet" href="../static/css/slick-theme.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="../static/images/favicon.ico">
+
+    <style>
+        :root {
+            --ponder-blue: #5868f9;
+            --ponder-blue-dark: #3442d9;
+            --ponder-blue-soft: #f1f3ff;
+            --pounce-gold: #ffbd17;
+            --ink: #1f2430;
+            --muted: #667085;
+            --line: #e6e8ef;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .paper-hero {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(91, 108, 255, 0.11), transparent 32%),
+                radial-gradient(circle at 85% 35%, rgba(255, 238, 91, 0.13), transparent 28%),
+                #fff;
+        }
+
+        .paper-hero .hero-body {
+            padding-bottom: 2.25rem;
+        }
+
+        .publication-title {
+            color: var(--ink);
+            line-height: 1.14;
+            letter-spacing: -0.025em;
+        }
+
+        .brand-word {
+            background: linear-gradient(110deg, var(--ponder-blue-dark), #6e7cff 62%, #bd8300);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+        }
+
+        .publication-venue {
+            color: var(--ponder-blue-dark);
+        }
+
+        .coming-soon {
+            cursor: default;
+            opacity: 0.72;
+        }
+
+        .teaser-frame,
+        .figure-frame {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 18px 45px rgba(26, 32, 64, 0.08);
+        }
+
+        .teaser-frame img,
+        .figure-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .figure-frame {
+            margin: 1.5rem 0 1rem;
+        }
+
+        .figure-caption {
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.55;
+            margin-top: 0.9rem;
+        }
+
+        .section-kicker {
+            color: var(--ponder-blue-dark);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.13em;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        .concept-card {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            height: 100%;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card::before {
+            content: "";
+            height: 4px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .concept-card.ponder::before {
+            background: var(--ponder-blue);
+        }
+
+        .concept-card.pounce::before {
+            background: var(--pounce-gold);
+        }
+
+        .concept-card.interface::before {
+            background: linear-gradient(90deg, var(--ponder-blue), var(--pounce-gold));
+        }
+
+        .concept-icon {
+            align-items: center;
+            background: var(--ponder-blue-soft);
+            border-radius: 999px;
+            color: var(--ponder-blue-dark);
+            display: inline-flex;
+            height: 2.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            width: 2.5rem;
+        }
+
+        .metric-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            height: 100%;
+            padding: 1.35rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            color: var(--ponder-blue-dark);
+            font-family: 'Google Sans', sans-serif;
+            font-size: 2.35rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .metric-label {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.35;
+            margin-top: 0.65rem;
+        }
+
+        .results-section {
+            background: #f7f8fc;
+        }
+
+        .results-table-wrap {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .results-table {
+            background: #fff;
+            margin-bottom: 0 !important;
+            min-width: 680px;
+        }
+
+        .results-table thead th {
+            background: #f1f3f8;
+            border-color: var(--line);
+            color: #3a4254;
+            white-space: nowrap;
+        }
+
+        .results-table td,
+        .results-table th {
+            border-color: var(--line);
+            vertical-align: middle;
+        }
+
+        .results-table .ours td {
+            background: var(--ponder-blue-soft);
+            color: var(--ponder-blue-dark);
+            font-weight: 700;
+        }
+
+        .takeaway {
+            background: linear-gradient(120deg, #f0f2ff, #fff9e8);
+            border-left: 4px solid var(--ponder-blue);
+            border-radius: 0 12px 12px 0;
+            margin-top: 1.5rem;
+            padding: 1.1rem 1.25rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .paper-hero .hero-body {
+                padding-top: 2.25rem;
+            }
+
+            .publication-title {
+                font-size: 2rem !important;
+            }
+
+            .teaser-frame,
+            .figure-frame {
+                border-radius: 10px;
+            }
+
+            .metric-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../static/js/fontawesome.all.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/index.js"></script>
+    <script src="../static/js/research-projects.js"></script>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="../" aria-label="WoRV Research home">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">More Research</a>
+                    <div class="navbar-dropdown" id="research-dropdown-items">
+                        <!-- Auto-populated by ../static/js/research-projects.js -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero paper-hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">
+                            <span class="brand-word">PonderPounce</span>: A Pretrained MLLM as an Episode Context Engine
+                            for Robot Control
+                        </h1>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><a href="https://suhwanchoi.me/">Suhwan Choi</a><sup>*1,2</sup>,</span>
+                            <span class="author-block"><a href="https://lastdefiance20.github.io/">Jaeyoon Jung</a><sup>*1</sup>,</span>
+                            <span class="author-block"><a href="https://scholar.google.com/citations?user=kOrK5b4AAAAJ">Sungkyung Kim</a><sup>1,2</sup>,</span>
+                            <span class="author-block"><a href="https://alohays.github.io/">Yunsung Lee</a><sup>†1</sup>,</span>
+                            <span class="author-block"><a href="https://yj-yu.github.io/home/">Youngjae Yu</a><sup>†2</sup></span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors mt-2">
+                            <span class="author-block"><sup>1</sup> MAUM.AI</span>
+                            <span class="author-block ml-3"><sup>2</sup> Seoul National University</span>
+                            <br>
+                            <span class="author-block has-text-grey"><sup>*</sup> Equal contribution &nbsp; <sup>†</sup> Co-corresponding authors</span>
+                        </div>
+
+                        <div class="is-size-5 publication-venue mt-4">
+                            <span class="venue-block">Under Review</span>
+                        </div>
+
+                        <div class="publication-links mt-5">
+                            <span class="link-block">
+                                <span class="button is-normal is-rounded is-light coming-soon" aria-label="Paper coming soon">
+                                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                                    <span>Paper · Coming Soon</span>
+                                </span>
+                            </span>
+                            <span class="link-block">
+                                <span class="button is-normal is-rounded is-light coming-soon" aria-label="Code coming soon">
+                                    <span class="icon"><i class="fab fa-github"></i></span>
+                                    <span>Code · Coming Soon</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <div class="teaser-frame">
+                    <img src="./static/images/PP-Title.png"
+                        alt="Overview of PonderPounce, comparing native MLLM context with controller context and purpose-built memory systems"
+                        fetchpriority="high">
+                </div>
+                <p class="has-text-centered mt-5 is-size-5">
+                    <strong>Ponder</strong> remembers and reasons over the episode. <strong>Pounce</strong> acts quickly
+                    from the latest cognition.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <p class="section-kicker">The core idea</p>
+                    <h2 class="title is-3">Use pretrained context as robot memory</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Multimodal large language models can integrate long visual histories, reason under partial
+                            observability, and learn from examples. Vision-language-action models, however, typically
+                            inherit pretrained representations without using that contextual capacity as episode memory.
+                            Memory-dependent policies instead add task-specific samplers, stores, retrievers, or compressors.
+                        </p>
+                        <p>
+                            PonderPounce takes a different route. <strong>Ponder</strong>, a System 2 MLLM, accumulates
+                            observations, demonstrations, and prior cognition in its native causal context.
+                            <strong>Pounce</strong>, a System 1 action model, receives the current observation and the
+                            newest continuous cognition token together with its age. The two pretrained systems run on
+                            decoupled clocks and are trained jointly end to end, without a purpose-built memory module or
+                            separate bridge pretraining.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns mt-5">
+                <div class="column">
+                    <div class="concept-card ponder">
+                        <span class="concept-icon"><i class="fas fa-brain"></i></span>
+                        <h3 class="title is-5">Ponder · System 2</h3>
+                        <p>Retains the episode in a pretrained MLLM context and produces fresh continuous cognition at sparse queries.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="concept-card interface">
+                        <span class="concept-icon"><i class="fas fa-exchange-alt"></i></span>
+                        <h3 class="title is-5">Asynchronous interface</h3>
+                        <p>Routes only the latest cognition token and its age, keeping long-context processing off the action path.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="concept-card pounce">
+                        <span class="concept-icon"><i class="fas fa-bolt"></i></span>
+                        <h3 class="title is-5">Pounce · System 1</h3>
+                        <p>Conditions a fast VLA controller on current sensory input and cognition while playing actions back at 20 Hz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <p class="section-kicker">Architecture</p>
+                    <h2 class="title is-3">Context accumulates; control stays fast</h2>
+                    <div class="figure-frame">
+                        <img src="./static/images/PP-Arch.png"
+                            alt="PonderPounce architecture showing instructions, demonstrations, and observations entering Ponder, with cognition tokens routed to Pounce"
+                            loading="lazy">
+                    </div>
+                    <p class="figure-caption has-text-justified">
+                        Ponder accumulates the instruction, demonstrations, and observations. Transition tokens gate
+                        optional internal demonstration reasoning and subgoal text, while carrier states form continuous
+                        cognition. Pounce combines the newest cognition with the current observation to predict an action chunk.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section results-section">
+        <div class="container is-max-desktop">
+            <div class="has-text-centered">
+                <p class="section-kicker">Results</p>
+                <h2 class="title is-3">Pretrained context transfers to control</h2>
+                <p class="subtitle is-6">Average success on memory-dependent control and demonstration-conditioned manipulation.</p>
+            </div>
+
+            <div class="columns is-multiline mt-5">
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <div class="metric-card">
+                        <div class="metric-value">60.83%</div>
+                        <div class="metric-label">RoboMME success<br>with base-scale data</div>
+                    </div>
+                </div>
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <div class="metric-card">
+                        <div class="metric-value">75.54%</div>
+                        <div class="metric-label">RoboMME success<br>with 9× data</div>
+                    </div>
+                </div>
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <div class="metric-card">
+                        <div class="metric-value">10.79pp</div>
+                        <div class="metric-label">Gain from scaling Ponder<br>from 0.8B to 9B</div>
+                    </div>
+                </div>
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <div class="metric-card">
+                        <div class="metric-value">25 ms</div>
+                        <div class="metric-label">Pounce invocation<br>p50 latency</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-table-wrap">
+                <table class="table is-fullwidth results-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Episode memory</th>
+                            <th>1× data</th>
+                            <th>9× data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>π<sub>0.5</sub></td>
+                            <td>None</td>
+                            <td>17.93%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>MemER</td>
+                            <td>Keyframe selector / tracker</td>
+                            <td>42.38%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>FrameSamp+Modul</td>
+                            <td>Frame tokens + modulator</td>
+                            <td>44.51%</td>
+                            <td>57.88%</td>
+                        </tr>
+                        <tr class="ours">
+                            <td>PonderPounce</td>
+                            <td>Native MLLM context</td>
+                            <td>60.83%</td>
+                            <td>75.54%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="takeaway">
+                <strong>Same controller, larger context engine:</strong> replacing pretrained Qwen3.5-0.8B with 9B
+                raises RoboMME success from 50.04% to 60.83%, without changing the Pounce architecture or interface.
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <p class="section-kicker">Memory in action</p>
+                    <h2 class="title is-3">Acting after the evidence disappears</h2>
+                    <div class="figure-frame">
+                        <img src="./static/images/PP-Demo.png"
+                            alt="RoboMME PickHighlight example where PonderPounce remembers transient target markers and succeeds while the baseline times out"
+                            loading="lazy">
+                    </div>
+                    <p class="figure-caption has-text-justified">
+                        In RoboMME PickHighlight, target markers appear briefly and then disappear. A current-observation
+                        policy searches and times out; PonderPounce retains the earlier cue in episode context and grasps
+                        both highlighted targets.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section results-section">
+        <div class="container is-max-desktop">
+            <div class="columns is-vcentered">
+                <div class="column is-5">
+                    <p class="section-kicker">Cognition analysis</p>
+                    <h2 class="title is-3">Fresh cognition matters</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Reusing cognition only at predicted transitions drops RoboMME success from
+                            <strong>60.83%</strong> to <strong>1.83%</strong> for the reported checkpoint, showing that
+                            control depends on within-subgoal refreshes.
+                        </p>
+                        <p>
+                            Offline staleness tests show the same tradeoff: frequent-refresh checkpoints fit fresh
+                            cognition best, while models trained with slower refresh intervals are more robust when the
+                            cognition grows old.
+                        </p>
+                    </div>
+                </div>
+                <div class="column is-7">
+                    <div class="figure-frame">
+                        <img src="./static/images/cognition_staleness.png"
+                            alt="Normalized validation loss as cognition becomes stale for models trained with one, two, and four second refresh intervals"
+                            loading="lazy">
+                    </div>
+                    <p class="figure-caption">
+                        Normalized validation loss under stale cognition. Lower is better; bands show 95% task-stratified bootstrap confidence intervals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container is-max-desktop content has-text-centered is-size-7">
+            <p>
+                This website follows the project-page design used across <a href="../">WoRV Research</a>,
+                adapted from the <a href="https://nerfies.github.io">Nerfies</a> template.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

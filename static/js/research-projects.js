@@ -15,6 +15,14 @@
 const RESEARCH_PROJECTS = [
     {
         external: false,
+        path: 'ponderpounce/',
+        shortTitle: 'PonderPounce',
+        title: 'PonderPounce: A Pretrained MLLM as an Episode Context Engine for Robot Control',
+        venue: 'Under Review',
+        venueClass: 'is-warning'
+    },
+    {
+        external: false,
         path: 'canvas/',
         shortTitle: 'SketchDrive (CANVAS)',
         title: 'CANVAS: Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction',
