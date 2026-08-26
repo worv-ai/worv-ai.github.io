@@ -82,7 +82,7 @@ function renderResearchDropdown(containerId, options) {
         const venueTag = (mode === 'full' && p.venue)
             ? ' <span class="tag ' + p.venueClass + ' is-light" style="margin-left: 8px; vertical-align: middle;">' + p.venue + '</span>'
             : '';
-        return '<a class="navbar-item" href="' + url + '"' + externalAttrs + '>' + label + venueTag + '</a>';
+        return '<a class="navbar-item" href="' + url + '"' + externalAttrs + '><span class="research-project-title">' + label + '</span>' + venueTag + '</a>';
     }).join('\n                        ');
 
     container.innerHTML = html;

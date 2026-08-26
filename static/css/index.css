@@ -178,3 +178,57 @@ body {
   min-width: 200px;
   max-width: 300px;
 }
+
+/* Shared research dropdown layout for the home page and project pages. */
+#main-research-dropdown,
+#research-dropdown-items {
+  max-width: calc(100vw - 2rem);
+  padding: 0.65rem;
+  width: 820px;
+}
+
+#main-research-dropdown .navbar-item,
+#research-dropdown-items .navbar-item {
+  align-items: center;
+  border-radius: 6px;
+  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  line-height: 1.35;
+  padding: 0.7rem 0.8rem;
+  white-space: normal;
+}
+
+#main-research-dropdown .research-project-title,
+#research-dropdown-items .research-project-title {
+  min-width: 0;
+}
+
+#main-research-dropdown .tag,
+#research-dropdown-items .tag {
+  justify-self: end;
+  margin-left: 0 !important;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1023px) {
+  #main-research-dropdown,
+  #research-dropdown-items {
+    box-shadow: none;
+    max-width: none;
+    padding: 0;
+    width: auto;
+  }
+
+  #main-research-dropdown .navbar-item,
+  #research-dropdown-items .navbar-item {
+    align-items: start;
+    grid-template-columns: 1fr;
+    row-gap: 0.35rem;
+  }
+
+  #main-research-dropdown .tag,
+  #research-dropdown-items .tag {
+    justify-self: start;
+  }
+}
