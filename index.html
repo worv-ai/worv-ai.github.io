@@ -35,7 +35,7 @@
     <script src="./static/js/research-projects.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            renderResearchDropdown('main-research-dropdown', { prefix: './', mode: 'short' });
+            renderResearchDropdown('main-research-dropdown', { prefix: './', mode: 'full' });
         });
     </script>
 
@@ -234,8 +234,39 @@
                 </div>
             </div>
 
+            <!-- WorldCam -->
+            <div class="project-card">
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <h3 class="title is-4">
+                            <a href="https://cvlab-kaist.github.io/WorldCam/" target="_blank" rel="noopener">WorldCam</a>
+                            <span class="tag is-link is-light"
+                                style="margin-left: 10px; vertical-align: middle;">VideoWorldModel Workshop @ CVPR 2026
+                            </span>
+                        </h3>
+                        <p class="subtitle is-6">Interactive Autoregressive 3D Gaming Worlds with Camera Pose as a
+                            Unifying Geometric Representation</p>
+                        <div class="content">
+                            <p>
+                                A generative world model that builds interactive 3D worlds from gameplay data,
+                                using camera pose as a unifying geometric representation. A collaboration between
+                                KAIST CVLab, Adobe Research, and WoRV @ Maum.ai.
+                            </p>
+                        </div>
+                        <a href="https://cvlab-kaist.github.io/WorldCam/" target="_blank" rel="noopener"
+                            class="button is-small is-link is-outlined">View Project Page</a>
+                        <a href="https://arxiv.org/abs/2603.16871" class="button is-small is-link is-outlined">
+                            <span class="icon">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arXiv</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- CostNav -->
-            <div class="project-card" style="border-left: 5px solid #3273dc;">
+            <div class="project-card">
                 <div class="columns is-vcentered">
                     <div class="column">
                         <h3 class="title is-4">
@@ -285,37 +316,6 @@
                         </div>
                         <a href="./d2e/" class="button is-small is-link is-outlined">View Project Page</a>
                         <a href="https://arxiv.org/abs/2510.05684" class="button is-small is-link is-outlined">
-                            <span class="icon">
-                                <i class="ai ai-arxiv"></i>
-                            </span>
-                            <span>arXiv</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- WorldCam -->
-            <div class="project-card">
-                <div class="columns is-vcentered">
-                    <div class="column">
-                        <h3 class="title is-4">
-                            <a href="https://cvlab-kaist.github.io/WorldCam/" target="_blank" rel="noopener">WorldCam</a>
-                            <span class="tag is-link is-light"
-                                style="margin-left: 10px; vertical-align: middle;">VideoWorldModel Workshop @ CVPR 2026
-                            </span>
-                        </h3>
-                        <p class="subtitle is-6">Interactive Autoregressive 3D Gaming Worlds with Camera Pose as a
-                            Unifying Geometric Representation</p>
-                        <div class="content">
-                            <p>
-                                A generative world model that builds interactive 3D worlds from gameplay data,
-                                using camera pose as a unifying geometric representation. A collaboration between
-                                KAIST CVLab, Adobe Research, and WoRV @ Maum.ai.
-                            </p>
-                        </div>
-                        <a href="https://cvlab-kaist.github.io/WorldCam/" target="_blank" rel="noopener"
-                            class="button is-small is-link is-outlined">View Project Page</a>
-                        <a href="https://arxiv.org/abs/2603.16871" class="button is-small is-link is-outlined">
                             <span class="icon">
                                 <i class="ai ai-arxiv"></i>
                             </span>

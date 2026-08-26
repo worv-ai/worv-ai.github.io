@@ -22,27 +22,11 @@ const RESEARCH_PROJECTS = [
         venueClass: 'is-warning'
     },
     {
-        external: false,
-        path: 'canvas/',
-        shortTitle: 'SketchDrive (CANVAS)',
-        title: 'CANVAS: Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction',
-        venue: 'ICRA 2025',
-        venueClass: 'is-success'
-    },
-    {
-        external: false,
-        path: 'd2e/',
-        shortTitle: 'D2E',
-        title: 'D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI',
-        venue: 'ICLR 2026',
-        venueClass: 'is-success'
-    },
-    {
-        external: false,
-        path: 'costnav/',
-        shortTitle: 'CostNav',
-        title: 'CostNav: A Navigation Benchmark for Real-World Economic-Cost Evaluation of Physical AI Agents',
-        venue: 'ScaleBot Workshop @ CVPR 2026',
+        external: true,
+        url: 'https://github.com/allenai/vla-evaluation-harness',
+        shortTitle: 'VLA Evaluation Harness',
+        title: 'vla-eval: A Unified Evaluation Harness for Vision-Language-Action Models',
+        venue: 'From Data to Decisions Workshop @ ICRA 2026',
         venueClass: 'is-link'
     },
     {
@@ -54,12 +38,28 @@ const RESEARCH_PROJECTS = [
         venueClass: 'is-link'
     },
     {
-        external: true,
-        url: 'https://github.com/allenai/vla-evaluation-harness',
-        shortTitle: 'VLA Evaluation Harness',
-        title: 'vla-eval: A Unified Evaluation Harness for Vision-Language-Action Models',
-        venue: 'From Data to Decisions Workshop @ ICRA 2026',
+        external: false,
+        path: 'costnav/',
+        shortTitle: 'CostNav',
+        title: 'CostNav: A Navigation Benchmark for Real-World Economic-Cost Evaluation of Physical AI Agents',
+        venue: 'ScaleBot Workshop @ CVPR 2026',
         venueClass: 'is-link'
+    },
+    {
+        external: false,
+        path: 'd2e/',
+        shortTitle: 'D2E',
+        title: 'D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI',
+        venue: 'ICLR 2026',
+        venueClass: 'is-success'
+    },
+    {
+        external: false,
+        path: 'canvas/',
+        shortTitle: 'SketchDrive (CANVAS)',
+        title: 'CANVAS: Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction',
+        venue: 'ICRA 2025',
+        venueClass: 'is-success'
     }
 ];
 
@@ -89,7 +89,7 @@ function renderResearchDropdown(containerId, options) {
 }
 
 // Auto-render the child-page "More Research" dropdown when present (default: full mode, "../" prefix).
-// The main page navbar uses its own inline call with mode:"short" and prefix:"./".
+// The main page navbar uses its own inline call with mode:"full" and prefix:"./".
 document.addEventListener('DOMContentLoaded', function () {
     renderResearchDropdown('research-dropdown-items');
 });
