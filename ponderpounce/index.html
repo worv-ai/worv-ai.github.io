@@ -77,11 +77,6 @@
             color: var(--ponder-blue-dark);
         }
 
-        .coming-soon {
-            cursor: default;
-            opacity: 0.72;
-        }
-
         .teaser-frame,
         .figure-frame {
             overflow: hidden;
@@ -199,7 +194,7 @@
         .results-table {
             background: #fff;
             margin-bottom: 0 !important;
-            min-width: 680px;
+            min-width: 720px;
         }
 
         .results-table thead th {
@@ -215,10 +210,46 @@
             vertical-align: middle;
         }
 
+        .results-table td:nth-child(n + 3),
+        .results-table th:nth-child(n + 3) {
+            text-align: center;
+        }
+
         .results-table .ours td {
             background: var(--ponder-blue-soft);
             color: var(--ponder-blue-dark);
             font-weight: 700;
+        }
+
+        .results-table .human td {
+            background: #e5e7eb;
+            color: #5d6470;
+            font-weight: 700;
+        }
+
+        .results-table .oracle td {
+            background: #f4f5f6;
+            color: #667085;
+        }
+
+        .results-table .reference-start td {
+            border-top: 2px solid #c8cdd6;
+        }
+
+        .results-chart-wrap {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 18px 45px rgba(26, 32, 64, 0.08);
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        .results-chart {
+            aspect-ratio: 2.07 / 1;
+            display: block;
+            min-width: 900px;
+            width: 100%;
         }
 
         .takeaway {
@@ -311,16 +342,18 @@
 
                         <div class="publication-links mt-5">
                             <span class="link-block">
-                                <span class="button is-normal is-rounded is-light coming-soon" aria-label="Paper coming soon">
+                                <a href="https://arxiv.org/abs/2608.24115" target="_blank" rel="noopener"
+                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                                    <span>Paper · Coming Soon</span>
-                                </span>
+                                    <span>Paper</span>
+                                </a>
                             </span>
                             <span class="link-block">
-                                <span class="button is-normal is-rounded is-light coming-soon" aria-label="Code coming soon">
+                                <a href="https://github.com/worv-ai/PonderPounce" target="_blank" rel="noopener"
+                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon"><i class="fab fa-github"></i></span>
-                                    <span>Code · Coming Soon</span>
-                                </span>
+                                    <span>Code</span>
+                                </a>
                             </span>
                         </div>
                     </div>
@@ -425,7 +458,18 @@
                 <p class="subtitle is-6">Average success on memory-dependent control and demonstration-conditioned manipulation.</p>
             </div>
 
-            <div class="columns is-multiline mt-5">
+            <div class="results-chart-wrap mt-5">
+                <canvas id="robomme-results-chart" class="results-chart" width="1800" height="870"
+                    role="img"
+                    aria-label="Bar chart of RoboMME average success rates. PonderPounce achieves 60.83 percent with one-times data and 75.54 percent with nine-times data. Human performance is 90.50 percent.">
+                    RoboMME average success rate comparison across baselines, PonderPounce, oracle methods, and humans.
+                </canvas>
+            </div>
+            <p class="figure-caption has-text-centered">
+                RoboMME average success rate across base-scale, 9×-data, and oracle or human reference settings.
+            </p>
+
+            <div class="columns is-multiline mt-6">
                 <div class="column is-one-quarter-desktop is-half-tablet">
                     <div class="metric-card">
                         <div class="metric-value">60.83%</div>
@@ -470,6 +514,18 @@
                             <td>—</td>
                         </tr>
                         <tr>
+                            <td>π<sub>0.5</sub> + past actions</td>
+                            <td>Action history</td>
+                            <td>19.73%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>SAM2Act+</td>
+                            <td>SAM2 bank + attention</td>
+                            <td>21.37%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
                             <td>MemER</td>
                             <td>Keyframe selector / tracker</td>
                             <td>42.38%</td>
@@ -486,6 +542,21 @@
                             <td>Native MLLM context</td>
                             <td>60.83%</td>
                             <td>75.54%</td>
+                        </tr>
+                        <tr class="oracle reference-start">
+                            <td>SimpleSG+Oracle</td>
+                            <td>Oracle subgoal</td>
+                            <td colspan="2">49.58%</td>
+                        </tr>
+                        <tr class="oracle">
+                            <td>GroundSG+Oracle</td>
+                            <td>Grounded oracle subgoal</td>
+                            <td colspan="2">84.08%</td>
+                        </tr>
+                        <tr class="human">
+                            <td>Human</td>
+                            <td>Human memory · reference</td>
+                            <td colspan="2">90.50%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -560,6 +631,161 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            const canvas = document.getElementById('robomme-results-chart');
+            if (!canvas) return;
+
+            const groups = [
+                {
+                    title: '1× data',
+                    items: [
+                        { label: ['π0.5'], value: 17.93, color: '#c5cad2' },
+                        { label: ['π0.5 + past', 'actions'], value: 19.73, color: '#c5cad2' },
+                        { label: ['SAM2Act+'], value: 21.37, color: '#c5cad2' },
+                        { label: ['MemER'], value: 42.38, color: '#c5cad2' },
+                        { label: ['FrameSamp+', 'Modul'], value: 44.51, color: '#858d98' },
+                        { label: ['Ponder', 'Pounce'], value: 60.83, color: '#5b6cff' }
+                    ],
+                    comparison: '1.37×'
+                },
+                {
+                    title: '9× data',
+                    items: [
+                        { label: ['FrameSamp+', 'Modul'], value: 57.88, color: '#858d98' },
+                        { label: ['Ponder', 'Pounce'], value: 75.54, color: '#5b6cff' }
+                    ],
+                    comparison: '1.31×'
+                },
+                {
+                    title: 'Oracle / human',
+                    items: [
+                        { label: ['SimpleSG+', 'Oracle'], value: 49.58, color: '#aab1bb' },
+                        { label: ['GroundSG+', 'Oracle'], value: 84.08, color: '#aab1bb' },
+                        { label: ['Human'], value: 90.50, color: '#aab1bb' }
+                    ]
+                }
+            ];
+
+            function drawChart() {
+                const cssWidth = canvas.clientWidth;
+                const cssHeight = Math.round(cssWidth / 2.07);
+                const ratio = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.style.height = cssHeight + 'px';
+                canvas.width = Math.round(cssWidth * ratio);
+                canvas.height = Math.round(cssHeight * ratio);
+
+                const ctx = canvas.getContext('2d');
+                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+                ctx.clearRect(0, 0, cssWidth, cssHeight);
+
+                const margin = { top: 64, right: 22, bottom: 90, left: 70 };
+                const plotWidth = cssWidth - margin.left - margin.right;
+                const plotHeight = cssHeight - margin.top - margin.bottom;
+                const baselineY = margin.top + plotHeight;
+                const groupGap = 48;
+                const totalBars = groups.reduce(function (sum, group) { return sum + group.items.length; }, 0);
+                const usableWidth = plotWidth - groupGap * (groups.length - 1);
+                const unitWidth = usableWidth / totalBars;
+                const barWidth = Math.min(54, unitWidth * 0.68);
+
+                ctx.font = '500 13px "Google Sans", Arial, sans-serif';
+                ctx.textBaseline = 'middle';
+
+                for (let tick = 0; tick <= 100; tick += 20) {
+                    const y = margin.top + plotHeight * (1 - tick / 100);
+                    ctx.beginPath();
+                    ctx.strokeStyle = tick === 0 ? '#252932' : '#dde1e7';
+                    ctx.lineWidth = tick === 0 ? 1.8 : 1;
+                    ctx.moveTo(margin.left, y);
+                    ctx.lineTo(cssWidth - margin.right, y);
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#687182';
+                    ctx.textAlign = 'right';
+                    ctx.fillText(String(tick), margin.left - 12, y);
+                }
+
+                ctx.beginPath();
+                ctx.strokeStyle = '#252932';
+                ctx.lineWidth = 1.8;
+                ctx.moveTo(margin.left, margin.top);
+                ctx.lineTo(margin.left, baselineY);
+                ctx.stroke();
+
+                ctx.save();
+                ctx.translate(20, margin.top + plotHeight / 2);
+                ctx.rotate(-Math.PI / 2);
+                ctx.fillStyle = '#252932';
+                ctx.font = '500 15px "Google Sans", Arial, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Average success rate (%)', 0, 0);
+                ctx.restore();
+
+                let groupX = margin.left;
+                groups.forEach(function (group) {
+                    const groupWidth = unitWidth * group.items.length;
+                    const centers = [];
+                    const tops = [];
+
+                    ctx.fillStyle = '#252932';
+                    ctx.font = '500 16px "Google Sans", Arial, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(group.title, groupX + groupWidth / 2, 23);
+
+                    group.items.forEach(function (item, itemIndex) {
+                        const centerX = groupX + unitWidth * (itemIndex + 0.5);
+                        const barHeight = plotHeight * item.value / 100;
+                        const barTop = baselineY - barHeight;
+                        centers.push(centerX);
+                        tops.push(barTop);
+
+                        ctx.fillStyle = item.color;
+                        ctx.fillRect(centerX - barWidth / 2, barTop, barWidth, barHeight);
+
+                        ctx.fillStyle = '#252932';
+                        ctx.font = '500 13px "Google Sans", Arial, sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(item.value.toFixed(2), centerX, barTop - 12);
+
+                        item.label.forEach(function (line, lineIndex) {
+                            ctx.fillStyle = '#333842';
+                            ctx.font = '400 12px "Google Sans", Arial, sans-serif';
+                            ctx.fillText(line, centerX, baselineY + 24 + lineIndex * 18);
+                        });
+                    });
+
+                    if (group.comparison) {
+                        const left = centers[centers.length - 2];
+                        const right = centers[centers.length - 1];
+                        const bracketY = Math.min(tops[tops.length - 2], tops[tops.length - 1]) - 35;
+                        ctx.beginPath();
+                        ctx.strokeStyle = '#5b6cff';
+                        ctx.lineWidth = 1.6;
+                        ctx.moveTo(left, bracketY + 7);
+                        ctx.lineTo(left, bracketY);
+                        ctx.lineTo(right, bracketY);
+                        ctx.lineTo(right, bracketY + 7);
+                        ctx.stroke();
+                        ctx.fillStyle = '#5b6cff';
+                        ctx.font = '500 13px "Google Sans", Arial, sans-serif';
+                        ctx.fillText(group.comparison, (left + right) / 2, bracketY - 11);
+                    }
+
+                    groupX += groupWidth + groupGap;
+                });
+            }
+
+            drawChart();
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawChart);
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(drawChart).observe(canvas.parentElement);
+            } else {
+                window.addEventListener('resize', drawChart);
+            }
+        }());
+    </script>
 </body>
 
 </html>
