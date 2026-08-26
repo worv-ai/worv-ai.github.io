@@ -182,9 +182,7 @@ body {
 /* Shared research dropdown layout for the home page and project pages. */
 #main-research-dropdown,
 #research-dropdown-items {
-  max-width: calc(100vw - 2rem);
   padding: 0.65rem;
-  width: 820px;
 }
 
 #main-research-dropdown .navbar-item,
@@ -196,7 +194,6 @@ body {
   grid-template-columns: minmax(0, 1fr) max-content;
   line-height: 1.35;
   padding: 0.7rem 0.8rem;
-  white-space: normal;
 }
 
 #main-research-dropdown .research-project-title,
@@ -209,6 +206,38 @@ body {
   justify-self: end;
   margin-left: 0 !important;
   white-space: nowrap;
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-menu {
+    position: relative;
+  }
+
+  .navbar-menu .navbar-item.has-dropdown {
+    position: static;
+  }
+
+  #main-research-dropdown,
+  #research-dropdown-items {
+    left: 50%;
+    max-width: none;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 2rem));
+  }
+
+  #main-research-dropdown .navbar-item,
+  #research-dropdown-items .navbar-item,
+  #main-research-dropdown .research-project-title,
+  #research-dropdown-items .research-project-title {
+    white-space: nowrap;
+  }
+
+  #main-research-dropdown .research-project-title,
+  #research-dropdown-items .research-project-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @media screen and (max-width: 1023px) {
@@ -225,6 +254,7 @@ body {
     align-items: start;
     grid-template-columns: 1fr;
     row-gap: 0.35rem;
+    white-space: normal;
   }
 
   #main-research-dropdown .tag,
