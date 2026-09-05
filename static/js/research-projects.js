@@ -42,8 +42,8 @@ const RESEARCH_PROJECTS = [
         path: 'costnav/',
         shortTitle: 'CostNav',
         title: 'CostNav: A Navigation Benchmark for Real-World Economic-Cost Evaluation of Physical AI Agents',
-        venue: 'ScaleBot Workshop @ CVPR 2026',
-        venueClass: 'is-link'
+        venue: 'CoRL 2026',
+        venueClass: 'is-success'
     },
     {
         external: false,
