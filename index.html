@@ -49,16 +49,111 @@
         }
 
         .project-card {
-            border: 1px solid #e1e1e1;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
+            background: #fff;
+            border: 1px solid #eceef2;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(31, 36, 48, 0.04);
+            margin-bottom: 24px;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .project-card:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 30px rgba(31, 36, 48, 0.1);
             transform: translateY(-2px);
+        }
+
+        .research-highlights-section {
+            background: #f7f8fa;
+        }
+
+        .research-highlights-container {
+            max-width: 1200px !important;
+        }
+
+        .project-card .columns {
+            align-items: stretch;
+            margin: 0;
+            min-height: 210px;
+        }
+
+        .project-card .column {
+            padding: 0;
+        }
+
+        .project-visual {
+            align-items: center;
+            background: #eef0f3;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            min-height: 210px;
+            overflow: hidden;
+            padding: 14px;
+        }
+
+        .project-visual img {
+            border-radius: 8px;
+            display: block;
+            height: auto;
+            max-height: 182px;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        .project-card-body {
+            padding: 22px 26px;
+            width: 100%;
+        }
+
+        .project-card .column.is-8 {
+            display: block;
+        }
+
+        .project-card-body .title {
+            line-height: 1.28;
+            margin-bottom: 0.65rem !important;
+        }
+
+        .project-card-body .title + .subtitle {
+            margin-top: 0 !important;
+        }
+
+        .project-card-body .title .tag {
+            font-size: 0.88rem;
+            height: 2.1em;
+            padding-left: 0.8em;
+            padding-right: 0.8em;
+        }
+
+        .project-card-body .subtitle {
+            color: #3f4754;
+            line-height: 1.5;
+            margin-bottom: 0.9rem;
+        }
+
+        .project-card-body .content {
+            color: #596170;
+            line-height: 1.6;
+        }
+
+        @media screen and (max-width: 768px) {
+            .project-card .columns {
+                min-height: 0;
+            }
+
+            .project-visual {
+                min-height: 170px;
+                padding: 12px;
+            }
+
+            .project-visual img {
+                max-height: 146px;
+            }
+
+            .project-card-body {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -162,14 +257,21 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="container is-max-desktop">
+    <section class="section research-highlights-section">
+        <div class="container research-highlights-container">
             <h2 class="title is-3 has-text-centered">Research Highlights</h2>
 
             <!-- PonderPounce -->
-            <div class="project-card" style="border-left: 5px solid #5868f9;">
-                <div class="columns is-vcentered">
-                    <div class="column">
+            <div class="project-card">
+                <div class="columns is-vcentered is-gapless">
+                    <div class="column is-4">
+                        <a class="project-visual" href="./ponderpounce/">
+                            <img src="./ponderpounce/static/images/PP-Title.png"
+                                alt="PonderPounce system overview" fetchpriority="high">
+                        </a>
+                    </div>
+                    <div class="column is-8">
+                        <div class="project-card-body">
                         <h3 class="title is-4">
                             <a href="./ponderpounce/">PonderPounce</a>
                             <span class="tag is-warning is-light"
@@ -194,14 +296,23 @@
                             <span class="icon"><i class="fab fa-github"></i></span>
                             <span>GitHub</span>
                         </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- VLA Evaluation Harness -->
             <div class="project-card">
-                <div class="columns is-vcentered">
-                    <div class="column">
+                <div class="columns is-vcentered is-gapless">
+                    <div class="column is-4">
+                        <a class="project-visual" href="https://github.com/allenai/vla-evaluation-harness"
+                            target="_blank" rel="noopener">
+                            <img src="https://raw.githubusercontent.com/allenai/vla-evaluation-harness/main/.github/assets/demand_supply.png"
+                                alt="VLA Evaluation Harness throughput analysis" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="column is-8">
+                        <div class="project-card-body">
                         <h3 class="title is-4">
                             <a href="https://github.com/allenai/vla-evaluation-harness">VLA Evaluation Harness</a>
                             <span class="tag is-link is-light"
@@ -230,14 +341,23 @@
                             </span>
                             <span>View Leaderboard</span>
                         </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- WorldCam -->
             <div class="project-card">
-                <div class="columns is-vcentered">
-                    <div class="column">
+                <div class="columns is-vcentered is-gapless">
+                    <div class="column is-4">
+                        <a class="project-visual" href="https://cvlab-kaist.github.io/WorldCam/"
+                            target="_blank" rel="noopener">
+                            <img src="https://cvlab-kaist.github.io/WorldCam/static/images/method/architecture.png"
+                                alt="WorldCam architecture overview" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="column is-8">
+                        <div class="project-card-body">
                         <h3 class="title is-4">
                             <a href="https://cvlab-kaist.github.io/WorldCam/" target="_blank" rel="noopener">WorldCam</a>
                             <span class="tag is-link is-light"
@@ -261,14 +381,22 @@
                             </span>
                             <span>arXiv</span>
                         </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- CostNav -->
             <div class="project-card">
-                <div class="columns is-vcentered">
-                    <div class="column">
+                <div class="columns is-vcentered is-gapless">
+                    <div class="column is-4">
+                        <a class="project-visual" href="./costnav/">
+                            <img src="./costnav/images/motivation2.png"
+                                alt="CostNav economic navigation benchmark overview" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="column is-8">
+                        <div class="project-card-body">
                         <h3 class="title is-4">
                             <a href="./costnav/">CostNav</a>
                             <span class="tag is-success is-light"
@@ -292,14 +420,22 @@
                             </span>
                             <span>arXiv</span>
                         </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- D2E -->
             <div class="project-card">
-                <div class="columns is-vcentered">
-                    <div class="column">
+                <div class="columns is-vcentered is-gapless">
+                    <div class="column is-4">
+                        <a class="project-visual" href="./d2e/">
+                            <img src="./d2e/static/images/1_teaser.png"
+                                alt="D2E vision-action pretraining overview" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="column is-8">
+                        <div class="project-card-body">
                         <h3 class="title is-4">
                             <a href="./d2e/">D2E</a>
                             <span class="tag is-success is-light"
@@ -321,14 +457,22 @@
                             </span>
                             <span>arXiv</span>
                         </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- SketchDrive -->
             <div class="project-card">
-                <div class="columns is-vcentered">
-                    <div class="column">
+                <div class="columns is-vcentered is-gapless">
+                    <div class="column is-4">
+                        <a class="project-visual" href="./canvas/">
+                            <img src="./canvas/static/images/1_teaser.png"
+                                alt="CANVAS navigation system overview" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="column is-8">
+                        <div class="project-card-body">
                         <h3 class="title is-4">
                             <a href="./canvas/">SketchDrive (CANVAS)</a>
                             <span class="tag is-success is-light"
@@ -350,6 +494,7 @@
                             </span>
                             <span>arXiv</span>
                         </a>
+                        </div>
                     </div>
                 </div>
             </div>
