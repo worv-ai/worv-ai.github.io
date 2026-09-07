@@ -137,7 +137,157 @@
             line-height: 1.6;
         }
 
+        .careers-section {
+            background: #fff;
+            border-top: 1px solid #eceef2;
+        }
+
+        .careers-container {
+            max-width: 1200px !important;
+        }
+
+        .careers-header {
+            align-items: center;
+            display: flex;
+            gap: 24px;
+            justify-content: space-between;
+            margin-bottom: 28px;
+        }
+
+        .careers-eyebrow {
+            color: #245db5;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .careers-heading {
+            color: #202938;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .careers-description {
+            color: #596170;
+            line-height: 1.6;
+            max-width: 650px;
+        }
+
+        .careers-cta {
+            background: #3273dc;
+            border-radius: 6px;
+            color: #fff;
+            display: inline-flex;
+            flex-shrink: 0;
+            font-weight: 600;
+            gap: 18px;
+            padding: 12px 18px;
+        }
+
+        .careers-cta:hover {
+            background: #245db5;
+            color: #fff;
+        }
+
+        .careers-grid {
+            display: grid;
+            gap: 18px;
+            grid-template-areas: "research engineering" "business engineering";
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .career-group {
+            border: 1px solid #e4e8ee;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 18px 22px 6px;
+        }
+
+        .career-group-research { grid-area: research; }
+        .career-group-engineering { grid-area: engineering; }
+        .career-group-business { grid-area: business; }
+
+        .career-group h3 {
+            color: #596170;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .career-group li + li {
+            border-top: 1px solid #eceef2;
+        }
+
+        .career-link {
+            align-items: center;
+            color: #202938;
+            display: flex;
+            font-size: 1rem;
+            font-weight: 500;
+            gap: 16px;
+            justify-content: space-between;
+            min-height: 54px;
+            padding: 12px 0;
+        }
+
+        .career-link::after {
+            border-right: 1.5px solid currentColor;
+            border-top: 1.5px solid currentColor;
+            color: #3273dc;
+            content: "";
+            flex: 0 0 7px;
+            height: 7px;
+            margin-right: 3px;
+            transform: rotate(45deg);
+        }
+
+        .career-link:hover {
+            color: #245db5;
+        }
+
+        .careers-section a:focus-visible {
+            outline: 2px solid #3273dc;
+            outline-offset: 3px;
+        }
+
+        .careers-footer {
+            align-items: center;
+            color: #596170;
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            gap: 12px 24px;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .careers-footer a {
+            color: #245db5;
+            font-weight: 600;
+        }
+
         @media screen and (max-width: 768px) {
+            .careers-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .careers-grid {
+                grid-template-areas: "research" "engineering" "business";
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .career-group {
+                padding: 16px 18px 4px;
+            }
+
             .project-card .columns {
                 min-height: 0;
             }
@@ -502,58 +652,52 @@
         </div>
     </section>
 
-    <section class="section" style="background-color: #f5f5f5;">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered">
-                <div class="column is-full-width">
-                    <h2 class="title is-3 has-text-centered">We are Hiring!</h2>
-                    <div class="content has-text-centered">
-                        <p class="is-size-5">
-                            Join a team of top-tier talents tackling the hardest problems in Physical AI.
-                        </p>
-                        <p>
-                            We promise industry-leading compensation, alternative military service options, and the most
-                            reliable colleagues.
-                        </p>
-                    </div>
-
-                    <div class="columns is-centered">
-                        <div class="column is-half">
-                            <div class="box">
-                                <h4 class="title is-5">Research</h4>
-                                <ul>
-                                    <li><a href="https://recruitment.worv.maum.ai/jobs/research-intern-world-model/">Research Intern, World Model</a></li>
-                                    <li><a href="https://recruitment.worv.maum.ai/jobs/research-scientist-manipulation/">Research Scientist / Fellow</a></li>
-                                </ul>
-
-                                <h4 class="title is-5 mt-4">Engineering</h4>
-                                <ul>
-                                    <li><a href="https://recruitment.worv.maum.ai/jobs/applied-ai-engineer/">Applied AI Engineer</a></li>
-                                    <li><a href="https://recruitment.worv.maum.ai/jobs/robotics-vehicle-control-engineer/">Robotics &amp; Vehicle Control Engineer</a></li>
-                                    <li><a href="https://recruitment.worv.maum.ai/jobs/simulation-engineer/">Simulation Engineer</a></li>
-                                </ul>
-
-                                <h4 class="title is-5 mt-4">Business &amp; PM</h4>
-                                <ul>
-                                    <li><a href="https://recruitment.worv.maum.ai/jobs/project-manager/">Project Manager</a></li>
-                                    <li><a href="https://recruitment.worv.maum.ai/jobs/ceo-staff/">Technical Sales &amp; Strategy Staff</a></li>
-                                </ul>
-
-                                <h4 class="title is-5 mt-4">Ongoing</h4>
-                                <ul>
-                                    <li><a href="https://recruitment.worv.maum.ai/talent-pool/">Talent Pool (상시채용)</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="has-text-centered mt-5">
-                        <a href="https://recruitment.worv.maum.ai/" class="button is-primary is-large is-rounded">
-                            Apply Now
-                        </a>
-                        <br><br>
-                    </div>
+    <section class="section careers-section" id="careers" aria-labelledby="careers-heading">
+        <div class="container careers-container">
+            <div class="careers-header">
+                <div>
+                    <p class="careers-eyebrow">We're hiring</p>
+                    <h2 class="careers-heading" id="careers-heading">Build Physical AI with us.</h2>
+                    <p class="careers-description">
+                        Advance world models and robot intelligence, from research to real-world deployment.
+                        Find your next role at WoRV.
+                    </p>
                 </div>
+                <a class="careers-cta" href="https://recruitment.worv.maum.ai/jobs/">
+                    View open positions <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="careers-grid">
+                <div class="career-group career-group-research">
+                    <h3>Research &amp; Internship</h3>
+                    <ul>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/ai-research-scientist/"><span>AI Research Scientist</span></a></li>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/ai-research-scientist-intern/"><span>[Intern] AI Research Scientist</span></a></li>
+                    </ul>
+                </div>
+                <div class="career-group career-group-engineering">
+                    <h3>Engineering</h3>
+                    <ul>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/robot-foundation-model-engineer/"><span>Robot Foundation Model Engineer</span></a></li>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/ai-data-infrastructure-engineer/"><span>AI Data Infrastructure Engineer</span></a></li>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/robotics-software-engineer/"><span>Robotics Software Engineer</span></a></li>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/simulation-engineer/"><span>Simulation Engineer</span></a></li>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/inference-optimization-engineer/"><span>Inference Optimization Engineer</span></a></li>
+                    </ul>
+                </div>
+                <div class="career-group career-group-business">
+                    <h3>Business &amp; PM</h3>
+                    <ul>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/project-manager/"><span>Project Manager</span></a></li>
+                        <li><a class="career-link" href="https://recruitment.worv.maum.ai/jobs/ceo-staff/"><span>Technical Sales &amp; Strategy Staff</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="careers-footer">
+                <p>Don't see your role? <a href="https://recruitment.worv.maum.ai/talent-pool/">Join our talent pool &rarr;</a></p>
+                <p>Alternative military service available for eligible roles.</p>
             </div>
         </div>
     </section>
