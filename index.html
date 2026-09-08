@@ -40,8 +40,37 @@
     </script>
 
     <style>
+        .home-container {
+            max-width: 1200px !important;
+        }
+
         .home-hero .hero-body {
             padding-bottom: 1.5rem;
+        }
+
+        .home-hero .home-title {
+            color: #202938;
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .home-description {
+            color: #596170;
+            font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+            line-height: 1.6;
+        }
+
+        .about-copy {
+            margin: 0 auto;
+            max-width: 50rem;
+        }
+
+        .about-copy .content {
+            color: #4b5563;
+            line-height: 1.7;
+            text-align: left;
         }
 
         .worv-logo {
@@ -69,10 +98,6 @@
 
         .research-highlights-section {
             background: #f7f8fa;
-        }
-
-        .research-highlights-container {
-            max-width: 1200px !important;
         }
 
         .project-card .columns {
@@ -144,10 +169,6 @@
         .careers-section {
             background: #fff;
             border-top: 1px solid #eceef2;
-        }
-
-        .careers-container {
-            max-width: 1200px !important;
         }
 
         .careers-header {
@@ -352,49 +373,41 @@
 
     <section class="hero home-hero">
         <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                    <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">WoRV Research</h1>
-                        <h2 class="title is-3" style="color: #666;">Research papers and projects from the WoRV team.
-                        </h2>
-
-                    </div>
-                </div>
+            <div class="container home-container has-text-centered">
+                <h1 class="title publication-title home-title">WoRV Research</h1>
+                <p class="home-description">Research papers and projects from the WoRV team.</p>
             </div>
         </div>
     </section>
 
     <section class="section">
-        <div class="container is-max-desktop">
+        <div class="container home-container">
             <!-- About Us -->
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">About Us</h2>
-                    <div class="content has-text-justified">
-                        <p>
-                            <strong>WoRV</strong> (World Models for Robotics and Vehicle Control) Team has been
-                            pioneering <strong>VLA-based RFM (Robotic Foundation Models)</strong> for agricultural,
-                            logistics, defense, construction, and manufacturing domains since 2021.
-                        </p>
-                        <p>
-                            We go beyond "fancy lab research." We operate in the real world with a fleet of hundreds of
-                            robots replacing human labor in industrial sites. This allows us to collect robust training
-                            data, establish new research hypotheses daily, and immediately evaluate and realign our
-                            models through field deployment and business feedback.
-                        </p>
-                        <p>
-                            We offer the optimal environment to "pre-train" for the upcoming era of <strong>Physical
-                                AI</strong>.
-                        </p>
-                    </div>
+            <div class="about-copy">
+                <h2 class="title is-3 has-text-centered">About Us</h2>
+                <div class="content">
+                    <p>
+                        <strong>WoRV</strong> (World Models for Robotics and Vehicle Control) Team has been
+                        pioneering <strong>VLA-based RFM (Robotic Foundation Models)</strong> for agricultural,
+                        logistics, defense, construction, and manufacturing domains since 2021.
+                    </p>
+                    <p>
+                        We go beyond "fancy lab research." We operate in the real world with a fleet of hundreds of
+                        robots replacing human labor in industrial sites. This allows us to collect robust training
+                        data, establish new research hypotheses daily, and immediately evaluate and realign our
+                        models through field deployment and business feedback.
+                    </p>
+                    <p>
+                        We offer the optimal environment to "pre-train" for the upcoming era of <strong>Physical
+                            AI</strong>.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="section research-highlights-section">
-        <div class="container research-highlights-container">
+        <div class="container home-container">
             <h2 class="title is-3 has-text-centered">Research Highlights</h2>
 
             <!-- PonderPounce -->
@@ -639,7 +652,7 @@
     </section>
 
     <section class="section careers-section" id="careers" aria-labelledby="careers-heading">
-        <div class="container careers-container">
+        <div class="container home-container">
             <div class="careers-header">
                 <div>
                     <p class="careers-eyebrow">We're hiring</p>
