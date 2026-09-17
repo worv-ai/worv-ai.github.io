@@ -1,0 +1,11 @@
+{"t": 0.0, "step": 0, "src": "S1", "subgoal": ""}
+{"t": 1.3, "step": 39, "src": "S2", "subgoal": "pick up the block at [659, 533]", "gate": 1.0, "kind": "transition", "reasoning": ""}
+{"t": 2.43, "step": 73, "src": "S1", "subgoal": "pick up the block at [659, 533]"}
+{"t": 11.4, "step": 342, "src": "S2", "subgoal": "put it down", "gate": 0.985923171043396, "kind": "transition", "reasoning": ""}
+{"t": 12.3, "step": 369, "src": "S1", "subgoal": "put it down"}
+{"t": 16.8, "step": 504, "src": "S2", "subgoal": "pick up the block at [522, 643]", "gate": 0.9971969127655029, "kind": "transition", "reasoning": ""}
+{"t": 17.17, "step": 515, "src": "S1", "subgoal": "pick up the block at [522, 643]"}
+{"t": 26.17, "step": 785, "src": "S2", "subgoal": "put it down", "gate": 0.9997386336326599, "kind": "transition", "reasoning": ""}
+{"t": 27.0, "step": 810, "src": "S1", "subgoal": "put it down"}
+{"t": 30.07, "step": 902, "src": "S2", "subgoal": "all tasks completed", "gate": 0.999664306640625, "kind": "transition", "reasoning": ""}
+{"t": 30.93, "step": 928, "src": "S1", "subgoal": "all tasks completed"}

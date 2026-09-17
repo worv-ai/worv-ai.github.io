@@ -1,0 +1,7 @@
+{"t": 0.0, "step": 0, "src": "S1", "subgoal": ""}
+{"t": 0.73, "step": 22, "src": "S2", "subgoal": "move forward", "gate": 1.0, "kind": "transition", "reasoning": ""}
+{"t": 1.5, "step": 45, "src": "S1", "subgoal": "move forward"}
+{"t": 5.5, "step": 165, "src": "S2", "subgoal": "move backward-left", "gate": 0.9953859448432922, "kind": "transition", "reasoning": ""}
+{"t": 6.37, "step": 191, "src": "S1", "subgoal": "move backward-left"}
+{"t": 9.4, "step": 282, "src": "S2", "subgoal": "move forward", "gate": 0.9999417066574097, "kind": "transition", "reasoning": ""}
+{"t": 10.37, "step": 311, "src": "S1", "subgoal": "move forward"}

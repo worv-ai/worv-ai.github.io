@@ -1,0 +1,7 @@
+{"t": 0.0, "step": 0, "src": "S1", "subgoal": ""}
+{"t": 1.6, "step": 48, "src": "S2", "subgoal": "pick up the block at [678, 620]", "gate": 1.0, "kind": "transition", "reasoning": ""}
+{"t": 2.37, "step": 71, "src": "S1", "subgoal": "pick up the block at [678, 620]"}
+{"t": 13.3, "step": 399, "src": "S2", "subgoal": "put it down", "gate": 0.9323866367340088, "kind": "transition", "reasoning": ""}
+{"t": 14.17, "step": 425, "src": "S1", "subgoal": "put it down"}
+{"t": 17.23, "step": 517, "src": "S2", "subgoal": "all tasks completed", "gate": 0.999664306640625, "kind": "transition", "reasoning": ""}
+{"t": 18.1, "step": 543, "src": "S1", "subgoal": "all tasks completed"}

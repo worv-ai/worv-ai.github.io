@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="./static/css/real-demos.css">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
@@ -326,7 +327,7 @@
                         <div class="is-size-5 publication-authors">
                             <span class="author-block"><a href="https://suhwanchoi.me/">Suhwan Choi</a><sup>*1,2</sup>,</span>
                             <span class="author-block"><a href="https://lastdefiance20.github.io/">Jaeyoon Jung</a><sup>*1</sup>,</span>
-                            <span class="author-block"><a href="https://scholar.google.com/citations?user=kOrK5b4AAAAJ">Sungkyung Kim</a><sup>1,2</sup>,</span>
+                            <span class="author-block"><a href="https://scholar.google.com/citations?user=kOrK5b4AAAAJ">Sungkyung Kim</a><sup>3</sup>,</span>
                             <span class="author-block"><a href="https://alohays.github.io/">Yunsung Lee</a><sup>†1</sup>,</span>
                             <span class="author-block"><a href="https://yj-yu.github.io/home/">Youngjae Yu</a><sup>†2</sup></span>
                         </div>
@@ -334,6 +335,7 @@
                         <div class="is-size-6 publication-authors mt-2">
                             <span class="author-block"><sup>1</sup> MAUM.AI</span>
                             <span class="author-block ml-3"><sup>2</sup> Seoul National University</span>
+                            <span class="author-block ml-3"><sup>3</sup> Georgia Institute of Technology</span>
                             <br>
                             <span class="author-block has-text-grey"><sup>*</sup> Equal contribution &nbsp; <sup>†</sup> Co-corresponding authors</span>
                         </div>
@@ -375,7 +377,7 @@
             <div class="hero-body">
                 <div class="teaser-frame">
                     <img src="./static/images/PP-Title.png"
-                        alt="Overview of PonderPounce, comparing native MLLM context with controller context and purpose-built memory systems"
+                        alt="PonderPounce overview with a real-robot TrackCube example, system latency, and RoboMME results"
                         fetchpriority="high">
                 </div>
                 <p class="has-text-centered mt-5 is-size-5">
@@ -430,7 +432,7 @@
                     <div class="concept-card pounce">
                         <span class="concept-icon"><i class="fas fa-bolt"></i></span>
                         <h3 class="title is-5">Pounce · System 1</h3>
-                        <p>Conditions a fast VLA controller on current sensory input and cognition while playing actions back at 20 Hz.</p>
+                        <p>Conditions a fast VLA controller on current sensory input and cognition while playing action chunks back at 20 Hz in simulation.</p>
                     </div>
                 </div>
             </div>
@@ -451,7 +453,9 @@
                     <p class="figure-caption has-text-justified">
                         Ponder accumulates the instruction, demonstrations, and observations. Transition tokens gate
                         optional internal demonstration reasoning and subgoal text, while carrier states form continuous
-                        cognition. Pounce combines the newest cognition with the current observation to predict an action chunk.
+                        cognition. Pounce combines the newest cognition, its age, and the current observation to predict
+                        an action chunk. On an H100, optimized per-call p50 latencies are 78 ms for cognition-only
+                        refresh and 25 ms for Pounce invocation.
                     </p>
                 </div>
             </div>
@@ -469,7 +473,7 @@
             <div class="results-chart-wrap mt-5">
                 <canvas id="robomme-results-chart" class="results-chart" width="1800" height="870"
                     role="img"
-                    aria-label="Bar chart of RoboMME average success rates. PonderPounce achieves 60.83 percent with one-times data and 75.54 percent with nine-times data. Human performance is 90.50 percent.">
+                    aria-label="Bar chart of RoboMME average success rates. PonderPounce reaches 54.12 percent with a 0.8B context engine and 60.83 percent with a 9B context engine at base scale, and 75.54 percent with nine-times data. Human performance is 90.50 percent.">
                     RoboMME average success rate comparison across baselines, PonderPounce, oracle methods, and humans.
                 </canvas>
             </div>
@@ -492,14 +496,14 @@
                 </div>
                 <div class="column is-one-quarter-desktop is-half-tablet">
                     <div class="metric-card">
-                        <div class="metric-value">10.79pp</div>
+                        <div class="metric-value">6.71pp</div>
                         <div class="metric-label">Gain from scaling Ponder<br>from 0.8B to 9B</div>
                     </div>
                 </div>
                 <div class="column is-one-quarter-desktop is-half-tablet">
                     <div class="metric-card">
-                        <div class="metric-value">25 ms</div>
-                        <div class="metric-label">Pounce invocation<br>p50 latency</div>
+                        <div class="metric-value">60.98%</div>
+                        <div class="metric-label">Real-robot mean success<br>across four tasks</div>
                     </div>
                 </div>
             </div>
@@ -534,19 +538,37 @@
                             <td>—</td>
                         </tr>
                         <tr>
+                            <td>SimpleSG+QwenVL</td>
+                            <td>Subgoal-text list</td>
+                            <td>29.00%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>GroundSG+QwenVL</td>
+                            <td>Subgoal-text + box lists</td>
+                            <td>32.70%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
                             <td>MemER</td>
-                            <td>Keyframe selector / tracker</td>
+                            <td>Selected-keyframe image buffer</td>
                             <td>42.38%</td>
                             <td>—</td>
                         </tr>
                         <tr>
                             <td>FrameSamp+Modul</td>
-                            <td>Frame tokens + modulator</td>
+                            <td>Sampled-frame token buffer</td>
                             <td>44.51%</td>
                             <td>57.88%</td>
                         </tr>
+                        <tr>
+                            <td>PonderPounce (0.8B Ponder)</td>
+                            <td>Native MLLM context</td>
+                            <td>54.12%</td>
+                            <td>—</td>
+                        </tr>
                         <tr class="ours">
-                            <td>PonderPounce</td>
+                            <td>PonderPounce (9B Ponder)</td>
                             <td>Native MLLM context</td>
                             <td>60.83%</td>
                             <td>75.54%</td>
@@ -572,10 +594,107 @@
 
             <div class="takeaway">
                 <strong>Same controller, larger context engine:</strong> replacing pretrained Qwen3.5-0.8B with 9B
-                raises RoboMME success from 50.04% to 60.83%, without changing the Pounce architecture or interface.
+                raises RoboMME success from 54.12% to 60.83%, a 6.71 percentage-point gain without changing the Pounce
+                architecture or interface. In a separately trained, matched-supervision control, removing execution
+                history lowers 9B PonderPounce success from 60.83% to 26.21%.
             </div>
         </div>
     </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="real-results-layout">
+            <div class="real-results-content">
+            <p class="section-kicker">Real-world evaluation</p>
+            <h2 class="title is-3">Real-robot results</h2>
+            <p class="content">
+                Three methods trained on the same 710 teleoperated episodes were tested on 59 held-out scenes.
+                PonderPounce reaches <strong>60.98%</strong> mean success across four tasks, versus
+                <strong>40.67%</strong> for FrameSamp+Modul and <strong>23.99%</strong> for π<sub>0.5</sub>.
+            </p>
+            <div class="results-table-wrap">
+                <table class="table is-fullwidth results-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>PutFruits</th>
+                            <th>TrackCube</th>
+                            <th>RepickBlock</th>
+                            <th>DrawPattern</th>
+                            <th>Mean</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>π<sub>0.5</sub></td>
+                            <td>9/14</td>
+                            <td>4/16</td>
+                            <td>0/14</td>
+                            <td>1/15</td>
+                            <td>23.99%</td>
+                        </tr>
+                        <tr>
+                            <td>FrameSamp+Modul</td>
+                            <td>7/14</td>
+                            <td>5/16</td>
+                            <td>3/14</td>
+                            <td>9/15</td>
+                            <td>40.67%</td>
+                        </tr>
+                        <tr class="ours">
+                            <td>PonderPounce</td>
+                            <td>11/14</td>
+                            <td>10/16</td>
+                            <td>6/14</td>
+                            <td>9/15</td>
+                            <td>60.98%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="figure-caption">Entries show successful trials / total trials. The mean is the unweighted average of the four task success rates.</p>
+            </div>
+            <figure class="real-results-photo">
+                <div class="figure-frame">
+                    <img src="./static/images/Trossen.png"
+                        alt="Trossen ALOHA Stationary AI Kit used for the four real-robot tasks"
+                        loading="lazy">
+                </div>
+                <figcaption class="figure-caption">Trossen ALOHA Stationary AI Kit. Only the right arm is used.</figcaption>
+            </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="section results-section" id="real-demos">
+        <div class="container is-max-desktop">
+            <div class="has-text-centered">
+                <p class="section-kicker">Real robots in action</p>
+                <h2 class="title is-3">Real-robot task examples</h2>
+                <p class="subtitle is-6">Three examples per task, with three policies compared on each evaluation scene.</p>
+            </div>
+            <div class="demo-tabs" role="tablist" aria-label="Real-robot tasks"></div>
+            <div class="demo-toolbar">
+                <div class="demo-example-picker" role="group" aria-label="Task example">
+                    <span>Example:</span>
+                    <button type="button" class="demo-example-button" data-demo-example="0" aria-label="Example 1" aria-pressed="true">1</button>
+                    <button type="button" class="demo-example-button" data-demo-example="1" aria-label="Example 2" aria-pressed="false">2</button>
+                    <button type="button" class="demo-example-button" data-demo-example="2" aria-label="Example 3" aria-pressed="false">3</button>
+                </div>
+                <button class="button" type="button" data-demo-pause>Pause all</button>
+                <label>Playback speed <select data-demo-speed aria-label="Demo playback speed">
+                    <option value="1">1×</option><option value="2">2×</option><option value="4">4×</option>
+                </select></label>
+                <button type="button" class="button" data-example-play>Play comparison</button>
+            </div>
+            <div class="demo-panels"></div>
+            <p class="demo-status" role="status" aria-live="polite"></p>
+            <p class="figure-caption">Selected qualitative examples; success and failure labels are from the evaluation records. Aggregate results are reported above.</p>
+            <p class="demo-legend"><span aria-hidden="true"></span>Red border: task demonstration, followed by the policy rollout.</p>
+            <noscript><p>Enable JavaScript to browse the task comparisons.</p></noscript>
+        </div>
+    </section>
+    <script defer src="./static/js/real-demos.js"></script>
 
     <section class="section">
         <div class="container is-max-desktop">
@@ -601,14 +720,15 @@
     <section class="section results-section">
         <div class="container is-max-desktop">
             <div class="columns is-vcentered">
-                <div class="column is-5">
+                <div class="column is-6">
                     <p class="section-kicker">Cognition analysis</p>
                     <h2 class="title is-3">Fresh cognition matters</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Reusing cognition only at predicted transitions drops RoboMME success from
-                            <strong>60.83%</strong> to <strong>1.83%</strong> for the reported checkpoint, showing that
-                            control depends on within-subgoal refreshes.
+                            Delivering fresh cognition only at predicted transitions drops RoboMME success from
+                            <strong>60.83%</strong> to <strong>1.83%</strong> when held cognition is presented as
+                            300 ms old. Reporting its true age improves success to <strong>22.42%</strong>, still below
+                            regular refresh. This shows the importance of both timely cognition and an accurate age signal.
                         </p>
                         <p>
                             Offline staleness tests show the same tradeoff: frequent-refresh checkpoints fit fresh
@@ -617,7 +737,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="column is-7">
+                <div class="column is-6">
                     <div class="figure-frame">
                         <img src="./static/images/cognition_staleness.png"
                             alt="Normalized validation loss as cognition becomes stale for models trained with one, two, and four second refresh intervals"
@@ -671,17 +791,20 @@
                         { label: ['SAM2Act+'], value: 21.37, color: '#c5cad2' },
                         { label: ['MemER'], value: 42.38, color: '#c5cad2' },
                         { label: ['FrameSamp+', 'Modul'], value: 44.51, color: '#858d98' },
-                        { label: ['Ponder', 'Pounce'], value: 60.83, color: '#5b6cff' }
+                        { label: ['Ponder', 'Pounce', '0.8B'], value: 54.12, color: '#9ca7ff' },
+                        { label: ['Ponder', 'Pounce', '9B'], value: 60.83, color: '#5b6cff' }
                     ],
-                    comparison: '1.37×'
+                    comparison: '1.37×',
+                    comparisonIndices: [4, 6]
                 },
                 {
                     title: '9× data',
                     items: [
                         { label: ['FrameSamp+', 'Modul'], value: 57.88, color: '#858d98' },
-                        { label: ['Ponder', 'Pounce'], value: 75.54, color: '#5b6cff' }
+                        { label: ['Ponder', 'Pounce', '9B'], value: 75.54, color: '#5b6cff' }
                     ],
-                    comparison: '1.31×'
+                    comparison: '1.31×',
+                    comparisonIndices: [0, 1]
                 },
                 {
                     title: 'Oracle / human',
@@ -782,9 +905,11 @@
                     });
 
                     if (group.comparison) {
-                        const left = centers[centers.length - 2];
-                        const right = centers[centers.length - 1];
-                        const bracketY = Math.min(tops[tops.length - 2], tops[tops.length - 1]) - 35;
+                        const leftIndex = group.comparisonIndices[0];
+                        const rightIndex = group.comparisonIndices[1];
+                        const left = centers[leftIndex];
+                        const right = centers[rightIndex];
+                        const bracketY = Math.min(tops[leftIndex], tops[rightIndex]) - 35;
                         ctx.beginPath();
                         ctx.strokeStyle = '#5b6cff';
                         ctx.lineWidth = 1.6;

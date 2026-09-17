@@ -1,0 +1,4 @@
+{"t": 0.0, "step": 0, "src": "S1", "subgoal": ""}
+{"t": 0.67, "step": 20, "src": "S2", "subgoal": "move forward-left", "gate": 1.0, "kind": "transition", "reasoning": ""}
+{"t": 1.43, "step": 43, "src": "S1", "subgoal": "move forward-left"}
+{"t": 5.5, "step": 165, "src": "S2", "subgoal": "all tasks completed", "gate": 0.985918402671814, "kind": "transition", "reasoning": ""}

@@ -1,0 +1,7 @@
+{"t": 0.0, "step": 0, "src": "S1", "subgoal": ""}
+{"t": 0.8, "step": 24, "src": "S2", "subgoal": "place the first fruit into the bin", "gate": 0.9996198415756226, "kind": "transition", "reasoning": ""}
+{"t": 1.3, "step": 39, "src": "S1", "subgoal": "place the first fruit into the bin"}
+{"t": 16.33, "step": 490, "src": "S2", "subgoal": "place the second fruit into the bin", "gate": 0.7055970430374146, "kind": "transition", "reasoning": ""}
+{"t": 17.07, "step": 512, "src": "S1", "subgoal": "place the second fruit into the bin"}
+{"t": 30.97, "step": 929, "src": "S2", "subgoal": "press the button to stop", "gate": 0.9148756265640259, "kind": "transition", "reasoning": ""}
+{"t": 31.73, "step": 952, "src": "S1", "subgoal": "press the button to stop"}

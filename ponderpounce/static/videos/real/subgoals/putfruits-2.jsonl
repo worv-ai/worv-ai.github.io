@@ -1,0 +1,11 @@
+{"t": 0.0, "step": 0, "src": "S1", "subgoal": ""}
+{"t": 0.6, "step": 18, "src": "S2", "subgoal": "place the first fruit into the bin", "gate": 0.9999885559082031, "kind": "transition", "reasoning": ""}
+{"t": 1.3, "step": 39, "src": "S1", "subgoal": "place the first fruit into the bin"}
+{"t": 17.3, "step": 519, "src": "S2", "subgoal": "place the second fruit into the bin", "gate": 0.798111617565155, "kind": "transition", "reasoning": ""}
+{"t": 18.0, "step": 540, "src": "S1", "subgoal": "place the second fruit into the bin"}
+{"t": 33.03, "step": 991, "src": "S2", "subgoal": "place the third fruit into the bin", "gate": 0.9995692372322083, "kind": "transition", "reasoning": ""}
+{"t": 33.73, "step": 1012, "src": "S1", "subgoal": "place the third fruit into the bin"}
+{"t": 46.77, "step": 1403, "src": "S2", "subgoal": "place the fourth fruit into the bin", "gate": 0.952542781829834, "kind": "transition", "reasoning": ""}
+{"t": 47.47, "step": 1424, "src": "S1", "subgoal": "place the fourth fruit into the bin"}
+{"t": 68.3, "step": 2049, "src": "S2", "subgoal": "press the button to stop", "gate": 0.9947768449783325, "kind": "transition", "reasoning": ""}
+{"t": 69.07, "step": 2072, "src": "S1", "subgoal": "press the button to stop"}

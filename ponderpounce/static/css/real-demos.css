@@ -1,0 +1,64 @@
+.demo-tabs {
+    display: flex;
+    gap: .75rem;
+    margin: 2rem 0 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.demo-tab {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--ink);
+    cursor: pointer;
+    flex: 1 1 180px;
+    font: inherit;
+    padding: .85rem 1rem;
+}
+.demo-tab span { display: block; font-weight: 700; }
+.demo-tab small { color: var(--muted); font-size: .875rem; }
+.demo-tab[aria-selected="true"] {
+    background: var(--ponder-blue-soft);
+    border-color: var(--ponder-blue);
+    color: var(--ponder-blue-dark);
+}
+.demo-tab:focus-visible { outline: 3px solid var(--ponder-blue); outline-offset: 3px; }
+.demo-toolbar { display: flex; gap: .75rem; align-items: center; flex-wrap: nowrap; overflow-x: auto; margin-bottom: 1.5rem; padding-bottom: .25rem; }
+.demo-toolbar > * { flex-shrink: 0; white-space: nowrap; }
+.demo-toolbar label { display: flex; gap: .5rem; align-items: center; }
+.demo-toolbar select { font: inherit; border: 1px solid var(--line); border-radius: 6px; padding: .4rem; background: white; }
+.demo-instruction { color: var(--ink); font-size: 1.125rem; font-weight: 600; margin-bottom: .4rem; }
+.demo-example[hidden] { display: none; }
+.demo-example-picker { display: flex; align-items: center; gap: .75rem; margin-bottom: 0; margin-right: auto; font-weight: 600; }
+.demo-example-button { font: inherit; min-width: 2.5rem; padding: .5rem .75rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); cursor: pointer; }
+.demo-example-button[aria-pressed="true"] { background: var(--ponder-blue-soft); border-color: var(--ponder-blue); color: var(--ponder-blue-dark); }
+.demo-example-button:focus-visible { outline: 3px solid var(--ponder-blue); outline-offset: 3px; }
+.real-results-layout { display: block; }
+.real-results-content { min-width: 0; }
+.real-results-photo { width: 100%; max-width: 640px; margin: 2rem auto 0; }
+.real-results-photo .figure-frame { margin-top: 0; border-radius: 8px; }
+.real-results-photo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.demo-input { padding: .85rem 1rem; border-left: 3px solid #858d98; border-radius: 0 8px 8px 0; background: #fff; margin-bottom: .8rem; }
+.demo-input > span { display: block; font-size: .875rem; font-weight: 700; color: var(--muted); margin-bottom: .35rem; }
+.demo-input .demo-instruction { margin-bottom: 0; }
+.demo-note, .demo-legend { color: var(--muted); font-size: .94rem; margin-bottom: .75rem; }
+.demo-legend span { display: inline-block; height: .8rem; width: .8rem; border: 2px solid #e44b55; margin-right: .4rem; }
+.demo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+.demo-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: white; }
+.demo-card figcaption { display: flex; align-items: center; justify-content: space-between; gap: .4rem; padding: .85rem .75rem; flex-wrap: wrap; }
+.demo-card strong { font-size: 1rem; }
+.demo-card video { display: block; width: 100%; aspect-ratio: 4 / 3; background: #111; margin-top: auto; }
+.demo-subgoal { padding: .65rem .75rem .85rem; min-height: 6rem; background: var(--ponder-blue-soft); color: var(--ink); }
+.demo-subgoal span { display: block; color: var(--ponder-blue-dark); font-size: .875rem; font-weight: 700; margin-bottom: .3rem; }
+.demo-subgoal p { font-size: .94rem; line-height: 1.45; overflow-wrap: anywhere; }
+.demo-ours { border-color: var(--ponder-blue); }
+.demo-ours figcaption { background: var(--ponder-blue-soft); }
+.demo-result { border-radius: 5px; font-size: .875rem; padding: .15rem .45rem; }
+.demo-success { color: #216548; background: #eaf6ef; }
+.demo-failure { color: #626875; background: #f0f1f4; }
+.demo-status { color: var(--muted); font-size: .94rem; margin-top: .75rem; }
+.demo-panel[hidden] { display: none; }
+@media screen and (max-width: 768px) {
+    .demo-grid { grid-template-columns: 1fr; }
+    .demo-tab { flex-basis: calc(50% - .75rem); }
+}
