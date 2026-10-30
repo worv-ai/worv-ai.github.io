@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PonderPounce-WM: When Does Predicting the Future Help Context-Dependent Robot Control?</title>
+    <meta name="description" content="PonderPounce-WM studies future prediction as auxiliary supervision for memory-dependent robot control, reaching 67.42% on RoboMME and 67.44% on real-robot tasks.">
+    <meta property="og:title" content="PonderPounce-WM: When Does Predicting the Future Help Context-Dependent Robot Control?">
+    <meta property="og:description" content="Learning to predict the future improves context-dependent control, while directly delivering future tokens need not help.">
+    <meta property="og:image" content="https://worv-ai.github.io/ponderpounce-wm/static/images/PPWM.png">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="./static/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
+    <script defer src="../static/js/fontawesome.all.min.js"></script>
+    <script defer src="../static/js/research-projects.js?v=20261030-ppwm"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9LZW868J"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5J9LZW868J');</script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand"><button class="navbar-burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="project-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button></div>
+        <div class="navbar-menu" id="project-menu"><div class="navbar-start" style="flex-grow:1;justify-content:center">
+            <a class="navbar-item" href="../" aria-label="WoRV Research home"><span class="icon"><i class="fas fa-home" aria-hidden="true"></i></span></a>
+            <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">More Research</a><div class="navbar-dropdown" id="research-dropdown-items"></div></div>
+        </div></div>
+    </nav>
+    <main>
+    <section class="hero paper-hero">
+        <div class="hero-body"><div class="container is-max-desktop has-text-centered">
+            <h1 class="title is-2 publication-title"><span class="brand-word">PonderPounce-WM</span>: When Does Predicting the Future Help Context-Dependent Robot Control?</h1>
+            <div class="is-size-5 publication-authors mt-5">
+                <span class="author-block"><a href="https://lastdefiance20.github.io/">Jaeyoon Jung</a><sup>1</sup>,</span>
+                <span class="author-block"><a href="https://suhwanchoi.me/">Suhwan Choi</a><sup>1,2</sup>,</span>
+                <span class="author-block"><a href="https://alohays.github.io/">Yunsung Lee</a><sup>†1</sup>,</span>
+                <span class="author-block"><a href="https://yj-yu.github.io/home/">Youngjae Yu</a><sup>†2</sup></span>
+            </div>
+            <div class="is-size-6 publication-authors mt-2">
+                <span class="author-block"><sup>1</sup> MAUM.AI</span>
+                <span class="author-block ml-3"><sup>2</sup> Seoul National University</span>
+                <br>
+                <span class="author-block has-text-grey"><sup>†</sup> Co-corresponding authors</span>
+            </div>
+            <div class="is-size-5 publication-venue mt-4">Under Review</div>
+            <p class="hero-summary">Future prediction as auxiliary supervision for an episode context engine. Learning to anticipate visual changes improves control, even when the policy receives only cognition.</p>
+            <div class="publication-links mt-5">
+                <button class="button is-normal is-rounded is-dark" disabled><span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span><span>Paper (Coming soon)</span></button>
+                <button class="button is-normal is-rounded is-dark" disabled><span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span><span>Code (Coming soon)</span></button>
+                <a class="button is-normal is-rounded is-dark" href="../ponderpounce/"><span>PonderPounce</span></a>
+            </div>
+        </div></div>
+    </section>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-mobile is-multiline">
+                <div class="column is-4-desktop is-12-mobile metric"><strong>67.42%</strong><span>RoboMME success<br>60.83% baseline</span></div>
+                <div class="column is-4-desktop is-12-mobile metric"><strong>67.44%</strong><span>Real-robot success<br>60.98% baseline</span></div>
+                <div class="column is-4-desktop is-12-mobile metric"><strong>1 + 3</strong><span>One cognition token<br>Three future tokens during training</span></div>
+            </div>
+            <p class="section-kicker mt-5">Overview</p>
+            <h2 class="title is-3">Predicting the future while remembering the past</h2>
+            <div class="content"><p>Robot control often depends on evidence that is no longer visible. <a href="../ponderpounce/">PonderPounce</a> retains demonstrations and execution history in a pretrained multimodal language model, <strong>Ponder</strong>, and passes continuous cognition to a fast action model, <strong>Pounce</strong>.</p>
+            <p><strong>PonderPounce-WM</strong> adds three learned future tokens, supervised to predict changes in frozen visual features. We study two independent choices: whether cognition comes before or after future tokens, and whether the controller receives cognition alone or all four tokens. This is auxiliary feature prediction from episode context, rather than action-conditioned rollouts for planning.</p></div>
+        </div>
+    </section>
+    <section class="section results-section">
+        <div class="container is-max-desktop">
+            <p class="section-kicker">Architecture</p><h2 class="title is-3">Two design axes, one shared context engine</h2>
+            <figure><div class="figure-frame"><a href="./static/images/PPWM.png" target="_blank" rel="noopener"><img src="./static/images/PPWM.png" width="1939" height="1031" alt="PonderPounce-WM architecture: episode context enters Ponder, with cognition-first or future-first token order and cognition-only or all-token delivery to Pounce."></a></div>
+            <figcaption class="figure-caption">Three future slots predict pooled SigLIP feature changes at 0.5, 1, and 2 seconds in simulation. Real-robot training uses 1, 2, and 3 seconds. Click the figure to inspect it at full resolution.</figcaption></figure>
+            <div class="columns mt-5">
+                <div class="column"><h3 class="title is-5">Token order inside Ponder</h3><div class="content"><p><strong>Cognition-first:</strong> C, F₁, F₂, F₃.<br><strong>Future-first:</strong> F₁, F₂, F₃, C.</p><p>With causal attention, only future-first lets cognition read the same query’s future tokens. Both layouts retain tokens from previous queries.</p></div></div>
+                <div class="column"><h3 class="title is-5">Delivery to Pounce</h3><div class="content"><p>The policy receives <strong>cognition only</strong> or <strong>cognition plus all future tokens</strong>, alongside its current sensory inputs and cognition age.</p><p>Future-prediction gradients shape the shared context engine during training. The prediction head is not needed to generate actions.</p></div></div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="simulation">
+        <div class="container is-max-desktop">
+            <p class="section-kicker">RoboMME results</p><h2 class="title is-3">Future supervision helps. Direct delivery need not.</h2>
+            <div class="content"><p>On 16 memory-dependent tasks, cognition-first ordering with cognition-only delivery reaches <strong>67.42%</strong>, up <strong>6.59 percentage points</strong> over PonderPounce. Directly delivering future slots under the same ordering lowers success to <strong>64.00%</strong>.</p></div>
+            <div class="comparison" role="img" aria-label="RoboMME success: PonderPounce 60.83 percent; four slots without future loss 60.00; cognition-first with all tokens delivered 64.00; cognition-first with cognition only 67.42. Bars share a zero to one hundred percent scale.">
+                <div class="bar-row"><span>PonderPounce</span><div class="bar-track"><div class="bar" style="--value:60.83%"></div></div><strong>60.83%</strong></div>
+                <div class="bar-row"><span>4 slots, no future loss</span><div class="bar-track"><div class="bar" style="--value:60%"></div></div><strong>60.00%</strong></div>
+                <div class="bar-row"><span>WM · cog-first · cog + future</span><div class="bar-track"><div class="bar direct" style="--value:64%"></div></div><strong>64.00%</strong></div>
+                <div class="bar-row"><span>WM · cog-first · cognition only</span><div class="bar-track"><div class="bar wm" style="--value:67.42%"></div></div><strong>67.42%</strong></div>
+                <p class="axis-note">Average success (%) · 0–100 scale</p>
+            </div>
+            <div class="results-table-wrap"><table class="table results-table is-fullwidth"><caption class="is-sr-only">RoboMME success rates by task family</caption>
+                <thead><tr><th scope="col">Method</th><th scope="col">Order</th><th scope="col">Policy reads</th><th scope="col">Counting</th><th scope="col">Permanence</th><th scope="col">Reference</th><th scope="col">Imitation</th><th scope="col">Mean</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row">PonderPounce (1 slot)</th><td>—</td><td>Cognition</td><td>74.67</td><td>62.83</td><td>72.17</td><td>33.67</td><td>60.83</td></tr>
+                    <tr><th scope="row">PonderPounce (4 slots, no future loss)</th><td>—</td><td>Cognition</td><td>74.33</td><td>61.33</td><td>66.50</td><td>37.83</td><td>60.00</td></tr>
+                    <tr><th scope="row">PonderPounce-WM</th><td>Future-first</td><td>Cog + future</td><td>77.67</td><td>60.33</td><td>69.83</td><td>44.83</td><td>63.17</td></tr>
+                    <tr><th scope="row">PonderPounce-WM</th><td>Future-first</td><td>Cognition</td><td>79.00</td><td>61.00</td><td><strong>75.50</strong></td><td>41.17</td><td>64.17</td></tr>
+                    <tr><th scope="row">PonderPounce-WM</th><td>Cog-first</td><td>Cog + future</td><td>77.50</td><td>59.33</td><td>73.00</td><td><strong>46.17</strong></td><td>64.00</td></tr>
+                    <tr class="ours"><th scope="row">PonderPounce-WM</th><td>Cog-first</td><td>Cognition</td><td>84.83</td><td>68.83</td><td>72.00</td><td>44.00</td><td>67.42</td></tr>
+                </tbody></table></div>
+            <p class="note">Success rates (%), averaged over three evaluations of the same checkpoint. Each repeat contains 50 episodes per task; each family averages four tasks. The 1-slot baseline comes from the original PonderPounce paper. These are evaluation repeats, not independent training seeds.</p>
+            <p class="takeaway">The strongest configuration benefits from learning to predict while keeping the policy input limited to cognition. Gains are not uniform: MoveCube and PickHighlight decline by 10 and 9 percentage points, respectively.</p>
+        </div>
+    </section>
+    <section class="section results-section" id="analysis">
+        <div class="container is-max-desktop">
+            <p class="section-kicker">Representation analysis</p><h2 class="title is-3">What changes inside cognition?</h2>
+            <div class="content"><h3 class="title is-5">More future information is linearly decodable</h3><p>On 192 held-out episodes, the 1-second future-feature probe improves from <strong>0.253</strong> explained variance for the baseline to <strong>0.336</strong> for the strongest controller. Future slots themselves carry still more decodable future information, but this does not translate into better control when they are directly delivered.</p>
+            <h3 class="title is-5">Tested past-event attributes remain largely decodable</h3><p>Hidden-container location, repetition ordinal, and counts of previously binned cubes remain readable from full-context cognition. Some location read-outs decline after future supervision. Near-ceiling scores on several probes limit conclusions about broader memory preservation.</p>
+            <h3 class="title is-5">Future-token removal depends on training order</h3><p>Without retraining, removing all future tokens from Ponder at inference changes cog-first success from <strong>67.42% to 66.17%</strong>, retaining most of the gain. The same intervention drops future-first from <strong>64.17% to 8.75%</strong>. This finding applies to the tested checkpoints; removing tokens also changes context and positions.</p></div>
+        </div>
+    </section>
+    <section class="section" id="real-robot">
+        <div class="container is-max-desktop">
+            <p class="section-kicker">Real-robot results</p><h2 class="title is-3">67.44% mean success across four tasks</h2>
+            <div class="content"><p>We evaluate on the same 59 held-out scenes used by PonderPounce, using the right arm of a <strong>Trossen ALOHA Stationary AI Kit</strong> with external and wrist cameras. All methods use the same 710 teleoperated training episodes. PonderPounce-WM improves PutFruits, TrackCube, and DrawPattern, while RepickBlock drops by one successful trial.</p></div>
+            <div class="results-table-wrap"><table class="table results-table is-fullwidth"><caption class="is-sr-only">Real-robot successes and trials, with unweighted mean success rate</caption><thead><tr><th scope="col">Method</th><th scope="col">PutFruits</th><th scope="col">TrackCube</th><th scope="col">RepickBlock</th><th scope="col">DrawPattern</th><th scope="col">Mean</th></tr></thead><tbody>
+                <tr><th scope="row">π₀.₅</th><td>9/14</td><td>4/16</td><td>0/14</td><td>1/15</td><td>23.99%</td></tr>
+                <tr><th scope="row">FrameSamp+Modul</th><td>7/14</td><td>5/16</td><td>3/14</td><td>9/15</td><td>40.67%</td></tr>
+                <tr><th scope="row">PonderPounce</th><td>11/14</td><td>10/16</td><td><strong>6/14</strong></td><td>9/15</td><td>60.98%</td></tr>
+                <tr class="ours"><th scope="row">PonderPounce-WM</th><td>12/14</td><td>12/16</td><td>5/14</td><td>11/15</td><td>67.44%</td></tr>
+            </tbody></table></div>
+            <p class="note">Entries are successes/trials. Mean weights the four task rates equally, rather than pooling all trials. Prior-method results are reproduced from PonderPounce. With 14–16 trials per task, one trial changes a task’s rate by roughly 6–7 percentage points.</p>
+        </div>
+    </section>
+    <section class="section results-section"><div class="container is-max-desktop"><p class="section-kicker">Scope</p><h2 class="title is-4">What these experiments establish</h2><div class="content"><p>Future-feature prediction can improve context-dependent control without directly conditioning the policy on future slots. The controlled study uses one base architecture and RoboMME, with prediction targets from one frozen visual encoder and one camera view. The probes do not establish why direct future-token delivery reduces performance.</p></div></div></section>
+    </main>
+    <footer class="footer"><div class="container is-max-desktop content has-text-centered is-size-7"><p>Part of <a href="../">WoRV Research</a>. Built on the <a href="../ponderpounce/">PonderPounce</a> project-page design, adapted from <a href="https://nerfies.github.io">Nerfies</a>.</p></div></footer>
+    <script>document.querySelector('.navbar-burger').addEventListener('click',function(){const open=this.classList.toggle('is-active');this.setAttribute('aria-expanded',String(open));document.getElementById('project-menu').classList.toggle('is-active',open);});</script>
+</body>
+</html>

@@ -15,6 +15,14 @@
 const RESEARCH_PROJECTS = [
     {
         external: false,
+        path: 'ponderpounce-wm/',
+        shortTitle: 'PonderPounce-WM',
+        title: 'PonderPounce-WM: When Does Predicting the Future Help Context-Dependent Robot Control?',
+        venue: 'Under Review',
+        venueClass: 'is-warning'
+    },
+    {
+        external: false,
         path: 'ponderpounce/',
         shortTitle: 'PonderPounce',
         title: 'PonderPounce: A Pretrained MLLM as an Episode Context Engine for Robot Control',
