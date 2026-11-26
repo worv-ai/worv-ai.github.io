@@ -55,6 +55,7 @@
                 <a class="button is-normal is-rounded is-dark" href="https://github.com/worv-ai/PonderPounce" target="_blank" rel="noopener"><span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span><span>Code</span></a>
                 <a class="button is-normal is-rounded is-dark" href="https://huggingface.co/worv-ai/PonderPounce-WM-9B-RoboMME" target="_blank" rel="noopener"><span class="icon"><i class="fas fa-robot" aria-hidden="true"></i></span><span>Model</span></a>
                 <a class="button is-normal is-rounded is-dark" href="../ponderpounce/"><span>PonderPounce</span></a>
+                <a class="button is-normal is-rounded is-dark" href="#BibTeX"><span class="icon"><i class="fas fa-quote-right" aria-hidden="true"></i></span><span>BibTeX</span></a>
             </div>
             <p class="hero-summary">Future prediction as auxiliary supervision for an episode context engine. Learning to anticipate visual changes improves control, even when the policy receives only cognition.</p>
         </div></div>
@@ -130,6 +131,18 @@
         </div>
     </section>
     <section class="section results-section"><div class="container is-max-desktop"><p class="section-kicker">Scope</p><h2 class="title is-4">What these experiments establish</h2><div class="content"><p>Future-feature prediction can improve context-dependent control without directly conditioning the policy on future slots. The controlled study uses one base architecture and RoboMME, with prediction targets from one frozen visual encoder and one camera view. The probes do not establish why direct future-token delivery reduces performance.</p></div></div></section>
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <p class="section-kicker">Citation</p>
+            <h2 class="title is-3">BibTeX</h2>
+            <pre><code>@article{jung2026ponderpounce,
+  title={PonderPounce-WM: When Does Predicting the Future Help Context-Dependent Robot Control?},
+  author={Jung, Jaeyoon and Choi, Suhwan and Lee, Yunsung and Yu, Youngjae},
+  journal={arXiv preprint arXiv:2611.26996},
+  year={2026}
+}</code></pre>
+        </div>
+    </section>
     </main>
     <footer class="footer"><div class="container is-max-desktop content has-text-centered is-size-7"><p>Part of <a href="../">WoRV Research</a>. Built on the <a href="../ponderpounce/">PonderPounce</a> project-page design, adapted from <a href="https://nerfies.github.io">Nerfies</a>.</p></div></footer>
     <script>document.querySelector('.navbar-burger').addEventListener('click',function(){const open=this.classList.toggle('is-active');this.setAttribute('aria-expanded',String(open));document.getElementById('project-menu').classList.toggle('is-active',open);});</script>
